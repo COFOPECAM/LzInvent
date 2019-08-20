@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Count="2" Active="Debug">
+      <Item1 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="bin\debug\lzinvent"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="forms;libs;modules"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item1>
+      <Item2 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="bin\release\lzinvent"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="forms;libs;modules"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item2>
+    </BuildModes>
+    <Units Count="6">
+      <Unit0>
+        <Filename Value="lzinvent.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="30"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmPrincipal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="53"/>
+        <CursorPos X="29" Y="84"/>
+        <UsageCount Value="30"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="modules\m_conn.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dmconn"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="16"/>
+        <CursorPos X="18" Y="43"/>
+        <UsageCount Value="28"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaUsuarios"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="20" Y="50"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmUser"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="40"/>
+        <CursorPos X="4" Y="54"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="libs\BCrypt.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="627"/>
+        <CursorPos Y="645"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
+      </Unit5>
+    </Units>
+    <JumpHistory Count="27" HistoryIndex="26">
+      <Position1>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+      </Position1>
+      <Position2>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="77" Column="14" TopLine="43"/>
+      </Position2>
+      <Position3>
+        <Filename Value="modules\m_conn.pas"/>
+      </Position3>
+      <Position4>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="24" Column="18"/>
+      </Position4>
+      <Position5>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="45" Column="17" TopLine="11"/>
+      </Position5>
+      <Position6>
+        <Filename Value="libs\BCrypt.pas"/>
+        <Caret Line="639" Column="29" TopLine="627"/>
+      </Position6>
+      <Position7>
+        <Filename Value="libs\BCrypt.pas"/>
+        <Caret Line="244" Column="25" TopLine="227"/>
+      </Position7>
+      <Position8>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="8" Column="33"/>
+      </Position8>
+      <Position9>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="33" Column="4" TopLine="16"/>
+      </Position9>
+      <Position10>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="78" Column="14" TopLine="44"/>
+      </Position10>
+      <Position11>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="79" Column="14"/>
+      </Position11>
+      <Position12>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="78" Column="14" TopLine="44"/>
+      </Position12>
+      <Position13>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="33" TopLine="16"/>
+      </Position13>
+      <Position14>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="8" Column="35"/>
+      </Position14>
+      <Position15>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="23" Column="30" TopLine="16"/>
+      </Position15>
+      <Position16>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+      </Position16>
+      <Position17>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="20" Column="52"/>
+      </Position17>
+      <Position18>
+        <Filename Value="forms\u_frmadduser.pas"/>
+      </Position18>
+      <Position19>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="23" Column="30" TopLine="16"/>
+      </Position19>
+      <Position20>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <Caret Line="9" Column="36" TopLine="7"/>
+      </Position20>
+      <Position21>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <Caret Line="55" Column="74" TopLine="21"/>
+      </Position21>
+      <Position22>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="42" Column="20" TopLine="11"/>
+      </Position22>
+      <Position23>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="43" Column="20" TopLine="11"/>
+      </Position23>
+      <Position24>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="44" Column="20" TopLine="11"/>
+      </Position24>
+      <Position25>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="45" Column="20" TopLine="11"/>
+      </Position25>
+      <Position26>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <Caret Line="34" Column="19" TopLine="34"/>
+      </Position26>
+      <Position27>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="49" Column="20" TopLine="16"/>
+      </Position27>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

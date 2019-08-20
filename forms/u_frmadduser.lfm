@@ -1,0 +1,187 @@
+object FrmUser: TFrmUser
+  Left = 717
+  Height = 246
+  Top = 563
+  Width = 280
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent - Agregar usuario'
+  ClientHeight = 246
+  ClientWidth = 280
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  LCLVersion = '2.0.2.0'
+  object Datos: TGroupBox
+    Left = 8
+    Height = 192
+    Top = 8
+    Width = 262
+    Caption = 'Datos'
+    ClientHeight = 172
+    ClientWidth = 258
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 23
+      Height = 15
+      Top = 14
+      Width = 60
+      Caption = 'Nombre(s):'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 31
+      Height = 15
+      Top = 44
+      Width = 52
+      Caption = 'Apellidos:'
+      ParentColor = False
+    end
+    object TxtNombres: TEdit
+      Left = 102
+      Height = 23
+      Top = 9
+      Width = 146
+      TabOrder = 0
+    end
+    object TxtApellidos: TEdit
+      Left = 102
+      Height = 23
+      Top = 40
+      Width = 146
+      TabOrder = 1
+    end
+    object TxtUsuario: TEdit
+      Left = 102
+      Height = 23
+      Top = 71
+      Width = 146
+      TabOrder = 2
+    end
+    object TxtContrasena: TEdit
+      Left = 102
+      Height = 23
+      Top = 103
+      Width = 116
+      TabOrder = 3
+    end
+    object CbRoles: TDBLookupComboBox
+      Left = 102
+      Height = 23
+      Top = 135
+      Width = 146
+      KeyField = 'id_roles'
+      ListField = 'nombre'
+      ListFieldIndex = 0
+      ListSource = DSRoles
+      LookupCache = False
+      TabOrder = 4
+    end
+    object Label3: TLabel
+      Left = 40
+      Height = 15
+      Top = 76
+      Width = 43
+      Caption = 'Usuario:'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 20
+      Height = 15
+      Top = 107
+      Width = 63
+      Caption = 'Contraseña:'
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 57
+      Height = 15
+      Top = 139
+      Width = 26
+      Caption = 'Role:'
+      ParentColor = False
+    end
+  end
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 206
+    Width = 268
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
+    TabOrder = 1
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object ZQUser: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'insert into usuarios(nombres, apellidos, usuario, contrasena, roles_id_roles) values(:nombres, :apellidos, :usuario, :contrasena, :role_id)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'nombres'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'apellidos'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'usuario'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'contrasena'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'role_id'
+        ParamType = ptUnknown
+      end>
+    left = 16
+    top = 194
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'nombres'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'apellidos'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'usuario'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'contrasena'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'role_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSRoles: TDataSource
+    DataSet = dmconn.GetRoles
+    left = 15
+    top = 149
+  end
+end

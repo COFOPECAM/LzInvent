@@ -1,0 +1,32 @@
+object dmconn: Tdmconn
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 146
+  HorizontalOffset = 309
+  VerticalOffset = 639
+  Width = 209
+  PPI = 96
+  object Conn: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
+    ClientCodepage = 'UTF-8'
+    Properties.Strings = (
+      'codepage=UTF-8'
+    )
+    Port = 0
+    Database = 'G:/projects/lzinvent/database/lzinvent.db'
+    Protocol = 'sqlite-3'
+    LibraryLocation = 'G:/projects/lzinvent/database/sqlite3.dll'
+    left = 16
+    top = 8
+  end
+  object GetRoles: TZQuery
+    Connection = Conn
+    SQL.Strings = (
+      'select id_roles, nombre from roles where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 80
+    top = 8
+  end
+end
