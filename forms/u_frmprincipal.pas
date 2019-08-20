@@ -5,17 +5,21 @@ unit u_frmprincipal;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, rxdbgrid,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
   SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons, BCrypt, u_frmlistarusuarios,
-  m_conn, spkt_Appearance;
+  m_conn, db, ZDataset, spkt_Appearance;
 
 type
 
   { TFrmPrincipal }
 
   TFrmPrincipal = class(TForm)
+    DSBienes: TDataSource;
+    ILRb: TImageList;
     RbBAgregar: TSpkLargeButton;
-    RxDBGrid1: TRxDBGrid;
+    DgBienes: TRxDBGrid;
+    DgEmpleados: TRxDBGrid;
+    SpkLargeButton1: TSpkLargeButton;
     SpkLargeButton10: TSpkLargeButton;
     SpkLargeButton11: TSpkLargeButton;
     SpkLargeButton12: TSpkLargeButton;
@@ -49,14 +53,17 @@ type
     SpkPane7: TSpkPane;
     SpkPane8: TSpkPane;
     SpkPane9: TSpkPane;
-    SpkTab1: TSpkTab;
-    SpkTab2: TSpkTab;
-    SpkTab3: TSpkTab;
-    SpkTab4: TSpkTab;
+    StatusBar1: TStatusBar;
+    TBienes: TSpkTab;
+    TEmpleados: TSpkTab;
+    TCatalogos: TSpkTab;
+    TConfig: TSpkTab;
     StMenu: TSpkToolbar;
+    ZQBienes: TZQuery;
     procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
+    procedure StMenuTabChanged(Sender: TObject);
   private
 
   public
@@ -76,9 +83,7 @@ procedure TFrmPrincipal.RbBAgregarClick(Sender: TObject);
 var
   Cifrar:TBCryptHash;
 begin
-  Cifrar:=TBCryptHash.Create;
-  ShowMessage(Cifrar.CreateHash('MiContr@sena'));
-  Cifrar.Free;
+
 end;
 
 procedure TFrmPrincipal.FormCreate(Sender: TObject);
@@ -109,6 +114,26 @@ end;
 procedure TFrmPrincipal.RbCfListarClick(Sender: TObject);
 begin
   FrmListaUsuarios.ShowModal;
+end;
+
+procedure TFrmPrincipal.StMenuTabChanged(Sender: TObject);
+begin
+  if StMenu.TabIndex = 0 then
+  begin
+    DgBienes.BringToFront;
+    DgBienes.Align:=alClient;
+
+    DgEmpleados.Align:=alNone;
+    DgEmpleados.SendToBack;
+  end;
+  if StMenu.TabIndex = 1 then
+  begin
+    DgEmpleados.Align:=alClient;
+    DgEmpleados.BringToFront;
+
+    DgBienes.SendToBack;
+    DgBienes.Align:=alNone;
+  end;
 end;
 
 end.

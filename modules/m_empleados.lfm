@@ -1,0 +1,34 @@
+object dmempleados: Tdmempleados
+  OldCreateOrder = False
+  Height = 239
+  HorizontalOffset = 615
+  VerticalOffset = 669
+  Width = 361
+  PPI = 96
+  object ZQGetEmpleados: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select e.id_empleado as ''No.'', e.nombres as ''Nombre(s)'', e.apellidos as ''Apellidos'', a.nombre as ''Area'' from empleados e inner join areas a on a.id_area = e.areas_id_area where e.estatus = :estatus'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'estatus'
+        ParamType = ptUnknown
+      end>
+    left = 36
+    top = 23
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'estatus'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSEmpleados: TDataSource
+    DataSet = ZQGetEmpleados
+    left = 144
+    top = 23
+  end
+end

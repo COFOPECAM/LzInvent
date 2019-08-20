@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, rxnew, virtualdbgrid_package, u_frmprincipal, m_conn,
-  u_frmlistarusuarios, u_frmadduser, u_frmrolespermisos, m_user
+  u_frmlistarusuarios, u_frmadduser, u_frmrolespermisos, m_user, m_empleados
   { you can add units after this };
 
 {$R *.res}
@@ -23,6 +23,7 @@ begin
   Application.CreateForm(TFrmUser, FrmUser);
   Application.CreateForm(TFrmRolesPermisos, FrmRolesPermisos);
   Application.CreateForm(TDMUser, DMUser);
+  Application.CreateForm(Tdmempleados, dmempleados);
   Application.Run;
 end.
 
