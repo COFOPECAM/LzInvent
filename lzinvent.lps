@@ -85,7 +85,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="39"/>
       </Unit0>
       <Unit1>
         <Filename Value="forms\u_frmprincipal.pas"/>
@@ -93,10 +93,11 @@
         <ComponentName Value="FrmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="53"/>
-        <CursorPos X="29" Y="84"/>
-        <UsageCount Value="38"/>
+        <TopLine Value="74"/>
+        <CursorPos X="33" Y="88"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="modules\m_conn.pas"/>
@@ -104,10 +105,10 @@
         <ComponentName Value="dmconn"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="16"/>
-        <CursorPos X="18" Y="43"/>
-        <UsageCount Value="36"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="19"/>
+        <CursorPos X="56" Y="45"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -117,10 +118,10 @@
         <ComponentName Value="FrmListaUsuarios"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="73"/>
-        <CursorPos X="29" Y="99"/>
-        <UsageCount Value="34"/>
+        <CursorPos X="29" Y="10"/>
+        <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -133,9 +134,8 @@
         <EditorIndex Value="2"/>
         <TopLine Value="108"/>
         <CursorPos X="21" Y="136"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="forms\u_frmrolespermisos.pas"/>
@@ -143,145 +143,146 @@
         <ComponentName Value="FrmRolesPermisos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="3"/>
         <CursorPos X="17" Y="13"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
-        <Filename Value="libs\BCrypt.pas"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="627"/>
-        <CursorPos Y="645"/>
-        <UsageCount Value="18"/>
-        <Loaded Value="True"/>
-      </Unit6>
-      <Unit7>
         <Filename Value="modules\m_user.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DMUser"/>
         <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <UsageCount Value="21"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="9" Y="18"/>
+        <UsageCount Value="22"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="libs\BCrypt.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="627"/>
+        <CursorPos Y="645"/>
+        <UsageCount Value="18"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit7>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="modules\m_conn.pas"/>
-        <Caret Line="23" Column="30" TopLine="16"/>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
       </Position1>
       <Position2>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="20" Column="52"/>
       </Position2>
       <Position3>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="20" Column="52"/>
+        <Filename Value="forms\u_frmadduser.pas"/>
       </Position3>
       <Position4>
-        <Filename Value="forms\u_frmadduser.pas"/>
-      </Position4>
-      <Position5>
         <Filename Value="modules\m_conn.pas"/>
         <Caret Line="23" Column="30" TopLine="16"/>
+      </Position4>
+      <Position5>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <Caret Line="9" Column="36" TopLine="7"/>
       </Position5>
       <Position6>
         <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="9" Column="36" TopLine="7"/>
+        <Caret Line="55" Column="74" TopLine="21"/>
       </Position6>
       <Position7>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="55" Column="74" TopLine="21"/>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="42" Column="20" TopLine="11"/>
       </Position7>
       <Position8>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="42" Column="20" TopLine="11"/>
+        <Caret Line="43" Column="20" TopLine="11"/>
       </Position8>
       <Position9>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="43" Column="20" TopLine="11"/>
+        <Caret Line="44" Column="20" TopLine="11"/>
       </Position9>
       <Position10>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="44" Column="20" TopLine="11"/>
+        <Caret Line="45" Column="20" TopLine="11"/>
       </Position10>
       <Position11>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="45" Column="20" TopLine="11"/>
-      </Position11>
-      <Position12>
         <Filename Value="forms\u_frmadduser.pas"/>
         <Caret Line="34" Column="19" TopLine="34"/>
+      </Position11>
+      <Position12>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="49" Column="20" TopLine="16"/>
       </Position12>
       <Position13>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="49" Column="20" TopLine="16"/>
+        <Caret Line="51" Column="20" TopLine="17"/>
       </Position13>
       <Position14>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="51" Column="20" TopLine="17"/>
+        <Caret Line="36" Column="5" TopLine="12"/>
       </Position14>
       <Position15>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="36" Column="5" TopLine="12"/>
+        <Caret Line="62" Column="58" TopLine="37"/>
       </Position15>
       <Position16>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="62" Column="58" TopLine="37"/>
+        <Caret Line="71" Column="5" TopLine="37"/>
       </Position16>
       <Position17>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="71" Column="5" TopLine="37"/>
+        <Caret Line="65" Column="3" TopLine="48"/>
       </Position17>
       <Position18>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="65" Column="3" TopLine="48"/>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <Caret Line="88" Column="5" TopLine="65"/>
       </Position18>
       <Position19>
         <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="88" Column="5" TopLine="65"/>
+        <Caret Line="89" Column="19" TopLine="74"/>
       </Position19>
       <Position20>
         <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="89" Column="19" TopLine="74"/>
+        <Caret Line="96" Column="6" TopLine="72"/>
       </Position20>
       <Position21>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="96" Column="6" TopLine="72"/>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="86" Column="3" TopLine="58"/>
       </Position21>
       <Position22>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="86" Column="3" TopLine="58"/>
+        <Caret Line="90" Column="20" TopLine="58"/>
       </Position22>
       <Position23>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="90" Column="20" TopLine="58"/>
-      </Position23>
-      <Position24>
         <Filename Value="forms\u_frmadduser.pas"/>
         <Caret Line="96" Column="66" TopLine="88"/>
+      </Position23>
+      <Position24>
+        <Filename Value="forms\u_frmrolespermisos.pas"/>
       </Position24>
       <Position25>
-        <Filename Value="forms\u_frmrolespermisos.pas"/>
-      </Position25>
-      <Position26>
         <Filename Value="forms\u_frmlistarusuarios.pas"/>
         <Caret Line="88" Column="22" TopLine="68"/>
+      </Position25>
+      <Position26>
+        <Filename Value="forms\u_frmrolespermisos.pas"/>
       </Position26>
       <Position27>
-        <Filename Value="forms\u_frmrolespermisos.pas"/>
+        <Filename Value="forms\u_frmadduser.pas"/>
+        <Caret Line="102" Column="28" TopLine="94"/>
       </Position27>
       <Position28>
         <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="102" Column="28" TopLine="94"/>
+        <Caret Line="137" Column="30" TopLine="103"/>
       </Position28>
       <Position29>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="137" Column="30" TopLine="103"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="90" Column="29" TopLine="56"/>
       </Position29>
+      <Position30>
+        <Filename Value="forms\u_frmlistarusuarios.pas"/>
+        <Caret Line="100" Column="29" TopLine="74"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

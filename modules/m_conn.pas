@@ -18,6 +18,7 @@ type
   private
 
   public
+    theme_app:string;
 
   end;
 
@@ -41,6 +42,7 @@ begin
     Conn.LibraryLocation:=INI.ReadString('database', 'dll', '');
     Conn.Connect;
     GetRoles.Open;
+    theme_app:=INI.ReadString('config', 'theme_app', '');
   end
   else
   begin

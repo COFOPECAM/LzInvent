@@ -8,10 +8,11 @@ object FrmListaUsuarios: TFrmListaUsuarios
   Caption = 'LzInvent - Usuarios'
   ClientHeight = 429
   ClientWidth = 481
+  OnCreate = FormCreate
   OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '2.0.2.0'
-  object SpkToolbar1: TSpkToolbar
+  object StMenu: TSpkToolbar
     Left = 0
     Height = 112
     Top = 0

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, DBGrids,
   ZDataset, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons, u_frmadduser, db,
-  u_frmrolespermisos;
+  u_frmrolespermisos, m_conn, spkt_Appearance;
 
 type
 
@@ -24,10 +24,11 @@ type
     SpkPane1: TSpkPane;
     SpkPane2: TSpkPane;
     SpkTab1: TSpkTab;
-    SpkToolbar1: TSpkToolbar;
+    StMenu: TSpkToolbar;
     StatusBar1: TStatusBar;
     ZQGetUsers: TZQuery;
     ZQBaja: TZQuery;
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure RbAddClick(Sender: TObject);
     procedure RbBajaClick(Sender: TObject);
@@ -102,6 +103,30 @@ end;
 procedure TFrmListaUsuarios.FormShow(Sender: TObject);
 begin
   ZQGetUsers.Open;
+end;
+
+procedure TFrmListaUsuarios.FormCreate(Sender: TObject);
+begin
+  if dmconn.theme_app = 'blue' then
+  begin
+    StMenu.Style:=spkOffice2007Blue;
+    StMenu.Color:=clSkyBlue;
+  end;
+  if dmconn.theme_app = 'silver' then
+  begin
+    StMenu.Style:=spkOffice2007Silver;
+    StMenu.Color:=clWhite;
+  end;
+  if dmconn.theme_app = 'black' then
+  begin
+    StMenu.Style:=spkMetroDark;
+    StMenu.Color:=$080808;
+  end;
+  if dmconn.theme_app = 'ligth' then
+  begin
+    StMenu.Style:=spkMetroLight;
+    StMenu.Color:=clSilver;
+  end;
 end;
 
 end.

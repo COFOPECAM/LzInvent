@@ -6,10 +6,11 @@ object FrmPrincipal: TFrmPrincipal
   Caption = 'LzInvent'
   ClientHeight = 477
   ClientWidth = 673
+  OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '2.0.2.0'
   WindowState = wsMaximized
-  object SpkToolbar1: TSpkToolbar
+  object StMenu: TSpkToolbar
     Left = 0
     Height = 112
     Top = 0
@@ -378,9 +379,9 @@ object FrmPrincipal: TFrmPrincipal
     end
   end
   object RxDBGrid1: TRxDBGrid
-    Left = 48
+    Left = 8
     Height = 188
-    Top = 152
+    Top = 120
     Width = 200
     ColumnDefValues.BlobText = '(blob)'
     TitleButtons = False

@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, rxdbgrid,
-  SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons, BCrypt, u_frmlistarusuarios;
+  SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons, BCrypt, u_frmlistarusuarios,
+  m_conn, spkt_Appearance;
 
 type
 
@@ -52,7 +53,8 @@ type
     SpkTab2: TSpkTab;
     SpkTab3: TSpkTab;
     SpkTab4: TSpkTab;
-    SpkToolbar1: TSpkToolbar;
+    StMenu: TSpkToolbar;
+    procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
   private
@@ -77,6 +79,31 @@ begin
   Cifrar:=TBCryptHash.Create;
   ShowMessage(Cifrar.CreateHash('MiContr@sena'));
   Cifrar.Free;
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  { Settear configuraciones de la aplicación }
+  if dmconn.theme_app = 'blue' then
+  begin
+    StMenu.Style:=spkOffice2007Blue;
+    StMenu.Color:=clSkyBlue;
+  end;
+  if dmconn.theme_app = 'silver' then
+  begin
+    StMenu.Style:=spkOffice2007Silver;
+    StMenu.Color:=clWhite;
+  end;
+  if dmconn.theme_app = 'black' then
+  begin
+    StMenu.Style:=spkMetroDark;
+    StMenu.Color:=$080808;
+  end;
+  if dmconn.theme_app = 'ligth' then
+  begin
+    StMenu.Style:=spkMetroLight;
+    StMenu.Color:=clSilver;
+  end;
 end;
 
 procedure TFrmPrincipal.RbCfListarClick(Sender: TObject);
