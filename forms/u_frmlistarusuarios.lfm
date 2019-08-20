@@ -8,6 +8,8 @@ object FrmListaUsuarios: TFrmListaUsuarios
   Caption = 'LzInvent - Usuarios'
   ClientHeight = 429
   ClientWidth = 481
+  OnShow = FormShow
+  Position = poDesktopCenter
   LCLVersion = '2.0.2.0'
   object SpkToolbar1: TSpkToolbar
     Left = 0
@@ -102,30 +104,33 @@ object FrmListaUsuarios: TFrmListaUsuarios
         Caption = 'Usuarios'
         Items = (
           'RbAdd'
-          'SpkLargeButton2'
-          'SpkLargeButton3'
+          'RbEditar'
+          'RbBaja'
         )
         object RbAdd: TSpkLargeButton
           Caption = 'Agregar'
           OnClick = RbAddClick
           LargeImageIndex = 0
         end
-        object SpkLargeButton2: TSpkLargeButton
+        object RbEditar: TSpkLargeButton
           Caption = 'Editar'
+          OnClick = RbEditarClick
           LargeImageIndex = 1
         end
-        object SpkLargeButton3: TSpkLargeButton
+        object RbBaja: TSpkLargeButton
           Caption = 'Baja'
+          OnClick = RbBajaClick
           LargeImageIndex = 2
         end
       end
       object SpkPane2: TSpkPane
         Caption = 'Opciones'
         Items = (
-          'SpkLargeButton4'
+          'RbRoles'
         )
-        object SpkLargeButton4: TSpkLargeButton
+        object RbRoles: TSpkLargeButton
           Caption = 'Roles'
+          OnClick = RbRolesClick
           LargeImageIndex = 3
         end
       end
@@ -138,7 +143,7 @@ object FrmListaUsuarios: TFrmListaUsuarios
     Width = 481
     Panels = <>
   end
-  object DBGrid1: TDBGrid
+  object DgUsuarios: TDBGrid
     Left = 0
     Height = 294
     Top = 112
@@ -1349,5 +1354,39 @@ object FrmListaUsuarios: TFrmListaUsuarios
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000
     }
+  end
+  object ZQBaja: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'UPDATE usuarios'
+      'SET'
+      'estatus = :estatus'
+      'WHERE'
+      'id_usuarios = :user_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'estatus'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'user_id'
+        ParamType = ptUnknown
+      end>
+    left = 153
+    top = 198
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'estatus'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'user_id'
+        ParamType = ptUnknown
+      end>
   end
 end

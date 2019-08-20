@@ -1,0 +1,27 @@
+object DMUser: TDMUser
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 914
+  VerticalOffset = 325
+  Width = 191
+  PPI = 96
+  object ZQPermisos: TZQuery
+    SQL.Strings = (
+      'select p.nombre_corto, rhp.estatus from usuarios u inner join roles r on r.id_roles = u.roles_id_roles inner join roles_has_permisos rhp on rhp.roles_id_roles = r.id_roles inner join permisos p on p.id_permisos = rhp.permisos_id_permisos where u.id_usuarios = :user_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'user_id'
+        ParamType = ptUnknown
+      end>
+    left = 22
+    top = 17
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'user_id'
+        ParamType = ptUnknown
+      end>
+  end
+end

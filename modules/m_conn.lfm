@@ -2,8 +2,8 @@ object dmconn: Tdmconn
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 146
-  HorizontalOffset = 309
-  VerticalOffset = 639
+  HorizontalOffset = 658
+  VerticalOffset = 850
   Width = 209
   PPI = 96
   object Conn: TZConnection
