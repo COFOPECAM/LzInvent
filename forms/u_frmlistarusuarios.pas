@@ -15,7 +15,7 @@ type
   TFrmListaUsuarios = class(TForm)
     DSGetUsers: TDataSource;
     DBGrid1: TDBGrid;
-    ImageList1: TImageList;
+    LBRibbon: TImageList;
     RbAdd: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
     SpkLargeButton3: TSpkLargeButton;
