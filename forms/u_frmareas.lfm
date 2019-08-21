@@ -47,6 +47,7 @@ object FrmAreas: TFrmAreas
     Direction = nbdVertical
     Options = []
     TabOrder = 1
+    VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel]
   end
   object DBGrid1: TDBGrid
     Left = 18

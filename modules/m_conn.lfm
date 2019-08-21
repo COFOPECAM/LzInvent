@@ -2,8 +2,8 @@ object dmconn: Tdmconn
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 146
-  HorizontalOffset = 323
-  VerticalOffset = 657
+  HorizontalOffset = 891
+  VerticalOffset = 732
   Width = 209
   PPI = 96
   object Conn: TZConnection
@@ -13,6 +13,7 @@ object dmconn: Tdmconn
     Properties.Strings = (
       'codepage=UTF-8'
     )
+    Connected = True
     Port = 0
     Database = 'F:/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'

@@ -1,13 +1,13 @@
 object dmempleados: Tdmempleados
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 239
-  HorizontalOffset = 615
-  VerticalOffset = 669
+  HorizontalOffset = 308
+  VerticalOffset = 639
   Width = 361
   PPI = 96
   object ZQGetEmpleados: TZQuery
     Connection = dmconn.Conn
-    Active = True
     SQL.Strings = (
       'select e.id_empleado as ''No.'', e.nombres as ''Nombre(s)'', e.apellidos as ''Apellidos'', a.nombre as ''Area'' from empleados e inner join areas a on a.id_area = e.areas_id_area where e.estatus = :estatus'
     )
@@ -28,7 +28,22 @@ object dmempleados: Tdmempleados
   end
   object DSEmpleados: TDataSource
     DataSet = ZQGetEmpleados
-    left = 144
-    top = 23
+    left = 136
+    top = 24
+  end
+  object ZQAdd: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 240
+    top = 24
+  end
+  object ZQArea: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'SELECT id_area, nombre, estatus FROM areas ORDER BY nombre ASC'
+    )
+    Params = <>
+    left = 39
+    top = 89
   end
 end

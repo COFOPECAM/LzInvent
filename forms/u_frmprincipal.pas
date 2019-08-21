@@ -6,8 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
-  SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons, BCrypt, u_frmlistarusuarios,
-  m_conn, db, ZDataset, spkt_Appearance;
+  RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
+  u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
+  m_empleados, u_frmareas, LCLType;
 
 type
 
@@ -19,15 +20,17 @@ type
     RbBAgregar: TSpkLargeButton;
     DgBienes: TRxDBGrid;
     DgEmpleados: TRxDBGrid;
+    SDFile: TSaveDialog;
+    ToExcel: TRxDBGridExportSpreadSheet;
     SpkLargeButton1: TSpkLargeButton;
-    SpkLargeButton10: TSpkLargeButton;
-    SpkLargeButton11: TSpkLargeButton;
-    SpkLargeButton12: TSpkLargeButton;
+    BtnEAdd: TSpkLargeButton;
+    BtmEEditar: TSpkLargeButton;
+    BtnEBaja: TSpkLargeButton;
     SpkLargeButton13: TSpkLargeButton;
     SpkLargeButton14: TSpkLargeButton;
     SpkLargeButton15: TSpkLargeButton;
-    SpkLargeButton16: TSpkLargeButton;
-    SpkLargeButton17: TSpkLargeButton;
+    BtnEToExcel: TSpkLargeButton;
+    BtnCtAreas: TSpkLargeButton;
     SpkLargeButton18: TSpkLargeButton;
     SpkLargeButton19: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
@@ -60,9 +63,14 @@ type
     TConfig: TSpkTab;
     StMenu: TSpkToolbar;
     ZQBienes: TZQuery;
+    procedure BtnCtAreasClick(Sender: TObject);
+    procedure BtnEAddClick(Sender: TObject);
+    procedure BtnEBajaClick(Sender: TObject);
+    procedure BtnEToExcelClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
+    procedure BtmEEditarClick(Sender: TObject);
     procedure StMenuTabChanged(Sender: TObject);
   private
 
@@ -80,8 +88,6 @@ implementation
 { TFrmPrincipal }
 
 procedure TFrmPrincipal.RbBAgregarClick(Sender: TObject);
-var
-  Cifrar:TBCryptHash;
 begin
 
 end;
@@ -111,9 +117,89 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.BtnEAddClick(Sender: TObject);
+begin
+  if FrmAddEmpleado.ShowModal = mrOK then
+  begin
+    dmempleados.ZQGetEmpleados.Close;
+    dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
+    dmempleados.ZQGetEmpleados.Open;
+  end;
+end;
+
+procedure TFrmPrincipal.BtnEBajaClick(Sender: TObject);
+var
+  empl_id: integer;
+  nombre: string;
+begin
+  empl_id:=StrToInt(DgEmpleados.DataSource.DataSet.Fields[0].Value);
+  nombre:=DgEmpleados.DataSource.DataSet.Fields[1].Value + ' ' +
+  DgEmpleados.DataSource.DataSet.Fields[2].Value;
+
+  if MessageDlg('Confirmación', '¿Desea dar de baja al empleado ' + nombre + '?',
+  mtConfirmation, [mbYes, mbNo],0) = mrYes
+  then
+  begin
+    dmempleados.ZQAdd.SQL.Text:='UPDATE empleados SET estatus = :estatus WHERE'+
+    ' id_empleado = :empl_id';
+    dmempleados.ZQAdd.Params.ParamByName('estatus').AsInteger:=0;
+    dmempleados.ZQAdd.Params.ParamByName('empl_id').AsInteger:=empl_id;
+    dmempleados.ZQAdd.ExecSQL;
+    dmempleados.ZQGetEmpleados.Close;
+    dmempleados.ZQGetEmpleados.Open;
+  end;
+end;
+
+procedure TFrmPrincipal.BtnEToExcelClick(Sender: TObject);
+begin
+  SDFile.Filter:='Excel|*.xlsx';
+  SDFile.Title:='Exportar empleados';
+
+  if DgEmpleados.DataSource.DataSet.RecordCount = 0 then
+    begin
+         Application.MessageBox('No hay datos para exportar', 'Datos necesarios',
+         MB_ICONEXCLAMATION);
+         exit;
+    end;
+  if SDFile.Execute then
+    begin
+     ToExcel.RxDBGrid:=DgEmpleados;
+     ToExcel.Caption:='Exportar vista';
+     ToExcel.FileName:=SDFile.FileName;
+     ToExcel.OpenAfterExport:=True;
+     ToExcel.PageName:='Empleados';
+     if ToExcel.Execute then
+       begin
+            Application.MessageBox('Exportación finalizada exitosamente',
+            'Exportación', MB_ICONINFORMATION);
+            ToExcel.Free;
+       end
+    end
+end;
+
+procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);
+begin
+  FrmAreas.ShowModal;
+end;
+
 procedure TFrmPrincipal.RbCfListarClick(Sender: TObject);
 begin
   FrmListaUsuarios.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtmEEditarClick(Sender: TObject);
+var
+  empl_id:integer;
+begin
+  empl_id:=StrToInt(DgEmpleados.DataSource.DataSet.Fields[0].Value);
+  FrmAddEmpleado.empl_id:=empl_id;
+  FrmAddEmpleado.edit:=true;
+  if FrmAddEmpleado.ShowModal = mrOK then
+  begin
+    dmempleados.ZQGetEmpleados.Close;
+    dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
+    dmempleados.ZQGetEmpleados.Open;
+  end;
 end;
 
 procedure TFrmPrincipal.StMenuTabChanged(Sender: TObject);
@@ -133,6 +219,9 @@ begin
 
     DgBienes.SendToBack;
     DgBienes.Align:=alNone;
+    dmempleados.ZQGetEmpleados.Close;
+    dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
+    dmempleados.ZQGetEmpleados.Open;
   end;
 end;
 

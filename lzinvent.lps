@@ -77,7 +77,7 @@
         </CompilerOptions>
       </Item2>
     </BuildModes>
-    <Units Count="9">
+    <Units Count="14">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -85,7 +85,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="56"/>
       </Unit0>
       <Unit1>
         <Filename Value="forms\u_frmprincipal.pas"/>
@@ -94,9 +94,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="76"/>
-        <CursorPos X="3" Y="86"/>
-        <UsageCount Value="41"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="35" Y="11"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -106,10 +106,10 @@
         <ComponentName Value="dmconn"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="19"/>
-        <CursorPos X="56" Y="45"/>
-        <UsageCount Value="39"/>
+        <CursorPos X="18" Y="44"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -119,10 +119,10 @@
         <ComponentName Value="FrmListaUsuarios"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="46" Y="10"/>
-        <UsageCount Value="37"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="62"/>
+        <CursorPos X="3" Y="72"/>
+        <UsageCount Value="52"/>
       </Unit3>
       <Unit4>
         <Filename Value="forms\u_frmadduser.pas"/>
@@ -130,11 +130,10 @@
         <ComponentName Value="FrmUser"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="108"/>
-        <CursorPos X="21" Y="136"/>
-        <UsageCount Value="35"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="78"/>
+        <CursorPos X="38" Y="74"/>
+        <UsageCount Value="50"/>
       </Unit4>
       <Unit5>
         <Filename Value="forms\u_frmrolespermisos.pas"/>
@@ -142,10 +141,9 @@
         <ComponentName Value="FrmRolesPermisos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="17" Y="13"/>
-        <UsageCount Value="25"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="40"/>
       </Unit5>
       <Unit6>
         <Filename Value="modules\m_user.pas"/>
@@ -154,7 +152,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="9" Y="18"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="39"/>
       </Unit6>
       <Unit7>
         <Filename Value="modules\m_empleados.pas"/>
@@ -162,136 +160,185 @@
         <ComponentName Value="dmempleados"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="1"/>
-        <UsageCount Value="22"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="7"/>
+        <CursorPos X="14" Y="38"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit7>
       <Unit8>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAddEmpleado"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="103"/>
+        <CursorPos X="14" Y="121"/>
+        <UsageCount Value="35"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="forms\u_frmareas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAreas"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="29"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="libs\BCrypt.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="627"/>
-        <CursorPos Y="645"/>
-        <UsageCount Value="19"/>
-      </Unit8>
+        <TopLine Value="232"/>
+        <CursorPos X="39" Y="634"/>
+        <UsageCount Value="18"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="C:\Users\Aafuentes\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\dbc\ZDbcSqLiteUtils.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="215"/>
+        <CursorPos Y="232"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="C:\Users\Aafuentes\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZAbstractRODataset.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3423"/>
+        <CursorPos Y="3438"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="C:\lazarus\lcl\lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="100"/>
+        <CursorPos Y="116"/>
+        <UsageCount Value="10"/>
+      </Unit13>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="45" Column="20" TopLine="11"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="44" Column="17" TopLine="13"/>
       </Position1>
       <Position2>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="34" Column="19" TopLine="34"/>
+        <Filename Value="modules\m_empleados.pas"/>
+        <Caret Line="20" Column="9"/>
       </Position2>
       <Position3>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="49" Column="20" TopLine="16"/>
+        <Filename Value="modules\m_empleados.pas"/>
+        <Caret Line="19" Column="9"/>
       </Position3>
       <Position4>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="51" Column="20" TopLine="17"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="44" Column="17" TopLine="14"/>
       </Position4>
       <Position5>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="36" Column="5" TopLine="12"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="74" Column="13" TopLine="44"/>
       </Position5>
       <Position6>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="62" Column="58" TopLine="37"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="81" Column="17" TopLine="47"/>
       </Position6>
       <Position7>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="71" Column="5" TopLine="37"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="92" Column="13" TopLine="58"/>
       </Position7>
       <Position8>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="65" Column="3" TopLine="48"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="118" Column="36" TopLine="103"/>
       </Position8>
       <Position9>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="88" Column="5" TopLine="65"/>
+        <Filename Value="forms\u_frmareas.pas"/>
       </Position9>
       <Position10>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="89" Column="19" TopLine="74"/>
+        <Filename Value="modules\m_empleados.pas"/>
+        <Caret Line="20" Column="9"/>
       </Position10>
       <Position11>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="96" Column="6" TopLine="72"/>
+        <Filename Value="forms\u_frmareas.pas"/>
       </Position11>
       <Position12>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="86" Column="3" TopLine="58"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="9" Column="50"/>
       </Position12>
       <Position13>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="90" Column="20" TopLine="58"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="13" Column="44"/>
       </Position13>
       <Position14>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="96" Column="66" TopLine="88"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="87" Column="13" TopLine="58"/>
       </Position14>
       <Position15>
-        <Filename Value="forms\u_frmrolespermisos.pas"/>
+        <Filename Value="modules\m_empleados.pas"/>
+        <Caret Line="22" Column="9"/>
       </Position15>
       <Position16>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="88" Column="22" TopLine="68"/>
+        <Filename Value="forms\u_frmaddemployee.pas"/>
+        <Caret Line="70" Column="21" TopLine="57"/>
       </Position16>
       <Position17>
-        <Filename Value="forms\u_frmrolespermisos.pas"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="151" Column="52" TopLine="123"/>
       </Position17>
       <Position18>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="102" Column="28" TopLine="94"/>
+        <Filename Value="modules\m_conn.pas"/>
+        <Caret Line="45" Column="56" TopLine="19"/>
       </Position18>
       <Position19>
-        <Filename Value="forms\u_frmadduser.pas"/>
-        <Caret Line="137" Column="30" TopLine="103"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="157" Column="38" TopLine="124"/>
       </Position19>
       <Position20>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="90" Column="29" TopLine="56"/>
+        <Caret Line="142" Column="22" TopLine="115"/>
       </Position20>
       <Position21>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="100" Column="29" TopLine="74"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="139" Column="5" TopLine="114"/>
       </Position21>
       <Position22>
-        <Filename Value="forms\u_frmlistarusuarios.pas"/>
-        <Caret Line="10" Column="29"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="141" Column="71" TopLine="124"/>
       </Position22>
       <Position23>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="88" Column="33" TopLine="74"/>
+        <Caret Line="144" Column="37" TopLine="125"/>
       </Position23>
       <Position24>
-        <Filename Value="modules\m_empleados.pas"/>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="163" Column="36" TopLine="146"/>
       </Position24>
       <Position25>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="90" Column="33" TopLine="76"/>
+        <Caret Line="165" Column="28" TopLine="146"/>
       </Position25>
       <Position26>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="120" Column="5" TopLine="87"/>
+        <Caret Line="173" Column="28" TopLine="149"/>
       </Position26>
       <Position27>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="82" Column="3" TopLine="72"/>
+        <Caret Line="175" Column="8" TopLine="149"/>
       </Position27>
       <Position28>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="83" Column="3" TopLine="73"/>
+        <Caret Line="164" Column="40" TopLine="150"/>
       </Position28>
       <Position29>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="84" Column="3" TopLine="74"/>
+        <Caret Line="11" Column="26" TopLine="43"/>
       </Position29>
       <Position30>
         <Filename Value="forms\u_frmprincipal.pas"/>
-        <Caret Line="85" Column="3" TopLine="75"/>
+        <Caret Line="160" Column="32" TopLine="144"/>
       </Position30>
     </JumpHistory>
     <RunParams>

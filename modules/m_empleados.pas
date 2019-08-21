@@ -14,6 +14,9 @@ type
   Tdmempleados = class(TDataModule)
     DSEmpleados: TDataSource;
     ZQGetEmpleados: TZQuery;
+    ZQAdd: TZQuery;
+    ZQArea: TZQuery;
+    procedure DataModuleCreate(Sender: TObject);
   private
 
   public
@@ -26,6 +29,14 @@ var
 implementation
 
 {$R *.lfm}
+
+{ Tdmempleados }
+
+procedure Tdmempleados.DataModuleCreate(Sender: TObject);
+begin
+  ZQGetEmpleados.Open;
+  ZQArea.Open;
+end;
 
 end.
 
