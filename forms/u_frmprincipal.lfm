@@ -1,7 +1,7 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 286
+  Left = 299
   Height = 552
-  Top = 114
+  Top = 118
   Width = 876
   Caption = 'LzInvent'
   ClientHeight = 552
@@ -57,7 +57,7 @@ object FrmPrincipal: TFrmPrincipal
     Appearance.Element.ActiveInnerDarkColor = 961020
     Appearance.Element.ActiveCaptionColor = 8405614
     Appearance.Element.Style = esRounded
-    TabIndex = 0
+    TabIndex = 2
     Images = ILRb
     LargeImages = ILRb
     LargeImagesWidth = 16
@@ -317,7 +317,7 @@ object FrmPrincipal: TFrmPrincipal
         Items = (
           'BtnCtAreas'
           'BtbCCat'
-          'SpkLargeButton19'
+          'BtnRbCLugares'
           'SpkLargeButton20'
           'SpkLargeButton21'
           'SpkLargeButton22'
@@ -334,8 +334,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = BtbCCatClick
           LargeImageIndex = 24
         end
-        object SpkLargeButton19: TSpkLargeButton
+        object BtnRbCLugares: TSpkLargeButton
           Caption = 'Lugares'
+          OnClick = BtnRbCLugaresClick
           LargeImageIndex = 26
         end
         object SpkLargeButton20: TSpkLargeButton

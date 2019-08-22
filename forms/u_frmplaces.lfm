@@ -1,0 +1,110 @@
+object FrmPlaces: TFrmPlaces
+  Left = 553
+  Height = 303
+  Top = 621
+  Width = 325
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent - Lugares'
+  ClientHeight = 303
+  ClientWidth = 325
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object TxtPlace: TDBEdit
+    Left = 64
+    Height = 23
+    Hint = 'Nombre del lugar a agregar'
+    Top = 8
+    Width = 185
+    DataField = 'nombre'
+    DataSource = DSPlace
+    CharCase = ecUppercase
+    MaxLength = 0
+    ParentShowHint = False
+    TabOrder = 0
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 264
+    Height = 23
+    Top = 8
+    Width = 58
+    Caption = 'Activo'
+    DataField = 'estatus'
+    DataSource = DSPlace
+    TabOrder = 1
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
+  object DBGrid1: TDBGrid
+    Left = 16
+    Height = 256
+    Top = 40
+    Width = 256
+    AutoEdit = False
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No.'
+        Width = 45
+        FieldName = 'id_lugar'
+      end    
+      item
+        Title.Caption = 'Lugar'
+        Width = 125
+        FieldName = 'nombre'
+      end    
+      item
+        ButtonStyle = cbsCheckboxColumn
+        Title.Caption = 'Estatus'
+        Width = 45
+        FieldName = 'estatus'
+      end>
+    DataSource = DSPlace
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    TabOrder = 2
+  end
+  object DBNav: TDBNavigator
+    Left = 280
+    Height = 184
+    Top = 40
+    Width = 33
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 184
+    ClientWidth = 33
+    DataSource = DSPlace
+    Direction = nbdVertical
+    OnClick = DBNavClick
+    Options = []
+    TabOrder = 3
+    VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 12
+    Width = 33
+    Caption = 'Lugar:'
+    ParentColor = False
+  end
+  object ZQPlace: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_lugar, nombre, estatus from lugares order by nombre asc'
+    )
+    Params = <>
+    left = 79
+    top = 208
+  end
+  object DSPlace: TDataSource
+    DataSet = ZQPlace
+    left = 160
+    top = 194
+  end
+end

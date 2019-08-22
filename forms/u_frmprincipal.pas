@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
-  m_empleados, u_frmareas, LCLType, u_frmcatsub;
+  m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces;
 
 type
 
@@ -32,7 +32,7 @@ type
     BtnEToExcel: TSpkLargeButton;
     BtnCtAreas: TSpkLargeButton;
     BtbCCat: TSpkLargeButton;
-    SpkLargeButton19: TSpkLargeButton;
+    BtnRbCLugares: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
     SpkLargeButton20: TSpkLargeButton;
     SpkLargeButton21: TSpkLargeButton;
@@ -68,6 +68,7 @@ type
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
+    procedure BtnRbCLugaresClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
@@ -176,6 +177,12 @@ begin
             ToExcel.Free;
        end
     end
+end;
+
+procedure TFrmPrincipal.BtnRbCLugaresClick(Sender: TObject);
+begin
+  FrmPlaces:=TFrmPlaces.Create(nil);
+  FrmPlaces.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);
