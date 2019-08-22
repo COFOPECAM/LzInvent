@@ -77,7 +77,7 @@
         </CompilerOptions>
       </Item2>
     </BuildModes>
-    <Units Count="18">
+    <Units Count="19">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -85,7 +85,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="71"/>
       </Unit0>
       <Unit1>
         <Filename Value="forms\u_frmprincipal.pas"/>
@@ -93,10 +93,10 @@
         <ComponentName Value="FrmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="167"/>
-        <CursorPos X="22" Y="185"/>
-        <UsageCount Value="70"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="183"/>
+        <CursorPos X="21" Y="186"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -106,10 +106,10 @@
         <ComponentName Value="dmconn"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="18"/>
         <CursorPos X="5" Y="36"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -122,7 +122,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="62"/>
         <CursorPos X="3" Y="72"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="67"/>
       </Unit3>
       <Unit4>
         <Filename Value="forms\u_frmadduser.pas"/>
@@ -133,7 +133,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="78"/>
         <CursorPos X="38" Y="74"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="65"/>
       </Unit4>
       <Unit5>
         <Filename Value="forms\u_frmrolespermisos.pas"/>
@@ -143,7 +143,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="17" Y="13"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
       </Unit5>
       <Unit6>
         <Filename Value="modules\m_user.pas"/>
@@ -152,7 +152,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="9" Y="18"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="54"/>
       </Unit6>
       <Unit7>
         <Filename Value="modules\m_empleados.pas"/>
@@ -160,11 +160,10 @@
         <ComponentName Value="dmempleados"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="7"/>
         <CursorPos X="32" Y="18"/>
-        <UsageCount Value="51"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="52"/>
       </Unit7>
       <Unit8>
         <Filename Value="forms\u_frmaddemployee.pas"/>
@@ -172,10 +171,10 @@
         <ComponentName Value="FrmAddEmpleado"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="103"/>
         <CursorPos X="14" Y="121"/>
-        <UsageCount Value="49"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="50"/>
       </Unit8>
       <Unit9>
         <Filename Value="forms\u_frmareas.pas"/>
@@ -183,10 +182,9 @@
         <ComponentName Value="FrmAreas"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="40" Y="13"/>
-        <UsageCount Value="43"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="44"/>
       </Unit9>
       <Unit10>
         <Filename Value="forms\u_frmcatsub.pas"/>
@@ -194,11 +192,10 @@
         <ComponentName Value="FrmCategorias"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos X="16" Y="73"/>
-        <UsageCount Value="33"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="34"/>
       </Unit10>
       <Unit11>
         <Filename Value="forms\u_frmplaces.pas"/>
@@ -206,13 +203,10 @@
         <ComponentName Value="FrmPlaces"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
         <CursorPos X="22" Y="49"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="21"/>
       </Unit11>
       <Unit12>
         <Filename Value="libs\BCrypt.pas"/>
@@ -261,127 +255,39 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit17>
+      <Unit18>
+        <Filename Value="forms\u_frmbajas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmBajas"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="20"/>
+        <CursorPos X="15" Y="50"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit18>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="61" Column="13" TopLine="29"/>
-      </Position1>
-      <Position2>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="62" Column="13" TopLine="29"/>
-      </Position2>
-      <Position3>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="63" Column="13" TopLine="30"/>
-      </Position3>
-      <Position4>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="62" Column="41" TopLine="30"/>
-      </Position4>
-      <Position5>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="65" Column="5" TopLine="31"/>
-      </Position5>
-      <Position6>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="73" Column="3" TopLine="40"/>
-      </Position6>
-      <Position7>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="57" Column="14" TopLine="40"/>
-      </Position7>
-      <Position8>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="56" Column="14" TopLine="39"/>
-      </Position8>
-      <Position9>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="55" Column="14" TopLine="38"/>
-      </Position9>
-      <Position10>
         <Filename Value="modules\m_conn.pas"/>
         <Caret Line="36" Column="5" TopLine="18"/>
-      </Position10>
-      <Position11>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="55" Column="14" TopLine="38"/>
-      </Position11>
-      <Position12>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="56" Column="14" TopLine="39"/>
-      </Position12>
-      <Position13>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="55" Column="14" TopLine="38"/>
-      </Position13>
-      <Position14>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="59" Column="15" TopLine="31"/>
-      </Position14>
-      <Position15>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="60" Column="15" TopLine="31"/>
-      </Position15>
-      <Position16>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="61" Column="15" TopLine="31"/>
-      </Position16>
-      <Position17>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="62" Column="15" TopLine="31"/>
-      </Position17>
-      <Position18>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="63" Column="15" TopLine="31"/>
-      </Position18>
-      <Position19>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="64" Column="15" TopLine="31"/>
-      </Position19>
-      <Position20>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="65" Column="15" TopLine="31"/>
-      </Position20>
-      <Position21>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="66" Column="15" TopLine="32"/>
-      </Position21>
-      <Position22>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="67" Column="15" TopLine="33"/>
-      </Position22>
-      <Position23>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="66" Column="15" TopLine="32"/>
-      </Position23>
-      <Position24>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="67" Column="15" TopLine="33"/>
-      </Position24>
-      <Position25>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="75" Column="15" TopLine="41"/>
-      </Position25>
-      <Position26>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="72" Column="13" TopLine="50"/>
-      </Position26>
-      <Position27>
-        <Filename Value="forms\u_frmcatsub.pas"/>
-        <Caret Line="73" Column="7" TopLine="48"/>
-      </Position27>
-      <Position28>
-        <Filename Value="forms\u_frmplaces.pas"/>
-      </Position28>
-      <Position29>
+      </Position1>
+      <Position2>
         <Filename Value="forms\u_frmprincipal.pas"/>
         <Caret Line="11" Column="61" TopLine="70"/>
-      </Position29>
-      <Position30>
-        <Filename Value="forms\u_frmplaces.pas"/>
-        <Caret Line="42" Column="15" TopLine="8"/>
-      </Position30>
+      </Position2>
+      <Position3>
+        <Filename Value="forms\u_frmbajas.pas"/>
+      </Position3>
+      <Position4>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="11" Column="73"/>
+      </Position4>
+      <Position5>
+        <Filename Value="forms\u_frmbajas.pas"/>
+        <Caret Line="18" Column="48"/>
+      </Position5>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

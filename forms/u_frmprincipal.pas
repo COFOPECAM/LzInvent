@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
-  m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces;
+  m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas;
 
 type
 
@@ -34,7 +34,7 @@ type
     BtbCCat: TSpkLargeButton;
     BtnRbCLugares: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
-    SpkLargeButton20: TSpkLargeButton;
+    BtnRbCBajas: TSpkLargeButton;
     SpkLargeButton21: TSpkLargeButton;
     SpkLargeButton22: TSpkLargeButton;
     SpkLargeButton23: TSpkLargeButton;
@@ -68,6 +68,7 @@ type
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
+    procedure BtnRbCBajasClick(Sender: TObject);
     procedure BtnRbCLugaresClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
@@ -177,6 +178,12 @@ begin
             ToExcel.Free;
        end
     end
+end;
+
+procedure TFrmPrincipal.BtnRbCBajasClick(Sender: TObject);
+begin
+  FrmBajas:=TFrmBajas.Create(nil);
+  FrmBajas.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnRbCLugaresClick(Sender: TObject);

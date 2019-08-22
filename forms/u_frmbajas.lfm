@@ -1,0 +1,116 @@
+object FrmBajas: TFrmBajas
+  Left = 519
+  Height = 240
+  Top = 383
+  Width = 311
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent - Categorias bajas'
+  ClientHeight = 240
+  ClientWidth = 311
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 14
+    Width = 25
+    Caption = 'Baja:'
+    ParentColor = False
+  end
+  object TxtBaja: TDBEdit
+    Left = 48
+    Height = 23
+    Top = 10
+    Width = 176
+    DataField = 'nombre'
+    DataSource = DSBajas
+    CharCase = ecUppercase
+    MaxLength = 0
+    TabOrder = 0
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 240
+    Height = 23
+    Top = 10
+    Width = 58
+    Caption = 'Activo'
+    DataField = 'estatus'
+    DataSource = DSBajas
+    TabOrder = 1
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
+  object DBGrid1: TDBGrid
+    Left = 16
+    Height = 184
+    Top = 40
+    Width = 248
+    AutoEdit = False
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No.'
+        Width = 45
+        FieldName = 'id_cat_baja'
+      end    
+      item
+        Title.Caption = 'Baja'
+        Width = 115
+        FieldName = 'nombre'
+      end    
+      item
+        ButtonStyle = cbsCheckboxColumn
+        Title.Caption = 'Estatus'
+        Width = 45
+        FieldName = 'estatus'
+      end>
+    DataSource = DSBajas
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    TabOrder = 2
+  end
+  object DBNav: TDBNavigator
+    Left = 266
+    Height = 184
+    Top = 40
+    Width = 32
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 184
+    ClientWidth = 32
+    DataSource = DSBajas
+    Direction = nbdVertical
+    OnClick = DBNavClick
+    Options = []
+    TabOrder = 3
+    VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+  end
+  object DSBajas: TDataSource
+    DataSet = ZQBajas
+    left = 207
+    top = 73
+  end
+  object ZQBajas: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select'
+      'id_cat_baja,'
+      'nombre,'
+      'estatus'
+      'from'
+      'cat_bajas'
+      'order by'
+      'nombre'
+      'asc'
+    )
+    Params = <>
+    left = 77
+    top = 128
+  end
+end

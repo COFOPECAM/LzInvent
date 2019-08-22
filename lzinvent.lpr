@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, rxnew, virtualdbgrid_package, u_frmprincipal, m_conn,
   u_frmlistarusuarios, u_frmadduser, u_frmrolespermisos, m_user, m_empleados,
-  u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces
+  u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas
   { you can add units after this };
 
 {$R *.res}
@@ -29,6 +29,7 @@ begin
   Application.CreateForm(TFrmAreas, FrmAreas);
   Application.CreateForm(TFrmCategorias, FrmCategorias);
   Application.CreateForm(TFrmPlaces, FrmPlaces);
+  Application.CreateForm(TFrmBajas, FrmBajas);
   Application.Run;
 end.
 
