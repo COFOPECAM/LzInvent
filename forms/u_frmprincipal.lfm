@@ -1,26 +1,26 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 299
-  Height = 477
-  Top = 115
-  Width = 673
+  Left = 286
+  Height = 552
+  Top = 114
+  Width = 876
   Caption = 'LzInvent'
-  ClientHeight = 477
-  ClientWidth = 673
+  ClientHeight = 552
+  ClientWidth = 876
   OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '2.0.2.0'
   object StatusBar1: TStatusBar
     Left = 0
     Height = 23
-    Top = 454
-    Width = 673
+    Top = 529
+    Width = 876
     Panels = <>
   end
   object StMenu: TSpkToolbar
     Left = 0
     Height = 112
     Top = 0
-    Width = 673
+    Width = 876
     Appearance.Tab.TabHeaderFont.Color = 9126421
     Appearance.Tab.BorderColor = 14922381
     Appearance.Tab.GradientFromColor = 16115934
@@ -57,7 +57,7 @@ object FrmPrincipal: TFrmPrincipal
     Appearance.Element.ActiveInnerDarkColor = 961020
     Appearance.Element.ActiveCaptionColor = 8405614
     Appearance.Element.Style = esRounded
-    TabIndex = 1
+    TabIndex = 0
     Images = ILRb
     LargeImages = ILRb
     LargeImagesWidth = 16
@@ -316,7 +316,7 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Disponibles'
         Items = (
           'BtnCtAreas'
-          'SpkLargeButton18'
+          'BtbCCat'
           'SpkLargeButton19'
           'SpkLargeButton20'
           'SpkLargeButton21'
@@ -329,8 +329,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = BtnCtAreasClick
           LargeImageIndex = 22
         end
-        object SpkLargeButton18: TSpkLargeButton
+        object BtbCCat: TSpkLargeButton
           Caption = 'Categorias'
+          OnClick = BtbCCatClick
           LargeImageIndex = 24
         end
         object SpkLargeButton19: TSpkLargeButton
@@ -886,8 +887,8 @@ object FrmPrincipal: TFrmPrincipal
   object ILRb: TImageList
     Height = 48
     Width = 48
-    left = 616
-    top = 32
+    left = 824
+    top = 35
     Bitmap = {
       4C691E0000003000000030000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9581,11 +9582,11 @@ object FrmPrincipal: TFrmPrincipal
   object ToExcel: TRxDBGridExportSpreadSheet
     Caption = 'Exportar a planilla'
     Options = [ressExportTitle]
-    left = 496
-    top = 40
+    left = 672
+    top = 35
   end
   object SDFile: TSaveDialog
-    left = 550
+    left = 752
     top = 35
   end
 end

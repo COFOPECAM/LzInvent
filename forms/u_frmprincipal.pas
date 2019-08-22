@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
-  m_empleados, u_frmareas, LCLType;
+  m_empleados, u_frmareas, LCLType, u_frmcatsub;
 
 type
 
@@ -31,7 +31,7 @@ type
     SpkLargeButton15: TSpkLargeButton;
     BtnEToExcel: TSpkLargeButton;
     BtnCtAreas: TSpkLargeButton;
-    SpkLargeButton18: TSpkLargeButton;
+    BtbCCat: TSpkLargeButton;
     SpkLargeButton19: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
     SpkLargeButton20: TSpkLargeButton;
@@ -63,6 +63,7 @@ type
     TConfig: TSpkTab;
     StMenu: TSpkToolbar;
     ZQBienes: TZQuery;
+    procedure BtbCCatClick(Sender: TObject);
     procedure BtnCtAreasClick(Sender: TObject);
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
@@ -180,6 +181,12 @@ end;
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);
 begin
   FrmAreas.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtbCCatClick(Sender: TObject);
+begin
+  // Categorias
+  FrmCategorias.ShowModal;
 end;
 
 procedure TFrmPrincipal.RbCfListarClick(Sender: TObject);

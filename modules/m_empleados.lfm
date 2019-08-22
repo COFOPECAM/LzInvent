@@ -2,8 +2,8 @@ object dmempleados: Tdmempleados
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 239
-  HorizontalOffset = 308
-  VerticalOffset = 639
+  HorizontalOffset = 412
+  VerticalOffset = 753
   Width = 361
   PPI = 96
   object ZQGetEmpleados: TZQuery

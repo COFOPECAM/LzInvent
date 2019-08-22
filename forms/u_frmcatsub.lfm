@@ -1,0 +1,350 @@
+object FrmCategorias: TFrmCategorias
+  Left = 480
+  Height = 378
+  Top = 326
+  Width = 331
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent - Categorias'
+  ClientHeight = 378
+  ClientWidth = 331
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 378
+    Top = 0
+    Width = 331
+    ActivePage = TabSheet2
+    Align = alClient
+    TabIndex = 1
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Categorias'
+      ClientHeight = 350
+      ClientWidth = 323
+      object Label1: TLabel
+        Left = 14
+        Height = 15
+        Top = 17
+        Width = 54
+        Caption = 'Categoria:'
+        ParentColor = False
+      end
+      object DBEdit1: TDBEdit
+        Left = 72
+        Height = 23
+        Top = 13
+        Width = 176
+        DataField = 'nombre'
+        DataSource = DSCat
+        CharCase = ecUppercase
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object DBCheckBox1: TDBCheckBox
+        Left = 261
+        Height = 23
+        Top = 13
+        Width = 58
+        Caption = 'Activo'
+        DataField = 'estatus'
+        DataSource = DSCat
+        TabOrder = 1
+        ValueChecked = '1'
+        ValueUnchecked = '0'
+      end
+      object DBGrid1: TDBGrid
+        Left = 16
+        Height = 280
+        Top = 48
+        Width = 256
+        AutoEdit = False
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'No.'
+            Width = 45
+            FieldName = 'id_categoria'
+          end        
+          item
+            Title.Caption = 'Categoria'
+            Width = 130
+            FieldName = 'nombre'
+          end        
+          item
+            ButtonStyle = cbsCheckboxColumn
+            Title.Caption = 'Estatus'
+            Width = 50
+            FieldName = 'estatus'
+          end>
+        DataSource = DSCat
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 2
+      end
+      object NavBtns: TDBNavigator
+        Left = 280
+        Height = 184
+        Top = 48
+        Width = 33
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclTopToBottomThenLeftToRight
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 184
+        ClientWidth = 33
+        DataSource = DSCat
+        Direction = nbdVertical
+        Options = []
+        TabOrder = 3
+        VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Subcategorias'
+      ClientHeight = 350
+      ClientWidth = 323
+      object Label2: TLabel
+        Left = 16
+        Height = 15
+        Top = 16
+        Width = 54
+        Caption = 'Categoria:'
+        ParentColor = False
+      end
+      object CbCategorias: TDBLookupComboBox
+        Left = 96
+        Height = 23
+        Top = 13
+        Width = 216
+        AutoComplete = True
+        AutoDropDown = True
+        DataField = 'id_categoria'
+        DataSource = DSAddSub
+        KeyField = 'id_categoria'
+        ListField = 'nombre'
+        ListFieldIndex = 0
+        ListSource = DSCat
+        LookupCache = True
+        OnChange = CbCategoriasChange
+        TabOrder = 0
+      end
+      object Label3: TLabel
+        Left = 16
+        Height = 15
+        Top = 50
+        Width = 72
+        Caption = 'Subcategoria:'
+        ParentColor = False
+      end
+      object TxtSub: TDBEdit
+        Left = 96
+        Height = 23
+        Top = 46
+        Width = 152
+        DataField = 'nombre'
+        DataSource = DSAddSub
+        CharCase = ecUppercase
+        MaxLength = 1020
+        TabOrder = 1
+      end
+      object DBCheckBox2: TDBCheckBox
+        Left = 254
+        Height = 23
+        Top = 46
+        Width = 58
+        Caption = 'Activo'
+        DataField = 'estatus'
+        DataSource = DSAddSub
+        TabOrder = 2
+        ValueChecked = '1'
+        ValueUnchecked = '0'
+      end
+      object DBGrid2: TDBGrid
+        Left = 16
+        Height = 256
+        Top = 80
+        Width = 256
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'No.'
+            Width = 45
+            FieldName = 'id_subcategoria'
+          end        
+          item
+            Title.Caption = 'Subcategoria'
+            Width = 120
+            FieldName = 'nombre'
+          end        
+          item
+            Title.Caption = 'Estatus'
+            Width = 50
+            FieldName = 'estatus'
+          end>
+        DataSource = DSSub
+        TabOrder = 3
+      end
+      object NavBtnsSub: TDBNavigator
+        Left = 279
+        Height = 153
+        Top = 80
+        Width = 33
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclTopToBottomThenLeftToRight
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 153
+        ClientWidth = 33
+        DataSource = DSAddSub
+        Direction = nbdVertical
+        OnClick = NavBtnsSubClick
+        Options = []
+        TabOrder = 4
+        VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+      end
+    end
+  end
+  object ZQCat: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_categoria, nombre, estatus from categorias order by nombre asc'
+    )
+    Params = <>
+    LinkedFields = 'id_categoria'
+    left = 24
+    top = 308
+    object ZQCatid_categoria: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id_categoria'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQCatnombre: TStringField
+      FieldKind = fkData
+      FieldName = 'nombre'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1020
+    end
+    object ZQCatestatus: TLargeintField
+      FieldKind = fkData
+      FieldName = 'estatus'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object ZQSub: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select '
+      'id_subcategoria, '
+      'nombre, '
+      'estatus, '
+      'id_categoria '
+      'from '
+      'subcategoria '
+      'where '
+      'id_categoria = :cat_id '
+      'order by nombre asc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cat_id'
+        ParamType = ptUnknown
+      end>
+    left = 254
+    top = 312
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cat_id'
+        ParamType = ptUnknown
+      end>
+    object ZQSubid_subcategoria: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id_subcategoria'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQSubnombre: TStringField
+      FieldKind = fkData
+      FieldName = 'nombre'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1020
+    end
+    object ZQSubestatus: TLargeintField
+      FieldKind = fkData
+      FieldName = 'estatus'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQSubid_categoria: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id_categoria'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object DSCat: TDataSource
+    DataSet = ZQCat
+    left = 25
+    top = 264
+  end
+  object DSSub: TDataSource
+    DataSet = ZQSub
+    left = 254
+    top = 264
+  end
+  object ZQAddSub: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select '
+      'id_subcategoria, '
+      'nombre, '
+      'estatus, '
+      'id_categoria '
+      'from '
+      'subcategoria '
+    )
+    Params = <>
+    left = 144
+    top = 308
+  end
+  object DSAddSub: TDataSource
+    DataSet = ZQAddSub
+    left = 147
+    top = 262
+  end
+end
