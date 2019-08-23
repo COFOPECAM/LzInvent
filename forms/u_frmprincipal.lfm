@@ -1,7 +1,7 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 286
+  Left = 299
   Height = 552
-  Top = 118
+  Top = 116
   Width = 876
   Caption = 'LzInvent'
   ClientHeight = 552
@@ -57,7 +57,7 @@ object FrmPrincipal: TFrmPrincipal
     Appearance.Element.ActiveInnerDarkColor = 961020
     Appearance.Element.ActiveCaptionColor = 8405614
     Appearance.Element.Style = esRounded
-    TabIndex = 2
+    TabIndex = 0
     Images = ILRb
     LargeImages = ILRb
     LargeImagesWidth = 16
@@ -116,8 +116,8 @@ object FrmPrincipal: TFrmPrincipal
         Items = (
           'RbBAgregar'
           'SpkLargeButton2'
-          'SpkLargeButton3'
           'SpkLargeButton4'
+          'SpkLargeButton3'
         )
         object RbBAgregar: TSpkLargeButton
           Caption = 'Agregar'
@@ -128,13 +128,13 @@ object FrmPrincipal: TFrmPrincipal
           Caption = 'Editar'
           LargeImageIndex = 12
         end
-        object SpkLargeButton3: TSpkLargeButton
-          Caption = 'Buscar'
-          LargeImageIndex = 3
-        end
         object SpkLargeButton4: TSpkLargeButton
           Caption = 'Baja'
           LargeImageIndex = 10
+        end
+        object SpkLargeButton3: TSpkLargeButton
+          Caption = 'Buscar'
+          LargeImageIndex = 3
         end
       end
       object SpkPane2: TSpkPane
@@ -752,8 +752,8 @@ object FrmPrincipal: TFrmPrincipal
   end
   object DgEmpleados: TRxDBGrid
     Left = 264
-    Height = 176
-    Top = 128
+    Height = 188
+    Top = 120
     Width = 208
     ColumnDefValues.BlobText = '(blob)'
     TitleButtons = False

@@ -9,7 +9,7 @@ uses
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
-  u_frmmarcas, u_frmestatus, u_frmproveedores;
+  u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien;
 
 type
 
@@ -96,7 +96,12 @@ implementation
 
 procedure TFrmPrincipal.RbBAgregarClick(Sender: TObject);
 begin
-
+  FrmAddBien:=TFrmAddBien.Create(FrmPrincipal);
+  FrmAddBien.show_baja:=false;
+  if FrmAddBien.ShowModal = mrOK then
+  begin
+   //
+  end;
 end;
 
 procedure TFrmPrincipal.FormCreate(Sender: TObject);
