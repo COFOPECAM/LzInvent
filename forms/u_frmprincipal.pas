@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
-  m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas;
+  m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
+  u_frmmarcas;
 
 type
 
@@ -35,7 +36,7 @@ type
     BtnRbCLugares: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
     BtnRbCBajas: TSpkLargeButton;
-    SpkLargeButton21: TSpkLargeButton;
+    BtnRbCMarcas: TSpkLargeButton;
     SpkLargeButton22: TSpkLargeButton;
     SpkLargeButton23: TSpkLargeButton;
     RbCfListar: TSpkLargeButton;
@@ -70,6 +71,7 @@ type
     procedure BtnEToExcelClick(Sender: TObject);
     procedure BtnRbCBajasClick(Sender: TObject);
     procedure BtnRbCLugaresClick(Sender: TObject);
+    procedure BtnRbCMarcasClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
@@ -190,6 +192,12 @@ procedure TFrmPrincipal.BtnRbCLugaresClick(Sender: TObject);
 begin
   FrmPlaces:=TFrmPlaces.Create(nil);
   FrmPlaces.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnRbCMarcasClick(Sender: TObject);
+begin
+  FrmMarca:=TFrmMarca.Create(nil);
+  FrmMarca.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);

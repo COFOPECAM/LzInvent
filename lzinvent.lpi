@@ -59,7 +59,7 @@
         <PackageName Value="LCL"/>
       </Item8>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="14">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -144,8 +144,15 @@
         <Filename Value="forms\u_frmbajas.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmBajas"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="forms\u_frmmarcas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMarca"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -1,5 +1,5 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 299
+  Left = 286
   Height = 552
   Top = 118
   Width = 876
@@ -319,7 +319,7 @@ object FrmPrincipal: TFrmPrincipal
           'BtbCCat'
           'BtnRbCLugares'
           'BtnRbCBajas'
-          'SpkLargeButton21'
+          'BtnRbCMarcas'
           'SpkLargeButton22'
           'SpkLargeButton1'
           'SpkLargeButton23'
@@ -344,8 +344,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = BtnRbCBajasClick
           LargeImageIndex = 23
         end
-        object SpkLargeButton21: TSpkLargeButton
+        object BtnRbCMarcas: TSpkLargeButton
           Caption = 'Marcas'
+          OnClick = BtnRbCMarcasClick
           LargeImageIndex = 27
         end
         object SpkLargeButton22: TSpkLargeButton

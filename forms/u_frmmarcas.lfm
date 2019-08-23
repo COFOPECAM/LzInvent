@@ -1,0 +1,106 @@
+object FrmMarca: TFrmMarca
+  Left = 285
+  Height = 306
+  Top = 686
+  Width = 306
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent - Marcas'
+  ClientHeight = 306
+  ClientWidth = 306
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 16
+    Width = 36
+    Caption = 'Marca:'
+    ParentColor = False
+  end
+  object DBNav: TDBNavigator
+    Left = 261
+    Height = 150
+    Top = 48
+    Width = 30
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 150
+    ClientWidth = 30
+    DataSource = DSMarcas
+    Direction = nbdVertical
+    OnClick = DBNavClick
+    Options = []
+    TabOrder = 0
+    VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+  end
+  object TxtMarca: TDBEdit
+    Left = 64
+    Height = 23
+    Top = 12
+    Width = 160
+    DataField = 'nombre'
+    DataSource = DSMarcas
+    CharCase = ecUppercase
+    MaxLength = 1020
+    TabOrder = 1
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 239
+    Height = 23
+    Top = 12
+    Width = 52
+    Caption = 'Activo'
+    DataField = 'estatus'
+    DataSource = DSMarcas
+    TabOrder = 2
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
+  object DBGrid1: TDBGrid
+    Left = 16
+    Height = 248
+    Top = 48
+    Width = 232
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No.'
+        Width = 45
+        FieldName = 'id_marcas'
+      end    
+      item
+        Title.Caption = 'Marca'
+        Width = 105
+        FieldName = 'nombre'
+      end    
+      item
+        ButtonStyle = cbsCheckboxColumn
+        Title.Caption = 'Estatus'
+        Width = 45
+        FieldName = 'estatus'
+      end>
+    DataSource = DSMarcas
+    TabOrder = 3
+  end
+  object DSMarcas: TDataSource
+    DataSet = ZQMarcas
+    left = 40
+    top = 176
+  end
+  object ZQMarcas: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id_marcas, nombre, estatus from marcas order by nombre asc'
+    )
+    Params = <>
+    left = 40
+    top = 232
+  end
+end
