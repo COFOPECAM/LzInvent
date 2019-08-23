@@ -9,7 +9,7 @@ uses
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
-  u_frmmarcas, u_frmestatus;
+  u_frmmarcas, u_frmestatus, u_frmproveedores;
 
 type
 
@@ -23,7 +23,7 @@ type
     DgEmpleados: TRxDBGrid;
     SDFile: TSaveDialog;
     ToExcel: TRxDBGridExportSpreadSheet;
-    SpkLargeButton1: TSpkLargeButton;
+    BtnRbCProveedores: TSpkLargeButton;
     BtnEAdd: TSpkLargeButton;
     BtmEEditar: TSpkLargeButton;
     BtnEBaja: TSpkLargeButton;
@@ -72,6 +72,7 @@ type
     procedure BtnRbCBajasClick(Sender: TObject);
     procedure BtnRbCLugaresClick(Sender: TObject);
     procedure BtnRbCMarcasClick(Sender: TObject);
+    procedure BtnRbCProveedoresClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
@@ -199,6 +200,12 @@ procedure TFrmPrincipal.BtnRbCMarcasClick(Sender: TObject);
 begin
   FrmMarca:=TFrmMarca.Create(nil);
   FrmMarca.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnRbCProveedoresClick(Sender: TObject);
+begin
+  FrmProveedores:=TFrmProveedores.Create(FrmPrincipal);
+  FrmProveedores.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);

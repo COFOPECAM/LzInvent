@@ -321,7 +321,7 @@ object FrmPrincipal: TFrmPrincipal
           'BtnRbCBajas'
           'BtnRbCMarcas'
           'BtnRbCEstatus'
-          'SpkLargeButton1'
+          'BtnRbCProveedores'
           'SpkLargeButton23'
         )
         object BtnCtAreas: TSpkLargeButton
@@ -354,8 +354,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = BtnRbCEstatusClick
           LargeImageIndex = 25
         end
-        object SpkLargeButton1: TSpkLargeButton
+        object BtnRbCProveedores: TSpkLargeButton
           Caption = 'Proveedores'
+          OnClick = BtnRbCProveedoresClick
           LargeImageIndex = 16
         end
         object SpkLargeButton23: TSpkLargeButton

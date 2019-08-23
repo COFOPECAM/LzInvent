@@ -1,0 +1,191 @@
+object FrmProveedor: TFrmProveedor
+  Left = 579
+  Height = 326
+  Top = 505
+  Width = 483
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent - Proveedor'
+  ClientHeight = 326
+  ClientWidth = 483
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 272
+    Top = 8
+    Width = 465
+    Caption = 'Datos del proveedor'
+    ClientHeight = 252
+    ClientWidth = 461
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 350
+      Height = 15
+      Top = 4
+      Width = 19
+      Caption = 'No:'
+      ParentColor = False
+    end
+    object TxtIdent: TEdit
+      Left = 376
+      Height = 23
+      Top = 0
+      Width = 80
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Left = 38
+      Height = 15
+      Top = 32
+      Width = 48
+      Caption = 'Empresa:'
+      ParentColor = False
+    end
+    object TxtEmpresa: TEdit
+      Left = 88
+      Height = 23
+      Top = 27
+      Width = 368
+      CharCase = ecUppercase
+      TabOrder = 1
+    end
+    object Label3: TLabel
+      Left = 62
+      Height = 15
+      Top = 64
+      Width = 24
+      Caption = 'RFC:'
+      ParentColor = False
+    end
+    object TxtRFC: TEdit
+      Left = 88
+      Height = 23
+      Top = 59
+      Width = 96
+      CharCase = ecUppercase
+      TabOrder = 2
+    end
+    object Label4: TLabel
+      Left = 197
+      Height = 15
+      Top = 64
+      Width = 32
+      Caption = 'Email:'
+      ParentColor = False
+    end
+    object TxtEmail: TEdit
+      Left = 232
+      Height = 23
+      Top = 59
+      Width = 224
+      CharCase = ecLowerCase
+      TabOrder = 3
+    end
+    object Label7: TLabel
+      Left = 38
+      Height = 15
+      Top = 126
+      Width = 48
+      Caption = 'Teléfono:'
+      ParentColor = False
+    end
+    object TxtTelefono: TEdit
+      Left = 88
+      Height = 23
+      Top = 122
+      Width = 144
+      TabOrder = 4
+    end
+    object Label8: TLabel
+      Left = 260
+      Height = 15
+      Top = 126
+      Width = 40
+      Caption = 'Celular:'
+      ParentColor = False
+    end
+    object TxtCelular: TEdit
+      Left = 307
+      Height = 23
+      Top = 122
+      Width = 149
+      TabOrder = 5
+    end
+    object Label9: TLabel
+      Left = 33
+      Height = 15
+      Top = 162
+      Width = 53
+      Caption = 'Dirección:'
+      ParentColor = False
+    end
+    object TxtDir: TMemo
+      Left = 88
+      Height = 58
+      Top = 154
+      Width = 366
+      CharCase = ecUppercase
+      TabOrder = 6
+    end
+    object Label10: TLabel
+      Left = 69
+      Height = 15
+      Top = 225
+      Width = 17
+      Caption = 'De:'
+      ParentColor = False
+    end
+    object TxtDe: TEdit
+      Left = 88
+      Height = 23
+      Top = 221
+      Width = 366
+      TabOrder = 7
+      TextHint = 'Electrodomesticos, Mesas, Sillas ...'
+    end
+    object TxtNombre: TEdit
+      Left = 88
+      Height = 23
+      Top = 91
+      Width = 366
+      CharCase = ecUppercase
+      TabOrder = 8
+    end
+    object Label5: TLabel
+      Left = 34
+      Height = 15
+      Top = 96
+      Width = 52
+      Caption = 'Contacto:'
+      ParentColor = False
+    end
+  end
+  object BP: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 286
+    Width = 471
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 1
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object ZQProveedor: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 27
+    top = 270
+  end
+end
