@@ -9,7 +9,7 @@ uses
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
-  u_frmmarcas;
+  u_frmmarcas, u_frmestatus;
 
 type
 
@@ -37,7 +37,7 @@ type
     SpkLargeButton2: TSpkLargeButton;
     BtnRbCBajas: TSpkLargeButton;
     BtnRbCMarcas: TSpkLargeButton;
-    SpkLargeButton22: TSpkLargeButton;
+    BtnRbCEstatus: TSpkLargeButton;
     SpkLargeButton23: TSpkLargeButton;
     RbCfListar: TSpkLargeButton;
     SpkLargeButton25: TSpkLargeButton;
@@ -76,6 +76,7 @@ type
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
     procedure BtmEEditarClick(Sender: TObject);
+    procedure BtnRbCEstatusClick(Sender: TObject);
     procedure StMenuTabChanged(Sender: TObject);
   private
 
@@ -229,6 +230,12 @@ begin
     dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
     dmempleados.ZQGetEmpleados.Open;
   end;
+end;
+
+procedure TFrmPrincipal.BtnRbCEstatusClick(Sender: TObject);
+begin
+  FrmEstatus:=TFrmEstatus.Create(nil);
+  FrmEstatus.ShowModal;
 end;
 
 procedure TFrmPrincipal.StMenuTabChanged(Sender: TObject);

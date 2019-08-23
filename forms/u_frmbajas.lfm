@@ -1,7 +1,7 @@
 object FrmBajas: TFrmBajas
-  Left = 519
+  Left = 286
   Height = 240
-  Top = 383
+  Top = 760
   Width = 311
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle

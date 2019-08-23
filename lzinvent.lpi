@@ -59,7 +59,7 @@
         <PackageName Value="LCL"/>
       </Item8>
     </RequiredPackages>
-    <Units Count="14">
+    <Units Count="15">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -153,6 +153,12 @@
         <ComponentName Value="FrmMarca"/>
         <ResourceBaseClass Value="Form"/>
       </Unit13>
+      <Unit14>
+        <Filename Value="forms\u_frmestatus.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmEstatus"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
