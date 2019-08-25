@@ -1,13 +1,14 @@
 object FrmAddBien: TFrmAddBien
-  Left = 317
+  Left = 449
   Height = 470
-  Top = 486
+  Top = 234
   Width = 549
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'LzInvent - Bien mueble'
   ClientHeight = 470
   ClientWidth = 549
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
   LCLVersion = '2.0.2.0'
@@ -44,7 +45,15 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 92
         Width = 160
+        AutoComplete = True
+        AutoDropDown = True
+        CharCase = ecUppercase
+        DataField = 'id_marcas'
+        DataSource = DSMarcas
+        KeyField = 'id_marcas'
+        ListField = 'nombre'
         ListFieldIndex = 0
+        ListSource = DSMarcas
         LookupCache = False
         TabOrder = 0
       end
@@ -135,7 +144,15 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 188
         Width = 160
+        AutoComplete = True
+        AutoDropDown = True
+        CharCase = ecUppercase
+        DataField = 'id_estatus'
+        DataSource = DSEstatus
+        KeyField = 'id_estatus'
+        ListField = 'nombre'
         ListFieldIndex = 0
+        ListSource = DSEstatus
         LookupCache = False
         TabOrder = 6
       end
@@ -160,7 +177,15 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 188
         Width = 184
+        AutoComplete = True
+        AutoDropDown = True
+        CharCase = ecUppercase
+        DataField = 'id_lugar'
+        DataSource = DSLugar
+        KeyField = 'id_lugar'
+        ListField = 'nombre'
         ListFieldIndex = 0
+        ListSource = DSLugar
         LookupCache = False
         TabOrder = 7
       end
@@ -177,8 +202,17 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 220
         Width = 160
+        AutoComplete = True
+        AutoDropDown = True
+        CharCase = ecUppercase
+        DataField = 'id_categoria'
+        DataSource = DSCat
+        KeyField = 'id_categoria'
+        ListField = 'nombre'
         ListFieldIndex = 0
+        ListSource = DSCat
         LookupCache = False
+        OnChange = CbCategoriaChange
         TabOrder = 8
       end
       object Label11: TLabel
@@ -194,7 +228,15 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 220
         Width = 184
+        AutoComplete = True
+        AutoDropDown = True
+        CharCase = ecUppercase
+        DataField = 'id_subcategoria'
+        DataSource = DSSub
+        KeyField = 'id_subcategoria'
+        ListField = 'nombre'
         ListFieldIndex = 0
+        ListSource = DSSub
         LookupCache = False
         TabOrder = 9
       end
@@ -211,7 +253,12 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 251
         Width = 429
+        DataField = 'id_proveedor'
+        DataSource = DSProv
+        KeyField = 'id_proveedor'
+        ListField = 'empresa;representante'
         ListFieldIndex = 0
+        ListSource = DSProv
         LookupCache = False
         TabOrder = 10
       end
@@ -283,7 +330,15 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 352
         Width = 156
+        AutoComplete = True
+        AutoDropDown = True
+        CharCase = ecUppercase
+        DataField = 'id_cat_baja'
+        DataSource = DSBaja
+        KeyField = 'id_cat_baja'
+        ListField = 'nombre'
         ListFieldIndex = 0
+        ListSource = DSBaja
         LookupCache = False
         TabOrder = 14
         Visible = False
@@ -315,6 +370,7 @@ object FrmAddBien: TFrmAddBien
       Caption = 'Historial cambios'
       ClientHeight = 388
       ClientWidth = 528
+      TabVisible = False
       object DgCambios: TDBGrid
         Left = 8
         Height = 276
@@ -346,7 +402,15 @@ object FrmAddBien: TFrmAddBien
           Height = 23
           Top = 3
           Width = 328
+          AutoComplete = True
+          AutoDropDown = True
+          CharCase = ecUppercase
+          DataField = 'id_empleado'
+          DataSource = DSEmpl
+          KeyField = 'id_empleado'
+          ListField = 'empleado'
           ListFieldIndex = 0
+          ListSource = DSEmpl
           LookupCache = False
           TabOrder = 0
         end
@@ -378,6 +442,7 @@ object FrmAddBien: TFrmAddBien
     Width = 537
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
     HelpButton.Name = 'HelpButton'
     HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
@@ -386,5 +451,134 @@ object FrmAddBien: TFrmAddBien
     CancelButton.DefaultCaption = True
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel]
+  end
+  object ZQMarcas: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_marcas, nombre from marcas where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 16
+    top = 428
+  end
+  object ZQEstatus: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_estatus, nombre from estatus where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 67
+    top = 417
+  end
+  object ZQLugar: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_lugar, nombre from lugares where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 121
+    top = 418
+  end
+  object ZQCat: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_categoria, nombre from categorias where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 174
+    top = 420
+  end
+  object ZQSub: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_subcategoria, nombre from subcategoria where id_categoria = :id_cat and estatus = 1 order by nombre asc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'id_cat'
+        ParamType = ptUnknown
+      end>
+    left = 224
+    top = 421
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'id_cat'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQProv: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_proveedor, empresa, representante from proveedores where estatus = 1 order by empresa asc'
+    )
+    Params = <>
+    left = 276
+    top = 421
+  end
+  object ZQBaja: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_cat_baja, nombre from cat_bajas where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 326
+    top = 416
+  end
+  object ZQEmpl: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_empleado, (nombres || '' '' || apellidos) as empleado from empleados where estatus = 1 order by nombres asc'
+    )
+    Params = <>
+    left = 368
+    top = 400
+  end
+  object ZQBien: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 507
+    top = 409
+  end
+  object DSMarcas: TDataSource
+    DataSet = ZQMarcas
+    left = 20
+    top = 370
+  end
+  object DSEstatus: TDataSource
+    DataSet = ZQEstatus
+    left = 69
+    top = 369
+  end
+  object DSLugar: TDataSource
+    DataSet = ZQLugar
+    left = 117
+    top = 372
+  end
+  object DSCat: TDataSource
+    DataSet = ZQCat
+    left = 175
+    top = 377
+  end
+  object DSSub: TDataSource
+    DataSet = ZQSub
+    left = 221
+    top = 375
+  end
+  object DSProv: TDataSource
+    DataSet = ZQProv
+    left = 281
+    top = 373
+  end
+  object DSBaja: TDataSource
+    DataSet = ZQBaja
+    left = 328
+    top = 370
+  end
+  object DSEmpl: TDataSource
+    DataSet = ZQEmpl
+    left = 368
+    top = 352
   end
 end

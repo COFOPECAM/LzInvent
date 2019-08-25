@@ -14,9 +14,9 @@ object dmconn: Tdmconn
       'codepage=UTF-8'
     )
     Port = 0
-    Database = 'F:/lzinvent/database/lzinvent.db'
+    Database = 'E:/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'
-    LibraryLocation = 'F:/lzinvent/database/sqlite3.dll'
+    LibraryLocation = 'E:/lzinvent/database/sqlite3.dll'
     left = 16
     top = 8
   end

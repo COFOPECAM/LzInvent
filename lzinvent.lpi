@@ -33,33 +33,39 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="8">
+    <RequiredPackages Count="10">
       <Item1>
-        <PackageName Value="rxdbgrid_export_spreadsheet"/>
+        <PackageName Value="lazreportpdfexport"/>
       </Item1>
       <Item2>
-        <PackageName Value="virtualdbgrid_package"/>
+        <PackageName Value="lazreport"/>
       </Item2>
       <Item3>
-        <PackageName Value="virtualtreeview_package"/>
+        <PackageName Value="rxdbgrid_export_spreadsheet"/>
       </Item3>
       <Item4>
-        <PackageName Value="FCL"/>
+        <PackageName Value="virtualdbgrid_package"/>
       </Item4>
       <Item5>
-        <PackageName Value="zcomponent"/>
+        <PackageName Value="virtualtreeview_package"/>
       </Item5>
       <Item6>
-        <PackageName Value="rxnew"/>
+        <PackageName Value="FCL"/>
       </Item6>
       <Item7>
-        <PackageName Value="SpkToolbarPackage"/>
+        <PackageName Value="zcomponent"/>
       </Item7>
       <Item8>
-        <PackageName Value="LCL"/>
+        <PackageName Value="rxnew"/>
       </Item8>
+      <Item9>
+        <PackageName Value="SpkToolbarPackage"/>
+      </Item9>
+      <Item10>
+        <PackageName Value="LCL"/>
+      </Item10>
     </RequiredPackages>
-    <Units Count="18">
+    <Units Count="19">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -177,8 +183,15 @@
         <Filename Value="forms\u_frmaddbien.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmAddBien"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit17>
+      <Unit18>
+        <Filename Value="modules\m_reports.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DmReports"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit18>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

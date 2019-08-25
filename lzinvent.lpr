@@ -10,7 +10,8 @@ uses
   Forms, zcomponent, rxnew, virtualdbgrid_package, u_frmprincipal, m_conn,
   u_frmlistarusuarios, u_frmadduser, u_frmrolespermisos, m_user, m_empleados,
   u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas,
-  u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmproveedor, u_frmaddbien
+  u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmproveedor, u_frmaddbien,
+  m_reports, lazreportpdfexport
   { you can add units after this };
 
 {$R *.res}
@@ -36,6 +37,7 @@ begin
   Application.CreateForm(TFrmProveedores, FrmProveedores);
   Application.CreateForm(TFrmProveedor, FrmProveedor);
   Application.CreateForm(TFrmAddBien, FrmAddBien);
+  Application.CreateForm(TDmReports, DmReports);
   Application.Run;
 end.
 

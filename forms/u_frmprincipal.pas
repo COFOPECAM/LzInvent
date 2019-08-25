@@ -100,7 +100,8 @@ begin
   FrmAddBien.show_baja:=false;
   if FrmAddBien.ShowModal = mrOK then
   begin
-   //
+   ZQBienes.Close;
+   ZQBienes.Open;
   end;
 end;
 

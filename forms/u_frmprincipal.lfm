@@ -457,7 +457,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Descripcion'
-        Width = 77
+        Width = 262
         FieldName = 'Descripcion'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -502,7 +502,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'No. serie'
-        Width = 61
+        Width = 95
         FieldName = 'No. serie'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -562,7 +562,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Codigo'
-        Width = 54
+        Width = 67
         FieldName = 'Codigo'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -577,7 +577,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Subcategoria'
-        Width = 84
+        Width = 97
         FieldName = 'Subcategoria'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -592,7 +592,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Categoria'
-        Width = 66
+        Width = 73
         FieldName = 'Categoria'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -607,7 +607,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Lugar'
-        Width = 45
+        Width = 114
         FieldName = 'Lugar'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -622,7 +622,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Proveedor'
-        Width = 69
+        Width = 227
         FieldName = 'Proveedor'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -637,7 +637,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Estatus'
-        Width = 52
+        Width = 54
         FieldName = 'Estatus'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -9540,6 +9540,7 @@ object FrmPrincipal: TFrmPrincipal
   end
   object ZQBienes: TZQuery
     Connection = dmconn.Conn
+    Active = True
     SQL.Strings = (
       'select'
       'b.id_biene as ''id'','
@@ -9565,7 +9566,7 @@ object FrmPrincipal: TFrmPrincipal
       'inner join subcategoria sc'
       'on sc.id_subcategoria = b.subcategoria_id_subcategoria'
       'inner join categorias c'
-      'on c.id_categoria = sc.categorias_id_categoria'
+      'on c.id_categoria = sc.id_categoria'
       'inner join lugares l'
       'on l.id_lugar = b.lugares_id_lugar'
       'inner join estatus est'
