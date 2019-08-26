@@ -155,21 +155,22 @@ object FrmPrincipal: TFrmPrincipal
       object SpkPane3: TSpkPane
         Caption = 'Reportes'
         Items = (
-          'SpkLargeButton7'
-          'SpkLargeButton8'
+          'BtnRbBResguardo'
           'SpkLargeButton9'
+          'SpkLargeButton8'
         )
-        object SpkLargeButton7: TSpkLargeButton
+        object BtnRbBResguardo: TSpkLargeButton
           Caption = 'Resguardo'
+          OnClick = BtnRbBResguardoClick
           LargeImageIndex = 6
-        end
-        object SpkLargeButton8: TSpkLargeButton
-          Caption = 'Bajas'
-          LargeImageIndex = 29
         end
         object SpkLargeButton9: TSpkLargeButton
           Caption = 'Excel'
           LargeImageIndex = 5
+        end
+        object SpkLargeButton8: TSpkLargeButton
+          Caption = 'Bajas'
+          LargeImageIndex = 29
         end
       end
     end
@@ -432,7 +433,7 @@ object FrmPrincipal: TFrmPrincipal
     Left = 8
     Height = 188
     Top = 120
-    Width = 200
+    Width = 208
     ColumnDefValues.BlobText = '(blob)'
     TitleButtons = False
     AutoSort = True
@@ -9594,5 +9595,79 @@ object FrmPrincipal: TFrmPrincipal
   object SDFile: TSaveDialog
     left = 752
     top = 35
+  end
+  object ZQBienReport: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select'
+      'b.id_biene as ''id'','
+      'b.descripcion as ''Descripcion'','
+      'm.nombre as ''Marca'','
+      'b.modelo as ''Modelo'','
+      'b.no_serie as ''No_serie'','
+      'b.precio as ''Monto'','
+      'b.factura as ''No_Factura'','
+      'b.adquisicion as ''Fecha_compra'','
+      'b.codigo as ''Codigo'','
+      'sc.nombre as ''Subcategoria'','
+      'c.nombre as ''Categoria'','
+      'l.nombre as ''Lugar'','
+      'p.empresa as ''Proveedor'','
+      'est.nombre as ''Estatus'','
+      'cb.nombre as ''Motivo_baja'','
+      'b.baja as ''Fecha_baja'','
+      'b.observaciones as ''Observaciones'''
+      'from'
+      'bienes b'
+      'inner join marcas m'
+      'on m.id_marcas = b.marcas_id_marcas'
+      'inner join subcategoria sc'
+      'on sc.id_subcategoria = b.subcategoria_id_subcategoria'
+      'inner join categorias c'
+      'on c.id_categoria = sc.id_categoria'
+      'inner join lugares l'
+      'on l.id_lugar = b.lugares_id_lugar'
+      'inner join estatus est'
+      'on est.id_estatus = b.estatus_id_estatus'
+      'inner join proveedores p'
+      'on p.id_proveedor = b.proveedores_id_proveedor'
+      'left join cat_bajas cb'
+      'on cb.id_cat_baja = b.cat_bajas_id_cat_baja'
+      'where'
+      'b.id_biene = :bien_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+    left = 24
+    top = 416
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object LzReports: TfrReport
+    Dataset = DBReport
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbSave, pbPrint, pbFind, pbExit]
+    DataType = dtDataSet
+    Title = 'Resguardo de bien'
+    left = 24
+    top = 472
+  end
+  object DBReport: TfrDBDataSet
+    DataSet = ZQBienReport
+    left = 116
+    top = 472
+  end
+  object RpToPDF: TfrTNPDFExport
+    left = 216
+    top = 472
   end
 end

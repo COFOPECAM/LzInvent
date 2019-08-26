@@ -9,7 +9,8 @@ uses
   RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
-  u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien;
+  u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
+  lr_e_pdf;
 
 type
 
@@ -17,6 +18,9 @@ type
 
   TFrmPrincipal = class(TForm)
     DSBienes: TDataSource;
+    DBReport: TfrDBDataSet;
+    RpToPDF: TfrTNPDFExport;
+    LzReports: TfrReport;
     ILRb: TImageList;
     RbBAgregar: TSpkLargeButton;
     DgBienes: TRxDBGrid;
@@ -45,7 +49,7 @@ type
     SpkLargeButton4: TSpkLargeButton;
     SpkLargeButton5: TSpkLargeButton;
     SpkLargeButton6: TSpkLargeButton;
-    SpkLargeButton7: TSpkLargeButton;
+    BtnRbBResguardo: TSpkLargeButton;
     SpkLargeButton8: TSpkLargeButton;
     SpkLargeButton9: TSpkLargeButton;
     SpkPane1: TSpkPane;
@@ -64,11 +68,13 @@ type
     TConfig: TSpkTab;
     StMenu: TSpkToolbar;
     ZQBienes: TZQuery;
+    ZQBienReport: TZQuery;
     procedure BtbCCatClick(Sender: TObject);
     procedure BtnCtAreasClick(Sender: TObject);
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
+    procedure BtnRbBResguardoClick(Sender: TObject);
     procedure BtnRbCBajasClick(Sender: TObject);
     procedure BtnRbCLugaresClick(Sender: TObject);
     procedure BtnRbCMarcasClick(Sender: TObject);
@@ -188,6 +194,22 @@ begin
             ToExcel.Free;
        end
     end
+end;
+
+procedure TFrmPrincipal.BtnRbBResguardoClick(Sender: TObject);
+var
+  bien_id:integer;
+begin
+  bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+  if bien_id <> 0 then
+  begin
+   ZQBienReport.Close;
+   // Buscar bien por id
+   ZQBienReport.Params.ParamByName('bien_id').AsInteger:=bien_id;
+   ZQBienReport.Open;
+   LzReports.LoadFromFile('../../reports/rpResguardoBien.lrf');
+   LzReports.ShowReport;
+  end;
 end;
 
 procedure TFrmPrincipal.BtnRbCBajasClick(Sender: TObject);

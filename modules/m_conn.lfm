@@ -13,10 +13,11 @@ object dmconn: Tdmconn
     Properties.Strings = (
       'codepage=UTF-8'
     )
+    Connected = True
     Port = 0
-    Database = 'E:/lzinvent/database/lzinvent.db'
+    Database = 'F:/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'
-    LibraryLocation = 'E:/lzinvent/database/sqlite3.dll'
+    LibraryLocation = 'F:/lzinvent/database/sqlite3.dll'
     left = 16
     top = 8
   end
