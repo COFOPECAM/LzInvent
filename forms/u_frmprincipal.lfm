@@ -156,7 +156,7 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Reportes'
         Items = (
           'BtnRbBResguardo'
-          'SpkLargeButton9'
+          'BtnRbBToExcel'
           'SpkLargeButton8'
         )
         object BtnRbBResguardo: TSpkLargeButton
@@ -164,8 +164,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = BtnRbBResguardoClick
           LargeImageIndex = 6
         end
-        object SpkLargeButton9: TSpkLargeButton
+        object BtnRbBToExcel: TSpkLargeButton
           Caption = 'Excel'
+          OnClick = BtnRbBToExcelClick
           LargeImageIndex = 5
         end
         object SpkLargeButton8: TSpkLargeButton

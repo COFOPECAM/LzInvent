@@ -51,7 +51,7 @@ type
     SpkLargeButton6: TSpkLargeButton;
     BtnRbBResguardo: TSpkLargeButton;
     SpkLargeButton8: TSpkLargeButton;
-    SpkLargeButton9: TSpkLargeButton;
+    BtnRbBToExcel: TSpkLargeButton;
     SpkPane1: TSpkPane;
     SpkPane2: TSpkPane;
     SpkPane3: TSpkPane;
@@ -75,6 +75,7 @@ type
     procedure BtnEBajaClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
     procedure BtnRbBResguardoClick(Sender: TObject);
+    procedure BtnRbBToExcelClick(Sender: TObject);
     procedure BtnRbCBajasClick(Sender: TObject);
     procedure BtnRbCLugaresClick(Sender: TObject);
     procedure BtnRbCMarcasClick(Sender: TObject);
@@ -210,6 +211,33 @@ begin
    LzReports.LoadFromFile('../../reports/rpResguardoBien.lrf');
    LzReports.ShowReport;
   end;
+end;
+
+procedure TFrmPrincipal.BtnRbBToExcelClick(Sender: TObject);
+begin
+  SDFile.Filter:='Excel|*.xlsx';
+  SDFile.Title:='Exportar bienes';
+
+  if DgBienes.DataSource.DataSet.RecordCount = 0 then
+    begin
+         Application.MessageBox('No hay datos para exportar', 'Datos necesarios',
+         MB_ICONEXCLAMATION);
+         exit;
+    end;
+  if SDFile.Execute then
+    begin
+     ToExcel.RxDBGrid:=DgBienes;
+     ToExcel.Caption:='Exportar vista';
+     ToExcel.FileName:=SDFile.FileName;
+     ToExcel.OpenAfterExport:=True;
+     ToExcel.PageName:='Bienes';
+     if ToExcel.Execute then
+       begin
+            Application.MessageBox('Exportación finalizada exitosamente',
+            'Exportación', MB_ICONINFORMATION);
+            ToExcel.Free;
+       end
+    end
 end;
 
 procedure TFrmPrincipal.BtnRbCBajasClick(Sender: TObject);

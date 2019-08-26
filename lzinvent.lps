@@ -94,8 +94,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="232"/>
-        <CursorPos X="57" Y="203"/>
+        <TopLine Value="204"/>
+        <CursorPos X="3" Y="218"/>
         <UsageCount Value="106"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -346,7 +346,7 @@
         <UsageCount Value="10"/>
       </Unit26>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="forms\u_frmaddbien.pas"/>
         <Caret Line="80" Column="41" TopLine="69"/>
@@ -461,6 +461,10 @@
         <Filename Value="forms\u_frmprincipal.pas"/>
         <Caret Line="209" Column="67" TopLine="187"/>
       </Position29>
+      <Position30>
+        <Filename Value="forms\u_frmprincipal.pas"/>
+        <Caret Line="204" Column="57" TopLine="204"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
