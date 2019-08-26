@@ -38,7 +38,7 @@ type
     BtnCtAreas: TSpkLargeButton;
     BtbCCat: TSpkLargeButton;
     BtnRbCLugares: TSpkLargeButton;
-    SpkLargeButton2: TSpkLargeButton;
+    BtnRbBEditar: TSpkLargeButton;
     BtnRbCBajas: TSpkLargeButton;
     BtnRbCMarcas: TSpkLargeButton;
     BtnRbCEstatus: TSpkLargeButton;
@@ -74,6 +74,7 @@ type
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
+    procedure BtnRbBEditarClick(Sender: TObject);
     procedure BtnRbBResguardoClick(Sender: TObject);
     procedure BtnRbBToExcelClick(Sender: TObject);
     procedure BtnRbCBajasClick(Sender: TObject);
@@ -81,6 +82,7 @@ type
     procedure BtnRbCMarcasClick(Sender: TObject);
     procedure BtnRbCProveedoresClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
     procedure BtmEEditarClick(Sender: TObject);
@@ -135,6 +137,12 @@ begin
     StMenu.Style:=spkMetroLight;
     StMenu.Color:=clSilver;
   end;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+  // Abrir conexiones y llenar tablas
+  ZQBienes.Open;
 end;
 
 procedure TFrmPrincipal.BtnEAddClick(Sender: TObject);
@@ -195,6 +203,25 @@ begin
             ToExcel.Free;
        end
     end
+end;
+
+procedure TFrmPrincipal.BtnRbBEditarClick(Sender: TObject);
+var
+  bien_id:integer;
+begin
+  // Editar los datos del bien
+  bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+  if bien_id <> 0 then
+  begin
+   FrmAddBien:=TFrmAddBien.Create(nil);
+   FrmAddBien.edit:=true;
+   FrmAddBien.bien_id:=bien_id;
+   if FrmAddBien.ShowModal = mrOK then
+   begin
+    ZQBienes.Close;
+    ZQBienes.Open;
+   end;
+  end;
 end;
 
 procedure TFrmPrincipal.BtnRbBResguardoClick(Sender: TObject);

@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  DBCtrls, Spin, EditBtn, ButtonPanel, DBGrids, ZDataset;
+  DBCtrls, Spin, EditBtn, ButtonPanel, DBGrids, LR_Class, LR_DBSet, m_conn,
+  ZDataset;
 
 type
 
@@ -16,6 +17,7 @@ type
     BP: TButtonPanel;
     BtnCambiar: TButton;
     CxbGenerar: TCheckBox;
+    DSHistorial: TDataSource;
     DSMarcas: TDataSource;
     DSEstatus: TDataSource;
     DSLugar: TDataSource;
@@ -35,6 +37,8 @@ type
     CbSubC: TDBLookupComboBox;
     CbProveedor: TDBLookupComboBox;
     CbBaja: TDBLookupComboBox;
+    DBResguardo: TfrDBDataSet;
+    LzReportResguardo: TfrReport;
     TxtIdent: TEdit;
     TxtModelo: TEdit;
     TxtNoSerie: TEdit;
@@ -64,6 +68,8 @@ type
     PcBien: TPageControl;
     TsCambios: TTabSheet;
     TsBien: TTabSheet;
+    ZQEmplempleado: TMemoField;
+    ZQEmplid_empleado: TLargeintField;
     ZQMarcas: TZQuery;
     ZQEstatus: TZQuery;
     ZQLugar: TZQuery;
@@ -73,12 +79,20 @@ type
     ZQBaja: TZQuery;
     ZQEmpl: TZQuery;
     ZQBien: TZQuery;
+    ZQResguardoBien: TZQuery;
+    ZQHistorial: TZQuery;
+    procedure BtnCambiarClick(Sender: TObject);
     procedure CbCategoriaChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
+    procedure LzReportResguardoGetValue(const ParName: String;
+      var ParValue: Variant);
     procedure OKButtonClick(Sender: TObject);
+    procedure ZQEmplempleadoGetText(Sender: TField; var aText: string;
+      DisplayText: Boolean);
   private
     save:Boolean;
+    entrega, recibe, autoriza:string;
 
   public
     edit:Boolean;
@@ -123,6 +137,23 @@ begin
   end;
   TsCambios.TabVisible:=edit;
   save:=true;
+  if edit then
+  begin
+    ZQHistorial.Params.ParamByName('bien_id').AsInteger:=bien_id;
+    ZQHistorial.Open;
+  end;
+end;
+
+procedure TFrmAddBien.LzReportResguardoGetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+  // Pasar variables al reporte
+  if ParName='recibe' then
+     ParValue:=recibe;
+  if ParName='entrega' then
+     ParValue:=entrega;
+  if ParName='autoriza' then
+     ParValue:=autoriza;
 end;
 
 procedure TFrmAddBien.CbCategoriaChange(Sender: TObject);
@@ -132,6 +163,46 @@ begin
     ZQSub.Close;
     ZQSub.Params.ParamByName('id_cat').AsInteger:=CbCategoria.KeyValue;
     ZQSub.Open;
+  end;
+end;
+
+procedure TFrmAddBien.BtnCambiarClick(Sender: TObject);
+var
+  nombre:string;
+begin
+  // Realizar cambio y recargar datos de la tabla
+  nombre:=CbEmpleados.Text;
+  if MessageDlg('Confirmación', '¿Desea realizar la asignación del bien a ' +
+  nombre + '?', mtConfirmation, [mbYes, mbNo],0) = mrYes
+  then
+  begin
+    ZQBien.SQL.Text:='INSERT INTO historico(bienes_id_biene, fecha_cambio, empleados_id_'+
+    'empleado, estatus) VALUES(:bien_id, :cambio, :empl_id, 1)';
+    ZQBien.Params.ParamByName('bien_id').AsInteger:=bien_id;
+    ZQBien.Params.ParamByName('empl_id').AsInteger:=CbEmpleados.KeyValue;
+    ZQBien.Params.ParamByName('cambio').AsDateTime:=Now;
+    ZQBien.ExecSQL;
+    ZQHistorial.Close;
+    ZQHistorial.Params.ParamByName('bien_id').AsInteger:=bien_id;
+    ZQHistorial.Open;
+
+    // Checar si se generar el resguardo
+    if CxbGenerar.Checked then
+    begin
+      ZQResguardoBien.Close;
+      ZQResguardoBien.Params.ParamByName('bien_id').AsInteger:=bien_id;
+      ZQResguardoBien.Open;
+
+      // Obtener datos para las firmas
+      dmconn.ZQFirmasReport.Params.ParamByName('bien_id').AsInteger:=bien_id;
+      dmconn.ZQFirmasReport.Open;
+      recibe:=dmconn.ZQFirmasReport.FieldByName('empleado').AsString;
+      dmconn.ZQFirmasReport.Close;
+      entrega:='Alexis Fuentes';
+
+      LzReportResguardo.LoadFromFile('../../reports/rpResguardoBien.lrf');
+      LzReportResguardo.ShowReport;
+    end;
   end;
 end;
 
@@ -167,6 +238,13 @@ begin
     save:=true;
   end;
 
+end;
+
+procedure TFrmAddBien.ZQEmplempleadoGetText(Sender: TField; var aText: string;
+  DisplayText: Boolean);
+begin
+  aText := Sender.AsString;
+  DisplayText:=true;
 end;
 
 end.

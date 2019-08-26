@@ -1,7 +1,7 @@
 object FrmAddBien: TFrmAddBien
-  Left = 449
+  Left = 347
   Height = 470
-  Top = 234
+  Top = 459
   Width = 549
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -372,12 +372,37 @@ object FrmAddBien: TFrmAddBien
       ClientWidth = 528
       TabVisible = False
       object DgCambios: TDBGrid
-        Left = 8
+        Left = 9
         Height = 276
         Top = 104
         Width = 512
+        AutoEdit = False
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'id'
+            Width = 0
+            Visible = False
+            FieldName = 'id'
+          end        
+          item
+            Title.Caption = 'Empleado'
+            Width = 305
+            FieldName = 'Empleado'
+          end        
+          item
+            Title.Caption = 'Fecha cambio'
+            Width = 118
+            FieldName = 'Fecha cambio'
+          end        
+          item
+            ButtonStyle = cbsCheckboxColumn
+            Title.Caption = 'Estatus'
+            Width = 52
+            FieldName = 'Estatus'
+          end>
+        DataSource = DSHistorial
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisplayMemoText]
         TabOrder = 0
       end
       object GroupBox1: TGroupBox
@@ -420,6 +445,7 @@ object FrmAddBien: TFrmAddBien
           Top = 3
           Width = 75
           Caption = 'Cambiar'
+          OnClick = BtnCambiarClick
           TabOrder = 1
         end
         object CxbGenerar: TCheckBox
@@ -529,11 +555,32 @@ object FrmAddBien: TFrmAddBien
   object ZQEmpl: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select id_empleado, (nombres || '' '' || apellidos) as empleado from empleados where estatus = 1 order by nombres asc'
+      'select id_empleado, nombres || '' '' || apellidos as empleado from empleados where estatus = 1 order by nombres asc'
     )
     Params = <>
     left = 368
     top = 400
+    object ZQEmplid_empleado: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id_empleado'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQEmplempleado: TMemoField
+      FieldKind = fkData
+      FieldName = 'empleado'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      OnGetText = ZQEmplempleadoGetText
+      BlobType = ftMemo
+      Transliterate = False
+    end
   end
   object ZQBien: TZQuery
     Connection = dmconn.Conn
@@ -580,5 +627,111 @@ object FrmAddBien: TFrmAddBien
     DataSet = ZQEmpl
     left = 368
     top = 352
+  end
+  object LzReportResguardo: TfrReport
+    Dataset = DBResguardo
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbSave, pbPrint, pbFind, pbExit]
+    DataType = dtDataSet
+    OnGetValue = LzReportResguardoGetValue
+    left = 118
+    top = 138
+  end
+  object ZQResguardoBien: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select'
+      'b.id_biene as ''id'','
+      'b.descripcion as ''Descripcion'','
+      'm.nombre as ''Marca'','
+      'b.modelo as ''Modelo'','
+      'b.no_serie as ''No_serie'','
+      'b.precio as ''Monto'','
+      'b.factura as ''No_Factura'','
+      'b.adquisicion as ''Fecha_compra'','
+      'b.codigo as ''Codigo'','
+      'sc.nombre as ''Subcategoria'','
+      'c.nombre as ''Categoria'','
+      'l.nombre as ''Lugar'','
+      'p.empresa as ''Proveedor'','
+      'est.nombre as ''Estatus'','
+      'cb.nombre as ''Motivo_baja'','
+      'b.baja as ''Fecha_baja'','
+      'b.observaciones as ''Observaciones'''
+      'from'
+      'bienes b'
+      'inner join marcas m'
+      'on m.id_marcas = b.marcas_id_marcas'
+      'inner join subcategoria sc'
+      'on sc.id_subcategoria = b.subcategoria_id_subcategoria'
+      'inner join categorias c'
+      'on c.id_categoria = sc.id_categoria'
+      'inner join lugares l'
+      'on l.id_lugar = b.lugares_id_lugar'
+      'inner join estatus est'
+      'on est.id_estatus = b.estatus_id_estatus'
+      'inner join proveedores p'
+      'on p.id_proveedor = b.proveedores_id_proveedor'
+      'left join cat_bajas cb'
+      'on cb.id_cat_baja = b.cat_bajas_id_cat_baja'
+      'where'
+      'b.id_biene = :bien_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+    left = 117
+    top = 256
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object DBResguardo: TfrDBDataSet
+    DataSet = ZQResguardoBien
+    left = 118
+    top = 196
+  end
+  object ZQHistorial: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select'
+      'h.id_historico as id,'
+      '(e.nombres || '' '' || e.apellidos) as ''Empleado'','
+      'h.fecha_cambio as ''Fecha cambio'','
+      'h.estatus as ''Estatus'''
+      'from historico h'
+      'inner join empleados e'
+      'on e.id_empleado = h.empleados_id_empleado'
+      'where'
+      'h.bienes_id_biene = :bien_id'
+      'order by'
+      'h.fecha_cambio desc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+    left = 493
+    top = 145
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSHistorial: TDataSource
+    DataSet = ZQHistorial
+    left = 403
+    top = 147
   end
 end

@@ -14,6 +14,7 @@ type
   Tdmconn = class(TDataModule)
     Conn: TZConnection;
     GetRoles: TZQuery;
+    ZQFirmasReport: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
 

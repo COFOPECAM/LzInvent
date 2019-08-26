@@ -30,4 +30,24 @@ object dmconn: Tdmconn
     left = 80
     top = 8
   end
+  object ZQFirmasReport: TZQuery
+    Connection = Conn
+    SQL.Strings = (
+      'select (e.nombres || '' '' || e.apellidos) as empleado from historico h inner join empleados e on e.id_empleado = h.empleados_id_empleado where h.bienes_id_biene = :bien_id order by h.fecha_cambio desc limit 0, 1'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+    left = 152
+    top = 8
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+  end
 end
