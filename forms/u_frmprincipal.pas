@@ -10,7 +10,7 @@ uses
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
-  lr_e_pdf;
+  LR_Shape, lr_e_pdf;
 
 type
 
@@ -19,6 +19,9 @@ type
   TFrmPrincipal = class(TForm)
     DSBienes: TDataSource;
     DBReport: TfrDBDataSet;
+    DbResEmpleado: TfrDBDataSet;
+    frShapeObject1: TfrShapeObject;
+    LzReportEmpleado: TfrReport;
     RpToPDF: TfrTNPDFExport;
     LzReports: TfrReport;
     ILRb: TImageList;
@@ -33,7 +36,7 @@ type
     BtnEBaja: TSpkLargeButton;
     SpkLargeButton13: TSpkLargeButton;
     SpkLargeButton14: TSpkLargeButton;
-    SpkLargeButton15: TSpkLargeButton;
+    BtnRbEResguardo: TSpkLargeButton;
     BtnEToExcel: TSpkLargeButton;
     BtnCtAreas: TSpkLargeButton;
     BtbCCat: TSpkLargeButton;
@@ -69,6 +72,7 @@ type
     StMenu: TSpkToolbar;
     ZQBienes: TZQuery;
     ZQBienReport: TZQuery;
+    ZQResEmpleado: TZQuery;
     procedure BtbCCatClick(Sender: TObject);
     procedure BtnCtAreasClick(Sender: TObject);
     procedure BtnEAddClick(Sender: TObject);
@@ -81,6 +85,7 @@ type
     procedure BtnRbCLugaresClick(Sender: TObject);
     procedure BtnRbCMarcasClick(Sender: TObject);
     procedure BtnRbCProveedoresClick(Sender: TObject);
+    procedure BtnRbEResguardoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure RbBAgregarClick(Sender: TObject);
@@ -231,6 +236,8 @@ begin
   bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
   if bien_id <> 0 then
   begin
+   // ToDo: Verificar si el bien ya fue asignado a un empleado, en caso contrario
+   // Mostrar mensaje de que el bien se encuentra en almancen
    ZQBienReport.Close;
    // Buscar bien por id
    ZQBienReport.Params.ParamByName('bien_id').AsInteger:=bien_id;
@@ -289,6 +296,32 @@ procedure TFrmPrincipal.BtnRbCProveedoresClick(Sender: TObject);
 begin
   FrmProveedores:=TFrmProveedores.Create(FrmPrincipal);
   FrmProveedores.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnRbEResguardoClick(Sender: TObject);
+var
+  emp_id:integer;
+begin
+  // Obtener un resguardo general de bienes del empleado
+  emp_id:=StrToInt(DgEmpleados.DataSource.DataSet.Fields[0].Value);
+  ZQResEmpleado.Close;
+  ZQResEmpleado.Params.ParamByName('empl_id').AsInteger:=emp_id;
+  ZQResEmpleado.Open;
+  if ZQResEmpleado.RecordCount > 0 then
+  begin
+  LzReportEmpleado.LoadFromFile('../../reports/rpResguardoEmpleado.lrf');
+  // Pasarle valores de variables
+  LzReportEmpleado.Values.FindVariable('autorizo').Field := QuotedStr('NOMBRE AUTORIZO');
+  LzReportEmpleado.Values.FindVariable('entrego').Field:=QuotedStr('NOMBRE ENTREGO');
+  LzReportEmpleado.Values.FindVariable('recibio').Field:=QuotedStr('NOMBRE RECIBIO');
+  LzReportEmpleado.ShowReport;
+  end
+  else
+  begin
+    Application.MessageBox('No se obtuvieron bienes asignado al empleado',
+    'Sin datos', MB_ICONINFORMATION);
+  end;
+
 end;
 
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);

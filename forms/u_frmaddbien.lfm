@@ -1,7 +1,7 @@
 object FrmAddBien: TFrmAddBien
-  Left = 347
+  Left = 430
   Height = 470
-  Top = 459
+  Top = 227
   Width = 549
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -70,6 +70,7 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 92
         Width = 184
+        CharCase = ecUppercase
         TabOrder = 1
       end
       object Label4: TLabel
@@ -85,6 +86,7 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 123
         Width = 160
+        CharCase = ecUppercase
         TabOrder = 2
       end
       object Label5: TLabel
@@ -100,6 +102,7 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 123
         Width = 184
+        MaxValue = 500000
         MinValue = 0
         TabOrder = 3
         Value = 0
@@ -117,6 +120,7 @@ object FrmAddBien: TFrmAddBien
         Height = 23
         Top = 156
         Width = 160
+        CharCase = ecUppercase
         TabOrder = 4
       end
       object Label7: TLabel
@@ -275,6 +279,7 @@ object FrmAddBien: TFrmAddBien
         Height = 58
         Top = 284
         Width = 428
+        CharCase = ecUppercase
         TabOrder = 11
       end
       object TxtDescrip: TMemo
@@ -282,6 +287,7 @@ object FrmAddBien: TFrmAddBien
         Height = 45
         Top = 38
         Width = 428
+        CharCase = ecUppercase
         TabOrder = 12
       end
       object Label14: TLabel
@@ -300,7 +306,7 @@ object FrmAddBien: TFrmAddBien
         Enabled = False
         TabOrder = 13
       end
-      object Label15: TLabel
+      object LbCodigo: TLabel
         Left = 88
         Height = 20
         Top = 10

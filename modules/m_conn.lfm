@@ -2,8 +2,8 @@ object dmconn: Tdmconn
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 146
-  HorizontalOffset = 925
-  VerticalOffset = 847
+  HorizontalOffset = 914
+  VerticalOffset = 842
   Width = 209
   PPI = 96
   object Conn: TZConnection
@@ -15,9 +15,9 @@ object dmconn: Tdmconn
     )
     Connected = True
     Port = 0
-    Database = 'F:/lzinvent/database/lzinvent.db'
+    Database = 'F:/lazarus/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'
-    LibraryLocation = 'F:/lzinvent/database/sqlite3.dll'
+    LibraryLocation = 'F:/lazarus/lzinvent/database/sqlite3.dll'
     left = 16
     top = 8
   end

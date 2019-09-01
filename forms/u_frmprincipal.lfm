@@ -1,7 +1,7 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 299
+  Left = 278
   Height = 552
-  Top = 116
+  Top = 114
   Width = 876
   Caption = 'LzInvent'
   ClientHeight = 552
@@ -252,14 +252,15 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Bienes'
         Items = (
           'SpkLargeButton14'
-          'SpkLargeButton15'
+          'BtnRbEResguardo'
         )
         object SpkLargeButton14: TSpkLargeButton
           Caption = 'Listado'
           LargeImageIndex = 4
         end
-        object SpkLargeButton15: TSpkLargeButton
+        object BtnRbEResguardo: TSpkLargeButton
           Caption = 'Resguardo'
+          OnClick = BtnRbEResguardoClick
           LargeImageIndex = 6
         end
       end
@@ -461,7 +462,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Descripcion'
-        Width = 262
+        Width = 77
         FieldName = 'Descripcion'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -506,7 +507,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'No. serie'
-        Width = 95
+        Width = 61
         FieldName = 'No. serie'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -523,6 +524,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Caption = 'Monto'
         Width = 51
         FieldName = 'Monto'
+        DisplayFormat = '$ 0.##'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -566,7 +568,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Codigo'
-        Width = 67
+        Width = 54
         FieldName = 'Codigo'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -581,7 +583,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Subcategoria'
-        Width = 97
+        Width = 84
         FieldName = 'Subcategoria'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -596,7 +598,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Categoria'
-        Width = 73
+        Width = 66
         FieldName = 'Categoria'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -611,7 +613,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Lugar'
-        Width = 114
+        Width = 45
         FieldName = 'Lugar'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -626,7 +628,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Proveedor'
-        Width = 227
+        Width = 69
         FieldName = 'Proveedor'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -641,7 +643,7 @@ object FrmPrincipal: TFrmPrincipal
         Title.Alignment = taCenter
         Title.Orientation = toHorizontal
         Title.Caption = 'Estatus'
-        Width = 54
+        Width = 52
         FieldName = 'Estatus'
         EditButtons = <>
         Filter.DropDownRows = 0
@@ -9665,11 +9667,49 @@ object FrmPrincipal: TFrmPrincipal
   end
   object DBReport: TfrDBDataSet
     DataSet = ZQBienReport
-    left = 116
-    top = 472
+    left = 24
+    top = 376
   end
   object RpToPDF: TfrTNPDFExport
     left = 216
+    top = 312
+  end
+  object ZQResEmpleado: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select b.descripcion, m.nombre as marca, b.modelo, b.no_serie, e.nombre as estado, b.observaciones from historico h inner join bienes b on b.id_biene = h.bienes_id_biene inner join marcas m on m.id_marcas = b.marcas_id_marcas inner join estatus e on e.id_estatus = b.estatus_id_estatus where h.empleados_id_empleado = :empl_id and h.estatus = 1 order by h.fecha_cambio asc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'empl_id'
+        ParamType = ptUnknown
+      end>
+    left = 808
+    top = 344
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'empl_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object LzReportEmpleado: TfrReport
+    Dataset = DbResEmpleado
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbSave, pbPrint, pbFind]
+    DataType = dtDataSet
+    left = 744
     top = 472
+  end
+  object DbResEmpleado: TfrDBDataSet
+    DataSet = ZQResEmpleado
+    left = 744
+    top = 421
+  end
+  object frShapeObject1: TfrShapeObject
+    left = 736
+    top = 352
   end
 end

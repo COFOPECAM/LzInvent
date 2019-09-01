@@ -65,7 +65,7 @@
         <PackageName Value="LCL"/>
       </Item10>
     </RequiredPackages>
-    <Units Count="18">
+    <Units Count="19">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -186,6 +186,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit17>
+      <Unit18>
+        <Filename Value="libs\stringsformat.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StringsFormat"/>
+      </Unit18>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
