@@ -59,22 +59,22 @@ implementation
 procedure TFrmProveedores.FormCreate(Sender: TObject);
 begin
   { Settear configuraciones de la aplicación }
-  if dmconn.Theme = 'blue' then
+  if dmconn.Theme = '1' then
   begin
     StMenu.Style:=spkOffice2007Blue;
     StMenu.Color:=clSkyBlue;
   end;
-  if dmconn.Theme = 'silver' then
+  if dmconn.Theme = '3' then
   begin
     StMenu.Style:=spkOffice2007Silver;
     StMenu.Color:=clWhite;
   end;
-  if dmconn.Theme = 'black' then
+  if dmconn.Theme = '0' then
   begin
     StMenu.Style:=spkMetroDark;
     StMenu.Color:=$080808;
   end;
-  if dmconn.Theme = 'ligth' then
+  if dmconn.Theme = '2' then
   begin
     StMenu.Style:=spkMetroLight;
     StMenu.Color:=clSilver;

@@ -25,7 +25,7 @@ type
     Entrega: string;
     FormatoCodigo: string;
     DirEmpresa: string;
-    MostrarFechaResg: Boolean;
+    MostrarFechaResg: string;
     ImgEmpresa: string;
     Theme: string;
   end;
@@ -66,7 +66,7 @@ begin
       'empresa': Empresa:=ZQs.FieldByName('value').AsString;
       'formato_codigo': FormatoCodigo:=ZQs.FieldByName('value').AsString;
       'img_empresa': ImgEmpresa:=ZQs.FieldByName('value').AsString;
-      'show_date_report_resguardo': MostrarFechaResg:=ZQs.FieldByName('value').AsBoolean;
+      'show_date_report_resguardo': MostrarFechaResg:=ZQs.FieldByName('value').AsString;
       end;
       ZQs.Next;
     end;

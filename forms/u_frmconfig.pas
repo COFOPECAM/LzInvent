@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ButtonPanel,
-  StdCtrls, ExtCtrls, m_conn;
+  StdCtrls, ExtCtrls, ZDataset, m_conn, LCLType;
 
 type
 
@@ -15,7 +15,7 @@ type
   TFrmConfig = class(TForm)
     Bevel1: TBevel;
     BtnLoadImg: TButton;
-    ButtonPanel1: TButtonPanel;
+    Bp: TButtonPanel;
     CbShowFecha: TCheckBox;
     CbTheme: TComboBox;
     TxtFormato: TEdit;
@@ -34,8 +34,12 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    ZQConfig: TZQuery;
+    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
   private
+    save:Boolean;
 
   public
 
@@ -51,14 +55,37 @@ implementation
 { TFrmConfig }
 
 procedure TFrmConfig.FormShow(Sender: TObject);
+var
+  showdate: Boolean;
 begin
+  showdate:=false;
+  save:=true;
   TxtNombre.Text:=dmconn.Empresa;
   TxtDir.Lines.Text:=dmconn.DirEmpresa;
   TxtFormato.Text:=dmconn.FormatoCodigo;
-  // CbTheme.ite;
+  CbTheme.ItemIndex:=StrToInt(dmconn.Theme);
   TxtEntrega.Text:=dmconn.Entrega;
   TxtAutoriza.Text:=dmconn.Autoriza;
-  CbShowFecha.Checked:=dmconn.MostrarFechaResg;
+  if dmconn.MostrarFechaResg = '1' then
+     showdate:=true;
+  CbShowFecha.Checked:=showdate;
+end;
+
+procedure TFrmConfig.OKButtonClick(Sender: TObject);
+begin
+  ZQConfig.Close;
+  ZQConfig.SQL.Text:='UPDATE config SET value=:valor WHERE name LIKE ''dir_empresa''';
+  ZQConfig.Params.ParamByName('valor').AsString:=TxtDir.Lines.Text;
+  ZQConfig.ExecSQL;
+
+  // Al finalizar de actualizar los datos
+  Application.MessageBox('Se requiere reiniciar la aplicación para aplicar los cambios',
+  'Reinicio', MB_ICONINFORMATION);
+end;
+
+procedure TFrmConfig.FormCloseQuery(Sender: TObject; var CanClose: boolean);
+begin
+  CanClose:=save;
 end;
 
 end.

@@ -177,6 +177,7 @@
         <Filename Value="forms\u_frmproveedor.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmProveedor"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit16>
       <Unit17>

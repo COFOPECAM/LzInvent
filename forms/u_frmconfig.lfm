@@ -1,13 +1,14 @@
 object FrmConfig: TFrmConfig
-  Left = 347
+  Left = 598
   Height = 472
-  Top = 486
+  Top = 530
   Width = 489
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Configuraciones'
   ClientHeight = 472
   ClientWidth = 489
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
   LCLVersion = '2.0.2.0'
@@ -172,13 +173,14 @@ object FrmConfig: TFrmConfig
       end
     end
   end
-  object ButtonPanel1: TButtonPanel
+  object Bp: TButtonPanel
     Left = 6
     Height = 34
     Top = 432
     Width = 477
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
     HelpButton.Name = 'HelpButton'
     HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
@@ -187,5 +189,11 @@ object FrmConfig: TFrmConfig
     CancelButton.DefaultCaption = True
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel, pbHelp]
+  end
+  object ZQConfig: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 34
+    top = 256
   end
 end
