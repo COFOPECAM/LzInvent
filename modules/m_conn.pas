@@ -15,12 +15,19 @@ type
     Conn: TZConnection;
     GetRoles: TZQuery;
     ZQFirmasReport: TZQuery;
+    ZQs: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
 
   public
-    theme_app:string;
-
+    Empresa: string;
+    Autoriza: string;
+    Entrega: string;
+    FormatoCodigo: string;
+    DirEmpresa: string;
+    MostrarFechaResg: Boolean;
+    ImgEmpresa: string;
+    Theme: string;
   end;
 
 var
@@ -43,7 +50,27 @@ begin
     Conn.LibraryLocation:=INI.ReadString('database', 'dll', '');
     Conn.Connect;
     GetRoles.Open;
-    theme_app:=INI.ReadString('config', 'theme_app', '');
+    Theme:=INI.ReadString('config', 'theme_app', '');
+
+    // Obtener configuración de base de datos
+    ZQs.SQL.Text:='select int, name, value from config where estatus = 1 '+
+    'order by name asc';
+    ZQs.Open;
+    ZQs.First;
+    while not ZQs.EOF do
+    begin
+      case ZQs.FieldByName('name').AsString of
+      'entrega': Entrega:=ZQs.FieldByName('value').AsString;
+      'autoriza': Autoriza:=ZQs.FieldByName('value').AsString;
+      'dir_empresa': DirEmpresa:=ZQs.FieldByName('value').AsString;
+      'empresa': Empresa:=ZQs.FieldByName('value').AsString;
+      'formato_codigo': FormatoCodigo:=ZQs.FieldByName('value').AsString;
+      'img_empresa': ImgEmpresa:=ZQs.FieldByName('value').AsString;
+      'show_date_report_resguardo': MostrarFechaResg:=ZQs.FieldByName('value').AsBoolean;
+      end;
+      ZQs.Next;
+    end;
+    ZQs.Close;
   end
   else
   begin

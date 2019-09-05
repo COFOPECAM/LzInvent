@@ -13,6 +13,7 @@ object dmconn: Tdmconn
     Properties.Strings = (
       'codepage=UTF-8'
     )
+    Connected = True
     Port = 0
     Database = 'E:/lazarus/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'
@@ -48,5 +49,11 @@ object dmconn: Tdmconn
         Name = 'bien_id'
         ParamType = ptUnknown
       end>
+  end
+  object ZQs: TZQuery
+    Connection = Conn
+    Params = <>
+    left = 19
+    top = 71
   end
 end

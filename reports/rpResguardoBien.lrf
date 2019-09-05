@@ -7,7 +7,7 @@
     <KeyWords Value="reporte, inventario, lzinvent"/>
     <Comments Value=""/>
     <ReportCreateDate Value="1899-12-30 00:00:00"/>
-    <ReportLastChange Value="2019-08-26 09:19:31"/>
+    <ReportLastChange Value="2019-09-05 13:00:26"/>
     <ReportVersionBuild Value=""/>
     <ReportVersionMajor Value=""/>
     <ReportVersionMinor Value=""/>
@@ -1242,7 +1242,7 @@
         <ObjectCount Value="24"/>
       </Page1>
       <FVal>
-        <Count Value="3"/>
+        <Count Value="4"/>
         <Objects1>
           <Typ Value="0"/>
           <OtherKind Value="0"/>
@@ -1264,8 +1264,15 @@
           <Field Value=""/>
           <Item Value="autoriza"/>
         </Objects3>
+        <Objects4>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="fechaif"/>
+        </Objects4>
       </FVal>
-      <ParentVars Value="otro_datos&#xD;&#xA; entrega&#xD;&#xA; recibe&#xD;&#xA; autoriza&#xD;&#xA;"/>
+      <ParentVars Value="otro_datos&#xD;&#xA; entrega&#xD;&#xA; recibe&#xD;&#xA; autoriza&#xD;&#xA; fechaif&#xD;&#xA;"/>
     </Pages>
     <DetailReports>
       <Count Value="0"/>

@@ -107,22 +107,22 @@ end;
 
 procedure TFrmListaUsuarios.FormCreate(Sender: TObject);
 begin
-  if dmconn.theme_app = 'blue' then
+  if dmconn.Theme = 'blue' then
   begin
     StMenu.Style:=spkOffice2007Blue;
     StMenu.Color:=clSkyBlue;
   end;
-  if dmconn.theme_app = 'silver' then
+  if dmconn.Theme = 'silver' then
   begin
     StMenu.Style:=spkOffice2007Silver;
     StMenu.Color:=clWhite;
   end;
-  if dmconn.theme_app = 'black' then
+  if dmconn.Theme = 'black' then
   begin
     StMenu.Style:=spkMetroDark;
     StMenu.Color:=$080808;
   end;
-  if dmconn.theme_app = 'ligth' then
+  if dmconn.Theme = 'ligth' then
   begin
     StMenu.Style:=spkMetroLight;
     StMenu.Color:=clSilver;

@@ -11,8 +11,7 @@ uses
   u_frmlistarusuarios, u_frmadduser, u_frmrolespermisos, m_user, m_empleados,
   u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmproveedor, u_frmaddbien,
-  lazreportpdfexport, StringsFormat
-  { you can add units after this };
+  lazreportpdfexport, StringsFormat, u_frmconfig;
 
 {$R *.res}
 
@@ -37,6 +36,7 @@ begin
   Application.CreateForm(TFrmProveedores, FrmProveedores);
   Application.CreateForm(TFrmProveedor, FrmProveedor);
   Application.CreateForm(TFrmAddBien, FrmAddBien);
+  Application.CreateForm(TFrmConfig, FrmConfig);
   Application.Run;
 end.
 

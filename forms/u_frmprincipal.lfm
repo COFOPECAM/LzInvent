@@ -417,10 +417,11 @@ object FrmPrincipal: TFrmPrincipal
       object SpkPane8: TSpkPane
         Caption = 'Sistema'
         Items = (
-          'SpkLargeButton1'
+          'RbBtnConfig'
         )
-        object SpkLargeButton1: TSpkLargeButton
+        object RbBtnConfig: TSpkLargeButton
           Caption = 'Basicas'
+          OnClick = RbBtnConfigClick
           LargeImageIndex = 15
         end
       end
@@ -10282,6 +10283,7 @@ object FrmPrincipal: TFrmPrincipal
     PreviewButtons = [pbZoom, pbSave, pbPrint, pbFind, pbExit]
     DataType = dtDataSet
     Title = 'Resguardo de bien'
+    OnGetValue = LzReportsGetValue
     left = 24
     top = 472
   end
@@ -10313,15 +10315,6 @@ object FrmPrincipal: TFrmPrincipal
         Name = 'empl_id'
         ParamType = ptUnknown
       end>
-  end
-  object LzReportEmpleado: TfrReport
-    Dataset = DbResEmpleado
-    InitialZoom = pzDefault
-    Options = []
-    PreviewButtons = [pbZoom, pbSave, pbPrint, pbFind]
-    DataType = dtDataSet
-    left = 744
-    top = 472
   end
   object DbResEmpleado: TfrDBDataSet
     DataSet = ZQResEmpleado

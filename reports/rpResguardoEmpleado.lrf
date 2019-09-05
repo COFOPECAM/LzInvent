@@ -2,12 +2,12 @@
 <CONFIG>
   <LazReport>
     <Version Value="31"/>
-    <Title Value=""/>
+    <Title Value="Resguardo de bien"/>
     <Subject Value=""/>
     <KeyWords Value=""/>
     <Comments Value=""/>
     <ReportCreateDate Value="1899-12-30 00:00:00"/>
-    <ReportLastChange Value="2019-08-27 12:02:52"/>
+    <ReportLastChange Value="2019-09-05 14:06:28"/>
     <ReportVersionBuild Value=""/>
     <ReportVersionMajor Value=""/>
     <ReportVersionMinor Value=""/>
@@ -981,7 +981,7 @@
           <Data>
             <Format Value="558"/>
             <FormatStr Value=""/>
-            <Memo Value="[entrego]&#xD;&#xA;"/>
+            <Memo Value="[entrega]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -1037,7 +1037,7 @@
           <Data>
             <Format Value="558"/>
             <FormatStr Value=""/>
-            <Memo Value="[recibio]&#xD;&#xA;"/>
+            <Memo Value="[recibe]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -1190,24 +1190,24 @@
           <OtherKind Value="0"/>
           <Dataset Value=""/>
           <Field Value=""/>
-          <Item Value="autorizo"/>
+          <Item Value="autoriza"/>
         </Objects1>
         <Objects2>
           <Typ Value="0"/>
           <OtherKind Value="0"/>
           <Dataset Value=""/>
           <Field Value=""/>
-          <Item Value="entrego"/>
+          <Item Value="entrega"/>
         </Objects2>
         <Objects3>
           <Typ Value="0"/>
           <OtherKind Value="0"/>
           <Dataset Value=""/>
           <Field Value=""/>
-          <Item Value="recibio"/>
+          <Item Value="recibe"/>
         </Objects3>
       </FVal>
-      <ParentVars Value="firmas&#xD;&#xA; autorizo&#xD;&#xA; entrego&#xD;&#xA; recibio&#xD;&#xA;"/>
+      <ParentVars Value="firmas&#xD;&#xA; autoriza&#xD;&#xA; entrega&#xD;&#xA; recibe&#xD;&#xA;"/>
     </Pages>
     <DetailReports>
       <Count Value="0"/>

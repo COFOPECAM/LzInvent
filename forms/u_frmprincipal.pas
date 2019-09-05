@@ -10,7 +10,7 @@ uses
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
-  LR_Shape, lr_e_pdf;
+  LR_Shape, lr_e_pdf, u_frmconfig;
 
 type
 
@@ -21,7 +21,6 @@ type
     DBReport: TfrDBDataSet;
     DbResEmpleado: TfrDBDataSet;
     frShapeObject1: TfrShapeObject;
-    LzReportEmpleado: TfrReport;
     RpToPDF: TfrTNPDFExport;
     LzReports: TfrReport;
     ILRb: TImageList;
@@ -29,7 +28,7 @@ type
     DgBienes: TRxDBGrid;
     DgEmpleados: TRxDBGrid;
     SDFile: TSaveDialog;
-    SpkLargeButton1: TSpkLargeButton;
+    RbBtnConfig: TSpkLargeButton;
     SpkLargeButton10: TSpkLargeButton;
     SpkLargeButton11: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
@@ -96,7 +95,9 @@ type
     procedure BtnRbEResguardoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure LzReportsGetValue(const ParName: String; var ParValue: Variant);
     procedure RbBAgregarClick(Sender: TObject);
+    procedure RbBtnConfigClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
     procedure BtmEEditarClick(Sender: TObject);
     procedure BtnRbCEstatusClick(Sender: TObject);
@@ -127,25 +128,31 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.RbBtnConfigClick(Sender: TObject);
+begin
+  FrmConfig:=TFrmConfig.Create(FrmPrincipal);
+  FrmConfig.ShowModal;
+end;
+
 procedure TFrmPrincipal.FormCreate(Sender: TObject);
 begin
   { Settear configuraciones de la aplicación }
-  if dmconn.theme_app = 'blue' then
+  if dmconn.Theme = 'blue' then
   begin
     StMenu.Style:=spkOffice2007Blue;
     StMenu.Color:=clSkyBlue;
   end;
-  if dmconn.theme_app = 'silver' then
+  if dmconn.Theme = 'silver' then
   begin
     StMenu.Style:=spkOffice2007Silver;
     StMenu.Color:=clWhite;
   end;
-  if dmconn.theme_app = 'black' then
+  if dmconn.Theme = 'black' then
   begin
     StMenu.Style:=spkMetroDark;
     StMenu.Color:=$080808;
   end;
-  if dmconn.theme_app = 'ligth' then
+  if dmconn.Theme = 'ligth' then
   begin
     StMenu.Style:=spkMetroLight;
     StMenu.Color:=clSilver;
@@ -156,6 +163,23 @@ procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
   // Abrir conexiones y llenar tablas
   ZQBienes.Open;
+end;
+
+procedure TFrmPrincipal.LzReportsGetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+  if ParName = 'autoriza' then
+     ParValue:=dmconn.Autoriza;
+  dmconn.ZQFirmasReport.Close;
+  dmconn.ZQFirmasReport.Params.ParamByName('bien_id').AsInteger:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+  dmconn.ZQFirmasReport.Open;
+  if ParName = 'recibe' then
+     ParValue:=dmconn.ZQFirmasReport.FieldByName('empleado').AsString;
+  if ParName = 'entrega' then
+     ParValue:=dmconn.Entrega;
+  if ParName = 'fechaif' then
+     ParValue:=dmconn.MostrarFechaResg;
+
 end;
 
 procedure TFrmPrincipal.BtnEAddClick(Sender: TObject);
@@ -317,12 +341,8 @@ begin
   ZQResEmpleado.Open;
   if ZQResEmpleado.RecordCount > 0 then
   begin
-  LzReportEmpleado.LoadFromFile('../../reports/rpResguardoEmpleado.lrf');
-  // Pasarle valores de variables
-  LzReportEmpleado.Values.FindVariable('autorizo').Field := QuotedStr('NOMBRE AUTORIZO');
-  LzReportEmpleado.Values.FindVariable('entrego').Field:=QuotedStr('NOMBRE ENTREGO');
-  LzReportEmpleado.Values.FindVariable('recibio').Field:=QuotedStr('NOMBRE RECIBIO');
-  LzReportEmpleado.ShowReport;
+    LzReports.LoadFromFile('../../reports/rpResguardoEmpleado.lrf');
+    LzReports.ShowReport;
   end
   else
   begin

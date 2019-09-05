@@ -1,0 +1,191 @@
+object FrmConfig: TFrmConfig
+  Left = 347
+  Height = 472
+  Top = 486
+  Width = 489
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Configuraciones'
+  ClientHeight = 472
+  ClientWidth = 489
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 426
+    Top = 0
+    Width = 489
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Empresa/Entidad'
+      ClientHeight = 398
+      ClientWidth = 481
+      object Label1: TLabel
+        Left = 16
+        Height = 15
+        Top = 17
+        Width = 47
+        Caption = 'Nombre:'
+        ParentColor = False
+      end
+      object TxtNombre: TEdit
+        Left = 88
+        Height = 23
+        Top = 13
+        Width = 376
+        TabOrder = 0
+      end
+      object Label2: TLabel
+        Left = 10
+        Height = 15
+        Top = 52
+        Width = 53
+        Caption = 'Dirección:'
+        ParentColor = False
+      end
+      object TxtDir: TMemo
+        Left = 88
+        Height = 90
+        Top = 48
+        Width = 376
+        TabOrder = 1
+      end
+      object Bevel1: TBevel
+        Left = 88
+        Height = 226
+        Hint = 'Logo de la empresa'
+        Top = 152
+        Width = 328
+      end
+      object BtnLoadImg: TButton
+        Left = 424
+        Height = 25
+        Top = 152
+        Width = 40
+        Caption = '...'
+        TabOrder = 2
+      end
+      object LbPlaceholder: TLabel
+        Left = 192
+        Height = 15
+        Top = 264
+        Width = 120
+        Caption = 'Logo empresa/entidad'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentColor = False
+        ParentFont = False
+      end
+      object Image1: TImage
+        Left = 149
+        Height = 210
+        Top = 160
+        Width = 210
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Aplicación'
+      ClientHeight = 398
+      ClientWidth = 481
+      object Label3: TLabel
+        Left = 15
+        Height = 15
+        Top = 13
+        Width = 144
+        Caption = 'Formato codigo inventario:'
+        ParentColor = False
+      end
+      object TxtFormato: TEdit
+        Left = 167
+        Height = 23
+        Top = 10
+        Width = 177
+        TabOrder = 0
+      end
+      object Label4: TLabel
+        Left = 15
+        Height = 15
+        Top = 48
+        Width = 88
+        Caption = 'Tema aplicación:'
+        ParentColor = False
+      end
+      object CbTheme: TComboBox
+        Left = 167
+        Height = 23
+        Top = 43
+        Width = 177
+        ItemHeight = 15
+        Items.Strings = (
+          'black'
+          'blue'
+          'light'
+          'silver'
+        )
+        TabOrder = 1
+      end
+      object Label5: TLabel
+        Left = 15
+        Height = 15
+        Top = 115
+        Width = 108
+        Caption = 'Autoriza resguardos:'
+        ParentColor = False
+      end
+      object Label6: TLabel
+        Left = 15
+        Height = 15
+        Top = 83
+        Width = 104
+        Caption = 'Entrega resguardos:'
+        ParentColor = False
+      end
+      object TxtEntrega: TEdit
+        Left = 167
+        Height = 23
+        Top = 77
+        Width = 297
+        TabOrder = 2
+      end
+      object TxtAutoriza: TEdit
+        Left = 167
+        Height = 23
+        Top = 111
+        Width = 297
+        TabOrder = 3
+      end
+      object CbShowFecha: TCheckBox
+        Left = 167
+        Height = 19
+        Top = 152
+        Width = 170
+        Caption = 'Mostrar fecha en resguardos'
+        TabOrder = 4
+      end
+    end
+  end
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 432
+    Width = 477
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 1
+    ShowButtons = [pbOK, pbCancel, pbHelp]
+  end
+end
