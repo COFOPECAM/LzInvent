@@ -13,11 +13,10 @@ object dmconn: Tdmconn
     Properties.Strings = (
       'codepage=UTF-8'
     )
-    Connected = True
     Port = 0
-    Database = 'F:/lazarus/lzinvent/database/lzinvent.db'
+    Database = 'E:/lazarus/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'
-    LibraryLocation = 'F:/lazarus/lzinvent/database/sqlite3.dll'
+    LibraryLocation = 'E:/lazarus/lzinvent/database/sqlite3.dll'
     left = 16
     top = 8
   end
@@ -27,7 +26,7 @@ object dmconn: Tdmconn
       'select id_roles, nombre from roles where estatus = 1 order by nombre asc'
     )
     Params = <>
-    left = 80
+    left = 72
     top = 8
   end
   object ZQFirmasReport: TZQuery

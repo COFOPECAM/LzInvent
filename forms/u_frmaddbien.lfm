@@ -1,7 +1,7 @@
 object FrmAddBien: TFrmAddBien
-  Left = 430
+  Left = 438
   Height = 470
-  Top = 227
+  Top = 202
   Width = 549
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -216,7 +216,7 @@ object FrmAddBien: TFrmAddBien
         ListFieldIndex = 0
         ListSource = DSCat
         LookupCache = False
-        OnChange = CbCategoriaChange
+        OnEditingDone = CbCategoriaEditingDone
         TabOrder = 8
       end
       object Label11: TLabel
@@ -481,6 +481,7 @@ object FrmAddBien: TFrmAddBien
     CloseButton.DefaultCaption = True
     CancelButton.Name = 'CancelButton'
     CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel]
   end

@@ -29,6 +29,14 @@ type
     DgBienes: TRxDBGrid;
     DgEmpleados: TRxDBGrid;
     SDFile: TSaveDialog;
+    SpkLargeButton1: TSpkLargeButton;
+    SpkLargeButton10: TSpkLargeButton;
+    SpkLargeButton11: TSpkLargeButton;
+    SpkLargeButton2: TSpkLargeButton;
+    SpkLargeButton7: TSpkLargeButton;
+    SpkLargeButton9: TSpkLargeButton;
+    SpkPane10: TSpkPane;
+    SpkPane11: TSpkPane;
     ToExcel: TRxDBGridExportSpreadSheet;
     BtnRbCProveedores: TSpkLargeButton;
     BtnEAdd: TSpkLargeButton;

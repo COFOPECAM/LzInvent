@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
   DBCtrls, Spin, EditBtn, ButtonPanel, DBGrids, LR_Class, LR_DBSet, m_conn,
-  ZDataset, StringsFormat;
+  ZDataset, StringsFormat, variants;
 
 type
 
@@ -82,7 +82,8 @@ type
     ZQResguardoBien: TZQuery;
     ZQHistorial: TZQuery;
     procedure BtnCambiarClick(Sender: TObject);
-    procedure CbCategoriaChange(Sender: TObject);
+    procedure CancelButtonClick(Sender: TObject);
+    procedure CbCategoriaEditingDone(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
     procedure LzReportResguardoGetValue(const ParName: String;
@@ -208,9 +209,9 @@ begin
      ParValue:=autoriza;
 end;
 
-procedure TFrmAddBien.CbCategoriaChange(Sender: TObject);
+procedure TFrmAddBien.CbCategoriaEditingDone(Sender: TObject);
 begin
-  if CbCategoria.KeyValue <> 0 then
+  if not VarIsNull(CbCategoria.KeyValue) then
   begin
     ZQSub.Close;
     ZQSub.Params.ParamByName('id_cat').AsInteger:=CbCategoria.KeyValue;
@@ -258,6 +259,11 @@ begin
   end;
 end;
 
+procedure TFrmAddBien.CancelButtonClick(Sender: TObject);
+begin
+  save:=true;
+end;
+
 procedure TFrmAddBien.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   CanClose:=save;
@@ -295,6 +301,13 @@ begin
   end
   else
   begin
+    if MessageDlg('Confirmación', '¿Desea guardar los cambios hechos?',
+    mtConfirmation, [mbYes, mbNo],0) = mrNo
+    then
+    begin
+      save:=false;
+      Exit;
+    end;
     ZQBien.SQL.Text:='UPDATE bienes SET adquisicion=:adq,'+
     'descripcion=:descr,estatus_id_estatus=:est,'+
     'factura=:fact,lugares_id_lugar=:lugar_id,marcas_id_marcas=:marca_id,'+
