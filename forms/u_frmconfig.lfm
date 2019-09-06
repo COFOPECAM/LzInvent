@@ -1,7 +1,7 @@
 object FrmConfig: TFrmConfig
-  Left = 598
+  Left = 312
   Height = 472
-  Top = 530
+  Top = 539
   Width = 489
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -85,11 +85,12 @@ object FrmConfig: TFrmConfig
         ParentColor = False
         ParentFont = False
       end
-      object Image1: TImage
+      object ImgEntity: TImage
         Left = 149
         Height = 210
         Top = 160
         Width = 210
+        Stretch = True
       end
     end
     object TabSheet2: TTabSheet

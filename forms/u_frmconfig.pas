@@ -21,7 +21,7 @@ type
     TxtFormato: TEdit;
     TxtEntrega: TEdit;
     TxtAutoriza: TEdit;
-    Image1: TImage;
+    ImgEntity: TImage;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -69,6 +69,11 @@ begin
   if dmconn.MostrarFechaResg = '1' then
      showdate:=true;
   CbShowFecha.Checked:=showdate;
+  if FileExists(dmconn.ImgEmpresa) then
+  begin
+       ImgEntity.Picture.LoadFromFile(dmconn.ImgEmpresa);
+       LbPlaceholder.Visible:=False;
+  end
 end;
 
 procedure TFrmConfig.OKButtonClick(Sender: TObject);

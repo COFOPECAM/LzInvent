@@ -85,7 +85,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="153"/>
+        <UsageCount Value="154"/>
       </Unit0>
       <Unit1>
         <Filename Value="forms\u_frmprincipal.pas"/>
@@ -93,10 +93,9 @@
         <ComponentName Value="FrmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="166"/>
         <CursorPos X="30" Y="185"/>
-        <UsageCount Value="153"/>
+        <UsageCount Value="154"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -109,7 +108,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="45"/>
         <CursorPos X="49" Y="63"/>
-        <UsageCount Value="151"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -122,7 +121,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="96"/>
         <CursorPos X="23" Y="125"/>
-        <UsageCount Value="149"/>
+        <UsageCount Value="150"/>
       </Unit3>
       <Unit4>
         <Filename Value="forms\u_frmadduser.pas"/>
@@ -133,7 +132,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="78"/>
         <CursorPos X="38" Y="74"/>
-        <UsageCount Value="147"/>
+        <UsageCount Value="148"/>
       </Unit4>
       <Unit5>
         <Filename Value="forms\u_frmrolespermisos.pas"/>
@@ -143,7 +142,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="17" Y="13"/>
-        <UsageCount Value="137"/>
+        <UsageCount Value="138"/>
       </Unit5>
       <Unit6>
         <Filename Value="modules\m_user.pas"/>
@@ -152,7 +151,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="9" Y="18"/>
-        <UsageCount Value="136"/>
+        <UsageCount Value="137"/>
       </Unit6>
       <Unit7>
         <Filename Value="modules\m_empleados.pas"/>
@@ -163,7 +162,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="7"/>
         <CursorPos X="32" Y="18"/>
-        <UsageCount Value="134"/>
+        <UsageCount Value="135"/>
       </Unit7>
       <Unit8>
         <Filename Value="forms\u_frmaddemployee.pas"/>
@@ -174,7 +173,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="103"/>
         <CursorPos X="14" Y="121"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="133"/>
       </Unit8>
       <Unit9>
         <Filename Value="forms\u_frmareas.pas"/>
@@ -184,7 +183,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="40" Y="13"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="127"/>
       </Unit9>
       <Unit10>
         <Filename Value="forms\u_frmcatsub.pas"/>
@@ -195,7 +194,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos X="16" Y="73"/>
-        <UsageCount Value="116"/>
+        <UsageCount Value="117"/>
       </Unit10>
       <Unit11>
         <Filename Value="forms\u_frmplaces.pas"/>
@@ -206,7 +205,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
         <CursorPos X="22" Y="49"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit11>
       <Unit12>
         <Filename Value="forms\u_frmbajas.pas"/>
@@ -217,7 +216,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos X="15" Y="50"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit12>
       <Unit13>
         <Filename Value="forms\u_frmmarcas.pas"/>
@@ -228,7 +227,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="22" Y="43"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="102"/>
       </Unit13>
       <Unit14>
         <Filename Value="forms\u_frmestatus.pas"/>
@@ -238,7 +237,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="12"/>
         <CursorPos X="24" Y="43"/>
-        <UsageCount Value="99"/>
+        <UsageCount Value="100"/>
       </Unit14>
       <Unit15>
         <Filename Value="forms\u_frmproveedores.pas"/>
@@ -249,7 +248,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="55"/>
         <CursorPos X="23" Y="77"/>
-        <UsageCount Value="98"/>
+        <UsageCount Value="99"/>
       </Unit15>
       <Unit16>
         <Filename Value="forms\u_frmproveedor.pas"/>
@@ -260,7 +259,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="113"/>
         <CursorPos X="69" Y="144"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="98"/>
       </Unit16>
       <Unit17>
         <Filename Value="forms\u_frmaddbien.pas"/>
@@ -271,7 +270,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="75"/>
         <CursorPos X="7" Y="93"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="89"/>
       </Unit17>
       <Unit18>
         <Filename Value="libs\stringsformat.pas"/>
@@ -279,7 +278,7 @@
         <UnitName Value="StringsFormat"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="25" Y="11"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="42"/>
       </Unit18>
       <Unit19>
         <Filename Value="libs\Objs.pas"/>
@@ -389,10 +388,11 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmConfig"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="55"/>
-        <CursorPos X="85" Y="77"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="32" Y="60"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit33>
