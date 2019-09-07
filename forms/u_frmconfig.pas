@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ButtonPanel,
-  StdCtrls, ExtCtrls, ZDataset, m_conn, LCLType;
+  StdCtrls, ExtCtrls, ZDataset, m_conn, LCLType, FileUtil;
 
 type
 
@@ -18,6 +18,7 @@ type
     Bp: TButtonPanel;
     CbShowFecha: TCheckBox;
     CbTheme: TComboBox;
+    ODImg: TOpenDialog;
     TxtFormato: TEdit;
     TxtEntrega: TEdit;
     TxtAutoriza: TEdit;
@@ -35,6 +36,7 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     ZQConfig: TZQuery;
+    procedure BtnLoadImgClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
@@ -82,6 +84,7 @@ begin
   ZQConfig.SQL.Text:='UPDATE config SET value=:valor WHERE name LIKE ''dir_empresa''';
   ZQConfig.Params.ParamByName('valor').AsString:=TxtDir.Lines.Text;
   ZQConfig.ExecSQL;
+  ZQConfig.Close;
 
   // Al finalizar de actualizar los datos
   Application.MessageBox('Se requiere reiniciar la aplicación para aplicar los cambios',
@@ -91,6 +94,29 @@ end;
 procedure TFrmConfig.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   CanClose:=save;
+end;
+
+procedure TFrmConfig.BtnLoadImgClick(Sender: TObject);
+var
+  exts: string;
+begin
+  if ODImg.Execute then
+  begin
+       if ODImg.FileName <> '' then
+       begin
+            ImgEntity.Picture.Clear;
+            // Copiar el archivo seleccionado a una ruta
+            exts:=ExtractFileExt(ODImg.FileName);
+            CopyFile(ODImg.FileName, 'logo.' + exts);
+            ImgEntity.Picture.LoadFromFile('logo.'+exts);
+            // Guardar información en base de datos
+            ZQConfig.Close;
+            ZQConfig.SQL.Text:='UPDATE config SET value=:valor WHERE name LIKE ''img_empresa''';
+            ZQConfig.Params.ParamByName('valor').AsString:='logo.'+exts;
+            ZQConfig.ExecSQL;
+            ZQConfig.Close;
+       end;
+  end;
 end;
 
 end.

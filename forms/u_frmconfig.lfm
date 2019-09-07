@@ -1,7 +1,7 @@
 object FrmConfig: TFrmConfig
-  Left = 312
+  Left = 310
   Height = 472
-  Top = 539
+  Top = 510
   Width = 489
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -68,6 +68,7 @@ object FrmConfig: TFrmConfig
         Top = 152
         Width = 40
         Caption = '...'
+        OnClick = BtnLoadImgClick
         TabOrder = 2
       end
       object LbPlaceholder: TLabel
@@ -196,5 +197,12 @@ object FrmConfig: TFrmConfig
     Params = <>
     left = 34
     top = 256
+  end
+  object ODImg: TOpenDialog
+    Title = 'Imagen para asignar'
+    DefaultExt = '.jpg'
+    Filter = 'JPEG|*.jpg|PNG|*.png'
+    left = 436
+    top = 216
   end
 end

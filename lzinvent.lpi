@@ -65,7 +65,7 @@
         <PackageName Value="LCL"/>
       </Item10>
     </RequiredPackages>
-    <Units Count="20">
+    <Units Count="21">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -196,8 +196,15 @@
         <Filename Value="forms\u_frmconfig.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmConfig"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit19>
+      <Unit20>
+        <Filename Value="forms\u_frmlogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmLogin"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit20>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

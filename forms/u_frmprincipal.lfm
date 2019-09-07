@@ -1,11 +1,11 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 278
+  Left = 298
   Height = 552
   Top = 114
-  Width = 876
+  Width = 831
   Caption = 'LzInvent'
   ClientHeight = 552
-  ClientWidth = 876
+  ClientWidth = 831
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poDesktopCenter
@@ -14,14 +14,14 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Height = 23
     Top = 529
-    Width = 876
+    Width = 831
     Panels = <>
   end
   object StMenu: TSpkToolbar
     Left = 0
     Height = 112
     Top = 0
-    Width = 876
+    Width = 831
     Appearance.Tab.TabHeaderFont.Color = 9126421
     Appearance.Tab.BorderColor = 14922381
     Appearance.Tab.GradientFromColor = 16115934
@@ -58,7 +58,7 @@ object FrmPrincipal: TFrmPrincipal
     Appearance.Element.ActiveInnerDarkColor = 961020
     Appearance.Element.ActiveCaptionColor = 8405614
     Appearance.Element.Style = esRounded
-    TabIndex = 3
+    TabIndex = 0
     Images = ILRb
     LargeImages = ILRb
     LargeImagesWidth = 16

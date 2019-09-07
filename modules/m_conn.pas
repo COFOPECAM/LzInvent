@@ -5,7 +5,7 @@ unit m_conn;
 interface
 
 uses
-  Classes, SysUtils, ZConnection, ZDataset, IniFiles;
+  Classes, SysUtils, ZConnection, ZDataset, IniFiles, BCrypt;
 
 type
 
@@ -17,6 +17,7 @@ type
     ZQFirmasReport: TZQuery;
     ZQs: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
+    function AuthUser(username, passwd: string): Boolean;
   private
 
   public
@@ -38,6 +39,20 @@ implementation
 {$R *.lfm}
 
 { Tdmconn }
+
+function Tdmconn.AuthUser(username, passwd: string) : Boolean;
+begin
+  // Obtener datos del usuario
+  ZQs.Close;
+  ZQs.SQL.Text:='SELECT id_usuarios, nombres, apellidos, contrasena, roles_id'+
+  '_roles as role_id FROM usuarios WHERE usuario LIKE :user AND estatus = 1';
+  ZQs.Params.ParamByName('user').AsString:=username;
+  ZQs.ExecSQL;
+  if ZQs.RecordCount > 0 then
+  begin
+
+  end;
+end;
 
 procedure Tdmconn.DataModuleCreate(Sender: TObject);
 var
