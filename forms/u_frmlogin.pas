@@ -43,6 +43,22 @@ procedure TFrmLogin.OKButtonClick(Sender: TObject);
 var
   user, passwd: string;
 begin
+  // Verificar que se escribio el usuario y contraseña
+  if TxtUser.Text = '' then
+  begin
+    Application.MessageBox('El usuario es requerido', 'Faltan datos',
+    MB_ICONEXCLAMATION);
+    TxtUser.SetFocus;
+    Exit;
+  end;
+  if TxtPass.Text = '' then
+  begin
+    Application.MessageBox('La contraseña es requerida', 'Faltan datos',
+    MB_ICONEXCLAMATION);
+    TxtPass.SetFocus;
+    Exit;
+  end;
+
   user:=TxtUser.Text;
   passwd:=TxtPass.Text;
   TxtUser.Text:='';
@@ -57,6 +73,7 @@ begin
     Application.MessageBox('Usuario y/o contraseña incorrectas', 'Error',
     MB_ICONEXCLAMATION);
   end;
+  TxtUser.SetFocus;
 end;
 
 end.
