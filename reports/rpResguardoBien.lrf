@@ -7,7 +7,7 @@
     <KeyWords Value="reporte, inventario, lzinvent"/>
     <Comments Value=""/>
     <ReportCreateDate Value="1899-12-30 00:00:00"/>
-    <ReportLastChange Value="2019-09-05 15:34:41"/>
+    <ReportLastChange Value="2019-09-06 21:02:43"/>
     <ReportVersionBuild Value=""/>
     <ReportVersionMajor Value=""/>
     <ReportVersionMinor Value=""/>
@@ -17,7 +17,7 @@
     <Pages>
       <PrintToDefault Value="False"/>
       <DoublePass Value="False"/>
-      <SelectedPrinter Value="M205 Series(Red)"/>
+      <SelectedPrinter Value="Microsoft Print to PDF"/>
       <PageCount Value="1"/>
       <Page1>
         <Name Value="Page1"/>
@@ -124,6 +124,34 @@
           <Child Value=""/>
         </Object3>
         <Object4>
+          <Name Value="Shape1"/>
+          <ClassName Value="TfrShapeView"/>
+          <Visible Value="True"/>
+          <Typ Value="gtAddIn"/>
+          <StreamMode Value="0"/>
+          <Size>
+            <Left Value="20"/>
+            <Top Value="16"/>
+            <Width Value="732"/>
+            <Height Value="110"/>
+          </Size>
+          <Flags Value="1"/>
+          <FillColor Value="$00BE9414"/>
+          <Frames>
+            <FrameColor Value="clNone"/>
+            <FrameStyle Value="frsSolid"/>
+            <FrameWidth Value="1"/>
+            <Restrictions Value=""/>
+          </Frames>
+          <Tag Value=""/>
+          <FURLInfo Value=""/>
+          <Data>
+            <GapX Value="0"/>
+            <GapY Value="0"/>
+          </Data>
+          <ShapeType Value="frstRoundRect"/>
+        </Object4>
+        <Object5>
           <Name Value="Memo1"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -163,7 +191,7 @@
           <Font>
             <Name Value="helvetica [urw]"/>
             <Size Value="16"/>
-            <Color Value="clBlack"/>
+            <Color Value="clWhite"/>
             <Charset Value="0"/>
             <Style Value=""/>
           </Font>
@@ -178,8 +206,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object4>
-        <Object5>
+        </Object5>
+        <Object6>
           <Name Value="Memo2"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -234,8 +262,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object5>
-        <Object6>
+        </Object6>
+        <Object7>
           <Name Value="Memo3"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -290,8 +318,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object6>
-        <Object7>
+        </Object7>
+        <Object8>
           <Name Value="Memo4"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -346,8 +374,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object7>
-        <Object8>
+        </Object8>
+        <Object9>
           <Name Value="Memo5"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -402,8 +430,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object8>
-        <Object9>
+        </Object9>
+        <Object10>
           <Name Value="Memo6"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -458,8 +486,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object9>
-        <Object10>
+        </Object10>
+        <Object11>
           <Name Value="Memo7"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -514,8 +542,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object10>
-        <Object11>
+        </Object11>
+        <Object12>
           <Name Value="Memo8"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -570,8 +598,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object11>
-        <Object12>
+        </Object12>
+        <Object13>
           <Name Value="Memo9"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -626,8 +654,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object12>
-        <Object13>
+        </Object13>
+        <Object14>
           <Name Value="Memo10"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -682,8 +710,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object13>
-        <Object14>
+        </Object14>
+        <Object15>
           <Name Value="Memo11"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -738,8 +766,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object14>
-        <Object15>
+        </Object15>
+        <Object16>
           <Name Value="Memo12"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -794,8 +822,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object15>
-        <Object16>
+        </Object16>
+        <Object17>
           <Name Value="Memo13"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -850,8 +878,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object16>
-        <Object17>
+        </Object17>
+        <Object18>
           <Name Value="Memo14"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -906,8 +934,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object17>
-        <Object18>
+        </Object18>
+        <Object19>
           <Name Value="Line1"/>
           <ClassName Value="TfrLineView"/>
           <Visible Value="True"/>
@@ -932,8 +960,8 @@
             <GapX Value="0"/>
             <GapY Value="0"/>
           </Data>
-        </Object18>
-        <Object19>
+        </Object19>
+        <Object20>
           <Name Value="Line2"/>
           <ClassName Value="TfrLineView"/>
           <Visible Value="True"/>
@@ -958,8 +986,8 @@
             <GapX Value="0"/>
             <GapY Value="0"/>
           </Data>
-        </Object19>
-        <Object20>
+        </Object20>
+        <Object21>
           <Name Value="Memo15"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -1014,8 +1042,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object20>
-        <Object21>
+        </Object21>
+        <Object22>
           <Name Value="Memo16"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -1070,8 +1098,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object21>
-        <Object22>
+        </Object22>
+        <Object23>
           <Name Value="Memo17"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -1126,8 +1154,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object22>
-        <Object23>
+        </Object23>
+        <Object24>
           <Name Value="Memo18"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -1182,8 +1210,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object23>
-        <Object24>
+        </Object24>
+        <Object25>
           <Name Value="Memo19"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -1223,7 +1251,7 @@
           <Font>
             <Name Value="helvetica [urw]"/>
             <Size Value="10"/>
-            <Color Value="clBlack"/>
+            <Color Value="clWhite"/>
             <Charset Value="0"/>
             <Style Value=""/>
           </Font>
@@ -1238,8 +1266,8 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object24>
-        <Object25>
+        </Object25>
+        <Object26>
           <Name Value="Memo20"/>
           <ClassName Value="TfrMemoView"/>
           <Visible Value="True"/>
@@ -1279,7 +1307,7 @@
           <Font>
             <Name Value="helvetica [urw]"/>
             <Size Value="10"/>
-            <Color Value="clBlack"/>
+            <Color Value="clWhite"/>
             <Charset Value="0"/>
             <Style Value=""/>
           </Font>
@@ -1294,8 +1322,36 @@
           <Angle Value="0"/>
           <Justify Value="False"/>
           <Cursor Value="0"/>
-        </Object25>
-        <ObjectCount Value="25"/>
+        </Object26>
+        <Object27>
+          <Name Value="Shape2"/>
+          <ClassName Value="TfrShapeView"/>
+          <Visible Value="True"/>
+          <Typ Value="gtAddIn"/>
+          <StreamMode Value="0"/>
+          <Size>
+            <Left Value="32"/>
+            <Top Value="28"/>
+            <Width Value="86"/>
+            <Height Value="86"/>
+          </Size>
+          <Flags Value="1"/>
+          <FillColor Value="clNone"/>
+          <Frames>
+            <FrameColor Value="clNone"/>
+            <FrameStyle Value="frsSolid"/>
+            <FrameWidth Value="1"/>
+            <Restrictions Value=""/>
+          </Frames>
+          <Tag Value=""/>
+          <FURLInfo Value=""/>
+          <Data>
+            <GapX Value="0"/>
+            <GapY Value="0"/>
+          </Data>
+          <ShapeType Value="frstEllipse"/>
+        </Object27>
+        <ObjectCount Value="27"/>
       </Page1>
       <FVal>
         <Count Value="6"/>
