@@ -29,6 +29,11 @@ type
     MostrarFechaResg: string;
     ImgEmpresa: string;
     Theme: string;
+    // Datos del usuario
+    Nombre: string;
+    Apellido: string;
+    UserId: integer;
+    RoleId: integer;
   end;
 
 var
@@ -41,17 +46,33 @@ implementation
 { Tdmconn }
 
 function Tdmconn.AuthUser(username, passwd: string) : Boolean;
+var
+  Cifrar : TBCryptHash;
+  Verify : Boolean;
 begin
+  Verify:=false;
   // Obtener datos del usuario
   ZQs.Close;
   ZQs.SQL.Text:='SELECT id_usuarios, nombres, apellidos, contrasena, roles_id'+
   '_roles as role_id FROM usuarios WHERE usuario LIKE :user AND estatus = 1';
   ZQs.Params.ParamByName('user').AsString:=username;
-  ZQs.ExecSQL;
+  ZQs.Open;
   if ZQs.RecordCount > 0 then
   begin
+    Cifrar := TBCryptHash.Create;
+    Verify := Cifrar.VerifyHash(passwd, ZQs.FieldByName('contrasena').AsString);
+    Cifrar.Free;
+    if Verify then
+    begin
+      Nombre:=ZQs.FieldByName('nombres').AsString;
+      Apellido:=ZQs.FieldByName('apellidos').AsString;
+      UserId:=ZQs.FieldByName('id_usuarios').AsInteger;
+      RoleId:=ZQs.FieldByName('role_id').AsInteger;
 
+      // Obtener permisos del usuario
+    end;
   end;
+  Result:=Verify;
 end;
 
 procedure Tdmconn.DataModuleCreate(Sender: TObject);

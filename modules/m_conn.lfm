@@ -15,9 +15,9 @@ object dmconn: Tdmconn
     )
     Connected = True
     Port = 0
-    Database = 'E:/lazarus/lzinvent/database/lzinvent.db'
+    Database = 'F:/lazarus/lzinvent/database/lzinvent.db'
     Protocol = 'sqlite-3'
-    LibraryLocation = 'E:/lazarus/lzinvent/database/sqlite3.dll'
+    LibraryLocation = 'F:/lazarus/lzinvent/database/sqlite3.dll'
     left = 16
     top = 8
   end

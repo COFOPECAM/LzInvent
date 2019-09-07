@@ -1,7 +1,7 @@
 object FrmLogin: TFrmLogin
-  Left = 735
+  Left = 684
   Height = 299
-  Top = 363
+  Top = 522
   Width = 320
   BorderIcons = [biSystemMenu]
   Caption = 'Inicia sesión'
@@ -9,17 +9,17 @@ object FrmLogin: TFrmLogin
   ClientWidth = 320
   Position = poDesktopCenter
   LCLVersion = '2.0.2.0'
-  object Edit1: TEdit
+  object TxtUser: TEdit
     Left = 8
     Height = 23
     Top = 193
     Width = 304
     Alignment = taCenter
-    OnChange = Edit1Change
+    OnChange = TxtUserChange
     TabOrder = 0
     TextHint = 'Usuario'
   end
-  object Edit2: TEdit
+  object TxtPass: TEdit
     Left = 8
     Height = 23
     Top = 225
@@ -30,13 +30,14 @@ object FrmLogin: TFrmLogin
     TabOrder = 1
     TextHint = 'Contraseña'
   end
-  object ButtonPanel1: TButtonPanel
+  object Bp: TButtonPanel
     Left = 6
     Height = 34
     Top = 259
     Width = 308
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
     HelpButton.Name = 'HelpButton'
     HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'

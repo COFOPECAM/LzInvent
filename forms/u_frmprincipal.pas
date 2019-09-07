@@ -71,7 +71,7 @@ type
     SpkPane7: TSpkPane;
     SpkPane8: TSpkPane;
     SpkPane9: TSpkPane;
-    StatusBar1: TStatusBar;
+    SbMsjs: TStatusBar;
     TBienes: TSpkTab;
     TEmpleados: TSpkTab;
     TCatalogos: TSpkTab;
@@ -163,6 +163,10 @@ procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
   // Abrir conexiones y llenar tablas
   ZQBienes.Open;
+  // Cargar permisos de la aplicación
+
+  // Cargar configuraciones
+  SbMsjs.Panels[0].Text:='Usuario: ' + dmconn.Apellido + ', ' + dmconn.Nombre;
 end;
 
 procedure TFrmPrincipal.LzReportsGetValue(const ParName: String;

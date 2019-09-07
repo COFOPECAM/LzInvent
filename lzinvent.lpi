@@ -203,6 +203,7 @@
         <Filename Value="forms\u_frmlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmLogin"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit20>
     </Units>
