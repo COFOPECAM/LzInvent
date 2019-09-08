@@ -1,7 +1,7 @@
 object FrmLogin: TFrmLogin
-  Left = 684
+  Left = 671
   Height = 299
-  Top = 522
+  Top = 699
   Width = 320
   BorderIcons = [biSystemMenu]
   Caption = 'Inicia sesión'
@@ -52,5 +52,12 @@ object FrmLogin: TFrmLogin
     Height = 180
     Top = 4
     Width = 180
+  end
+  object UiLzInvent: TUniqueInstance
+    Enabled = True
+    Identifier = 'kxw5S7cMsGB6RGNa2CVqIkoYt'
+    OnOtherInstance = UiLzInventOtherInstance
+    left = 272
+    top = 32
   end
 end

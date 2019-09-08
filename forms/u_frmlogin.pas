@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ButtonPanel,
-  ExtCtrls, u_frmprincipal, m_conn, LCLType;
+  ExtCtrls, u_frmprincipal, m_conn, LCLType, UniqueInstance;
 
 type
 
@@ -17,8 +17,11 @@ type
     TxtUser: TEdit;
     TxtPass: TEdit;
     Image1: TImage;
+    UiLzInvent: TUniqueInstance;
     procedure TxtUserChange(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
+    procedure UiLzInventOtherInstance(Sender: TObject; ParamCount: Integer;
+      const Parameters: array of String);
   private
 
   public
@@ -74,6 +77,15 @@ begin
     MB_ICONEXCLAMATION);
   end;
   TxtUser.SetFocus;
+end;
+
+procedure TFrmLogin.UiLzInventOtherInstance(Sender: TObject;
+  ParamCount: Integer; const Parameters: array of String);
+begin
+  ShowMessage('El programa ya se está ejecutando.');
+  BringToFront;
+  FormStyle:=fsSystemStayOnTop;
+  FormStyle:=fsNormal;
 end;
 
 end.
