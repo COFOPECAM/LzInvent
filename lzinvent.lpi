@@ -33,39 +33,42 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="10">
+    <RequiredPackages Count="11">
       <Item1>
-        <PackageName Value="lazreportpdfexport"/>
+        <PackageName Value="uniqueinstance_package"/>
       </Item1>
       <Item2>
-        <PackageName Value="lazreport"/>
+        <PackageName Value="lazreportpdfexport"/>
       </Item2>
       <Item3>
-        <PackageName Value="rxdbgrid_export_spreadsheet"/>
+        <PackageName Value="lazreport"/>
       </Item3>
       <Item4>
-        <PackageName Value="virtualdbgrid_package"/>
+        <PackageName Value="rxdbgrid_export_spreadsheet"/>
       </Item4>
       <Item5>
-        <PackageName Value="virtualtreeview_package"/>
+        <PackageName Value="virtualdbgrid_package"/>
       </Item5>
       <Item6>
-        <PackageName Value="FCL"/>
+        <PackageName Value="virtualtreeview_package"/>
       </Item6>
       <Item7>
-        <PackageName Value="zcomponent"/>
+        <PackageName Value="FCL"/>
       </Item7>
       <Item8>
-        <PackageName Value="rxnew"/>
+        <PackageName Value="zcomponent"/>
       </Item8>
       <Item9>
-        <PackageName Value="SpkToolbarPackage"/>
+        <PackageName Value="rxnew"/>
       </Item9>
       <Item10>
-        <PackageName Value="LCL"/>
+        <PackageName Value="SpkToolbarPackage"/>
       </Item10>
+      <Item11>
+        <PackageName Value="LCL"/>
+      </Item11>
     </RequiredPackages>
-    <Units Count="21">
+    <Units Count="22">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -206,6 +209,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit20>
+      <Unit21>
+        <Filename Value="forms\u_frmbajabien.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmBaja"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit21>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

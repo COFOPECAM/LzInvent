@@ -10,7 +10,7 @@ uses
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
-  LR_Shape, lr_e_pdf, u_frmconfig;
+  LR_Shape, lr_e_pdf, u_frmconfig, u_frmbajabien;
 
 type
 
@@ -56,7 +56,7 @@ type
     RbCfListar: TSpkLargeButton;
     SpkLargeButton25: TSpkLargeButton;
     SpkLargeButton3: TSpkLargeButton;
-    SpkLargeButton4: TSpkLargeButton;
+    RBtnBBaja: TSpkLargeButton;
     SpkLargeButton5: TSpkLargeButton;
     SpkLargeButton6: TSpkLargeButton;
     BtnRbBResguardo: TSpkLargeButton;
@@ -101,6 +101,7 @@ type
     procedure RbCfListarClick(Sender: TObject);
     procedure BtmEEditarClick(Sender: TObject);
     procedure BtnRbCEstatusClick(Sender: TObject);
+    procedure RBtnBBajaClick(Sender: TObject);
     procedure StMenuTabChanged(Sender: TObject);
   private
 
@@ -162,6 +163,7 @@ end;
 procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
   // Abrir conexiones y llenar tablas
+  ZQBienes.Params.ParamByName('limit_show').AsInteger:=50;
   ZQBienes.Open;
   // Cargar permisos de la aplicación
 
@@ -394,6 +396,23 @@ procedure TFrmPrincipal.BtnRbCEstatusClick(Sender: TObject);
 begin
   FrmEstatus:=TFrmEstatus.Create(nil);
   FrmEstatus.ShowModal;
+end;
+
+procedure TFrmPrincipal.RBtnBBajaClick(Sender: TObject);
+var
+  bien_id: integer;
+begin
+  // Dar de baja el bien
+  bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+  // Preguntar si se dara de baja
+  FrmBaja:=TFrmBaja.Create(FrmPrincipal);
+  FrmBaja.Bien_id:=bien_id;
+  if FrmBaja.ShowModal = mrOK then
+  begin
+   // Recargar tabla para eliminar registro de la vista
+   ZQBienes.Close;
+   ZQBienes.Open;
+  end;
 end;
 
 procedure TFrmPrincipal.StMenuTabChanged(Sender: TObject);

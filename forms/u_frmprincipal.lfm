@@ -121,7 +121,7 @@ object FrmPrincipal: TFrmPrincipal
         Items = (
           'RbBAgregar'
           'BtnRbBEditar'
-          'SpkLargeButton4'
+          'RBtnBBaja'
           'SpkLargeButton3'
         )
         object RbBAgregar: TSpkLargeButton
@@ -134,8 +134,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = BtnRbBEditarClick
           LargeImageIndex = 12
         end
-        object SpkLargeButton4: TSpkLargeButton
+        object RBtnBBaja: TSpkLargeButton
           Caption = 'Baja'
+          OnClick = RBtnBBajaClick
           LargeImageIndex = 10
         end
         object SpkLargeButton3: TSpkLargeButton
@@ -10205,10 +10206,24 @@ object FrmPrincipal: TFrmPrincipal
       'on p.id_proveedor = b.proveedores_id_proveedor'
       'left join cat_bajas cb'
       'on cb.id_cat_baja = b.cat_bajas_id_cat_baja'
+      'where b.cat_bajas_id_cat_baja is null'
+      'order by b.adquisicion desc'
+      'limit 0, :limit_show'
     )
-    Params = <>
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'limit_show'
+        ParamType = ptUnknown
+      end>
     left = 90
     top = 242
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'limit_show'
+        ParamType = ptUnknown
+      end>
   end
   object DSBienes: TDataSource
     DataSet = ZQBienes
