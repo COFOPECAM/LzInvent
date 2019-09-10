@@ -1,0 +1,264 @@
+object FrmBuscarBien: TFrmBuscarBien
+  Left = 406
+  Height = 391
+  Top = 563
+  Width = 387
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'LzInvent | Buscar bien'
+  ClientHeight = 391
+  ClientWidth = 387
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 337
+    Top = 8
+    Width = 369
+    Caption = 'Opciones de busqueda'
+    ClientHeight = 317
+    ClientWidth = 365
+    TabOrder = 0
+    object CbAdq: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 7
+      Width = 86
+      Caption = 'Adquisición:'
+      OnChange = CbAdqChange
+      TabOrder = 0
+    end
+    object DeInicio: TDateEdit
+      Left = 116
+      Height = 23
+      Top = 4
+      Width = 103
+      CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+      DateOrder = doNone
+      ButtonWidth = 23
+      NumGlyphs = 1
+      Enabled = False
+      MaxLength = 0
+      TabOrder = 1
+    end
+    object Label1: TLabel
+      Left = 232
+      Height = 15
+      Top = 8
+      Width = 6
+      Caption = 'a'
+      ParentColor = False
+    end
+    object DeFin: TDateEdit
+      Left = 253
+      Height = 23
+      Top = 3
+      Width = 103
+      CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+      DateOrder = doNone
+      ButtonWidth = 23
+      NumGlyphs = 1
+      Enabled = False
+      MaxLength = 0
+      TabOrder = 2
+    end
+    object CbCodigo: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 35
+      Width = 62
+      Caption = 'Codigo:'
+      OnChange = CbCodigoChange
+      TabOrder = 3
+    end
+    object TxtCodigo: TEdit
+      Left = 116
+      Height = 23
+      Top = 32
+      Width = 240
+      Enabled = False
+      TabOrder = 4
+    end
+    object CbDesc: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 63
+      Width = 85
+      Caption = 'Descripción:'
+      OnChange = CbDescChange
+      TabOrder = 5
+    end
+    object TxtDesc: TEdit
+      Left = 116
+      Height = 23
+      Top = 60
+      Width = 240
+      Enabled = False
+      TabOrder = 6
+    end
+    object CbEstatus: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 92
+      Width = 60
+      Caption = 'Estatus:'
+      OnChange = CbEstatusChange
+      TabOrder = 7
+    end
+    object CbxEstatus: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 89
+      Width = 240
+      Enabled = False
+      ListFieldIndex = 0
+      LookupCache = False
+      TabOrder = 8
+    end
+    object CbFactura: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 120
+      Width = 62
+      Caption = 'Factura:'
+      OnChange = CbFacturaChange
+      TabOrder = 9
+    end
+    object TxtFactura: TEdit
+      Left = 116
+      Height = 23
+      Top = 117
+      Width = 240
+      Enabled = False
+      TabOrder = 10
+    end
+    object CbLugar: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 147
+      Width = 53
+      Caption = 'Lugar:'
+      OnChange = CbLugarChange
+      TabOrder = 11
+    end
+    object CbxLugar: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 145
+      Width = 240
+      Enabled = False
+      ListFieldIndex = 0
+      LookupCache = False
+      TabOrder = 12
+    end
+    object CbMarca: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 175
+      Width = 56
+      Caption = 'Marca:'
+      OnChange = CbMarcaChange
+      TabOrder = 13
+    end
+    object CbxMarca: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 174
+      Width = 240
+      Enabled = False
+      ListFieldIndex = 0
+      LookupCache = False
+      TabOrder = 14
+    end
+    object CbObs: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 291
+      Width = 100
+      Caption = 'Observaciones:'
+      OnChange = CbObsChange
+      TabOrder = 15
+    end
+    object CbCat: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 205
+      Width = 74
+      Caption = 'Categoria:'
+      OnChange = CbCatChange
+      TabOrder = 16
+    end
+    object CbxCat: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 203
+      Width = 240
+      Enabled = False
+      ListFieldIndex = 0
+      LookupCache = False
+      TabOrder = 17
+    end
+    object CbSubCat: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 233
+      Width = 92
+      Caption = 'Subcategoria:'
+      OnChange = CbSubCatChange
+      TabOrder = 18
+    end
+    object CbxSubCat: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 231
+      Width = 240
+      Enabled = False
+      ListFieldIndex = 0
+      LookupCache = False
+      TabOrder = 19
+    end
+    object CbProveedor: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 262
+      Width = 77
+      Caption = 'Proveedor:'
+      OnChange = CbProveedorChange
+      TabOrder = 20
+    end
+    object CbxProveedor: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 259
+      Width = 240
+      Enabled = False
+      ListFieldIndex = 0
+      LookupCache = False
+      TabOrder = 21
+    end
+    object TxtObs: TEdit
+      Left = 116
+      Height = 23
+      Top = 288
+      Width = 240
+      Enabled = False
+      TabOrder = 22
+    end
+  end
+  object Bp: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 351
+    Width = 375
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 1
+    ShowButtons = [pbOK, pbCancel]
+  end
+end

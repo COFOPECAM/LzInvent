@@ -68,7 +68,7 @@
         <PackageName Value="LCL"/>
       </Item11>
     </RequiredPackages>
-    <Units Count="22">
+    <Units Count="23">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -216,6 +216,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit21>
+      <Unit22>
+        <Filename Value="forms\u_frmbuscarbien.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmBuscarBien"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit22>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

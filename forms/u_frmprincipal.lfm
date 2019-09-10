@@ -122,7 +122,7 @@ object FrmPrincipal: TFrmPrincipal
           'RbBAgregar'
           'BtnRbBEditar'
           'RBtnBBaja'
-          'SpkLargeButton3'
+          'RbBtnBBuscar'
         )
         object RbBAgregar: TSpkLargeButton
           Caption = 'Agregar'
@@ -139,8 +139,9 @@ object FrmPrincipal: TFrmPrincipal
           OnClick = RBtnBBajaClick
           LargeImageIndex = 10
         end
-        object SpkLargeButton3: TSpkLargeButton
+        object RbBtnBBuscar: TSpkLargeButton
           Caption = 'Buscar'
+          OnClick = RbBtnBBuscarClick
           LargeImageIndex = 3
         end
       end
@@ -10318,7 +10319,23 @@ object FrmPrincipal: TFrmPrincipal
   object ZQResEmpleado: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select b.descripcion, m.nombre as marca, b.modelo, b.no_serie, e.nombre as estado, b.observaciones from historico h inner join bienes b on b.id_biene = h.bienes_id_biene inner join marcas m on m.id_marcas = b.marcas_id_marcas inner join estatus e on e.id_estatus = b.estatus_id_estatus where h.empleados_id_empleado = :empl_id and h.estatus = 1 order by h.fecha_cambio asc'
+      'select '
+      'b.descripcion, '
+      'm.nombre as marca, '
+      'b.modelo, '
+      'b.no_serie, '
+      'e.nombre as estado, '
+      'b.observaciones '
+      'from '
+      'historico h '
+      'inner join bienes b on b.id_biene = h.bienes_id_biene '
+      'inner join marcas m on m.id_marcas = b.marcas_id_marcas '
+      'inner join estatus e on e.id_estatus = b.estatus_id_estatus '
+      'where '
+      'h.empleados_id_empleado = :empl_id '
+      'and h.estatus = 1 and'
+      'b.cat_bajas_id_cat_baja is null'
+      'order by h.fecha_cambio asc'
     )
     Params = <    
       item

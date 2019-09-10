@@ -11,7 +11,8 @@ uses
   u_frmlistarusuarios, u_frmadduser, u_frmrolespermisos, m_user, m_empleados,
   u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmproveedor, u_frmaddbien,
-  lazreportpdfexport, StringsFormat, u_frmconfig, u_frmlogin, u_frmbajabien;
+  lazreportpdfexport, StringsFormat, u_frmconfig, u_frmlogin, u_frmbajabien,
+  u_frmbuscarbien;
 
 {$R *.res}
 
@@ -39,6 +40,7 @@ begin
   Application.CreateForm(TFrmAddBien, FrmAddBien);
   Application.CreateForm(TFrmConfig, FrmConfig);
   Application.CreateForm(TFrmBaja, FrmBaja);
+  Application.CreateForm(TFrmBuscarBien, FrmBuscarBien);
   Application.Run;
 end.
 

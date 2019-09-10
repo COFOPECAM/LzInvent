@@ -10,7 +10,7 @@ uses
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
-  LR_Shape, lr_e_pdf, u_frmconfig, u_frmbajabien;
+  LR_Shape, lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien;
 
 type
 
@@ -55,7 +55,7 @@ type
     SpkLargeButton23: TSpkLargeButton;
     RbCfListar: TSpkLargeButton;
     SpkLargeButton25: TSpkLargeButton;
-    SpkLargeButton3: TSpkLargeButton;
+    RbBtnBBuscar: TSpkLargeButton;
     RBtnBBaja: TSpkLargeButton;
     SpkLargeButton5: TSpkLargeButton;
     SpkLargeButton6: TSpkLargeButton;
@@ -97,6 +97,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure LzReportsGetValue(const ParName: String; var ParValue: Variant);
     procedure RbBAgregarClick(Sender: TObject);
+    procedure RbBtnBBuscarClick(Sender: TObject);
     procedure RbBtnConfigClick(Sender: TObject);
     procedure RbCfListarClick(Sender: TObject);
     procedure BtmEEditarClick(Sender: TObject);
@@ -126,6 +127,15 @@ begin
   begin
    ZQBienes.Close;
    ZQBienes.Open;
+  end;
+end;
+
+procedure TFrmPrincipal.RbBtnBBuscarClick(Sender: TObject);
+begin
+  FrmBuscarBien:=TFrmBuscarBien.Create(FrmPrincipal);
+  if FrmBuscarBien.ShowModal = mrOK then
+  begin
+   // Mostrar datos en la tabla principal de bienes
   end;
 end;
 
