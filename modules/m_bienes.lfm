@@ -1,0 +1,119 @@
+object DmBienes: TDmBienes
+  OldCreateOrder = False
+  Height = 315
+  HorizontalOffset = 617
+  VerticalOffset = 258
+  Width = 487
+  PPI = 96
+  object ZQEstatus: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id_estatus as id, nombre from estatus where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 16
+    top = 8
+  end
+  object ZQLugar: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id_lugar as id, nombre from lugares where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 81
+    top = 8
+  end
+  object ZQMarca: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id_marcas as id, nombre from marcas where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 144
+    top = 8
+  end
+  object ZQCat: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id_categoria as id, nombre from categorias where estatus = 1 order by nombre asc'
+    )
+    Params = <>
+    left = 200
+    top = 8
+  end
+  object ZQSub: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select id_subcategoria as id, nombre from subcategoria where id_categoria = :cat_id and estatus = 1 order by nombre asc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cat_id'
+        ParamType = ptUnknown
+      end>
+    left = 248
+    top = 8
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cat_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQProv: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id_proveedor as id, empresa from proveedores where estatus = 1 order by empresa asc'
+    )
+    Params = <>
+    left = 307
+    top = 8
+  end
+  object DSEstatus: TDataSource
+    DataSet = ZQEstatus
+    left = 18
+    top = 69
+  end
+  object DSLugar: TDataSource
+    DataSet = ZQLugar
+    left = 81
+    top = 69
+  end
+  object DSMarca: TDataSource
+    DataSet = ZQMarca
+    left = 144
+    top = 69
+  end
+  object DSCat: TDataSource
+    DataSet = ZQCat
+    left = 200
+    top = 69
+  end
+  object DSSub: TDataSource
+    DataSet = ZQSub
+    left = 248
+    top = 69
+  end
+  object DSProv: TDataSource
+    DataSet = ZQProv
+    left = 307
+    top = 69
+  end
+  object ZQSearch: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 440
+    top = 8
+  end
+  object DSSearch: TDataSource
+    DataSet = ZQSearch
+    left = 440
+    top = 69
+  end
+end

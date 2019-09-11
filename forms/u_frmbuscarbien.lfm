@@ -8,6 +8,7 @@ object FrmBuscarBien: TFrmBuscarBien
   Caption = 'LzInvent | Buscar bien'
   ClientHeight = 391
   ClientWidth = 387
+  OnShow = FormShow
   Position = poOwnerFormCenter
   LCLVersion = '2.0.2.0'
   object GroupBox1: TGroupBox
@@ -110,8 +111,13 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 89
       Width = 240
+      DataField = 'id'
+      DataSource = DmBienes.DSEstatus
       Enabled = False
+      KeyField = 'id'
+      ListField = 'nombre'
       ListFieldIndex = 0
+      ListSource = DmBienes.DSEstatus
       LookupCache = False
       TabOrder = 8
     end
@@ -146,8 +152,13 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 145
       Width = 240
+      DataField = 'id'
+      DataSource = DmBienes.DSLugar
       Enabled = False
+      KeyField = 'id'
+      ListField = 'nombre'
       ListFieldIndex = 0
+      ListSource = DmBienes.DSLugar
       LookupCache = False
       TabOrder = 12
     end
@@ -165,8 +176,13 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 174
       Width = 240
+      DataField = 'id'
+      DataSource = DmBienes.DSMarca
       Enabled = False
+      KeyField = 'id'
+      ListField = 'nombre'
       ListFieldIndex = 0
+      ListSource = DmBienes.DSMarca
       LookupCache = False
       TabOrder = 14
     end
@@ -193,8 +209,13 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 203
       Width = 240
+      DataField = 'id'
+      DataSource = DmBienes.DSCat
       Enabled = False
+      KeyField = 'id'
+      ListField = 'nombre'
       ListFieldIndex = 0
+      ListSource = DmBienes.DSCat
       LookupCache = False
       TabOrder = 17
     end
@@ -212,8 +233,13 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 231
       Width = 240
+      DataField = 'id'
+      DataSource = DmBienes.DSSub
       Enabled = False
+      KeyField = 'id'
+      ListField = 'nombre'
       ListFieldIndex = 0
+      ListSource = DmBienes.DSSub
       LookupCache = False
       TabOrder = 19
     end
@@ -231,8 +257,13 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 259
       Width = 240
+      DataField = 'id'
+      DataSource = DmBienes.DSProv
       Enabled = False
+      KeyField = 'id'
+      ListField = 'empresa'
       ListFieldIndex = 0
+      ListSource = DmBienes.DSProv
       LookupCache = False
       TabOrder = 21
     end
@@ -252,6 +283,7 @@ object FrmBuscarBien: TFrmBuscarBien
     Width = 375
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
     HelpButton.Name = 'HelpButton'
     HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'

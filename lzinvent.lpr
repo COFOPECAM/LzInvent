@@ -12,7 +12,7 @@ uses
   u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmproveedor, u_frmaddbien,
   lazreportpdfexport, StringsFormat, u_frmconfig, u_frmlogin, u_frmbajabien,
-  u_frmbuscarbien;
+  u_frmbuscarbien, m_bienes;
 
 {$R *.res}
 
@@ -41,6 +41,7 @@ begin
   Application.CreateForm(TFrmConfig, FrmConfig);
   Application.CreateForm(TFrmBaja, FrmBaja);
   Application.CreateForm(TFrmBuscarBien, FrmBuscarBien);
+  Application.CreateForm(TDmBienes, DmBienes);
   Application.Run;
 end.
 
