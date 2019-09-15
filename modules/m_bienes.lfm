@@ -1,8 +1,8 @@
 object DmBienes: TDmBienes
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 617
-  VerticalOffset = 258
+  HorizontalOffset = 436
+  VerticalOffset = 707
   Width = 487
   PPI = 96
   object ZQEstatus: TZQuery

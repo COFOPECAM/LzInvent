@@ -8,6 +8,7 @@ object FrmBuscarBien: TFrmBuscarBien
   Caption = 'LzInvent | Buscar bien'
   ClientHeight = 391
   ClientWidth = 387
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
   LCLVersion = '2.0.2.0'

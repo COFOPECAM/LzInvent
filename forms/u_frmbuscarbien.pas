@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, EditBtn,
-  DBCtrls, ButtonPanel, m_bienes, strutils;
+  DBCtrls, ButtonPanel, m_bienes, strutils, LCLType;
 
 type
 
@@ -50,6 +50,7 @@ type
     procedure CbObsChange(Sender: TObject);
     procedure CbProveedorChange(Sender: TObject);
     procedure CbSubCatChange(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
   private
@@ -128,6 +129,11 @@ begin
   CbxSubCat.Enabled:=CbSubCat.Checked;
 end;
 
+procedure TFrmBuscarBien.FormCloseQuery(Sender: TObject; var CanClose: boolean);
+begin
+  CanClose:=IsSearch;
+end;
+
 procedure TFrmBuscarBien.FormShow(Sender: TObject);
 begin
   IsSearch:=true;
@@ -156,130 +162,61 @@ begin
   // Crear sentencia where
   if CbAdq.Checked then
   begin
-    where:='b.adquisicion >= :finicio and b.adquisicion <= :ffin';
+    where:=' and b.adquisicion >= :finicio and b.adquisicion <= :ffin';
   end;
 
   if CbCodigo.Checked then
   begin
-    if where = '' then
-    begin
-       where:='b.codigo like :codigo';
-    end
-    else
-    begin
-       where:=where + ' and b.codigo like :codigo';
-    end;
+    where:=where + ' and b.codigo like :codigo';
   end;
 
   if CbDesc.Checked then
   begin
-    if where = '' then
-    begin
-       where := 'b.descripcion like :desc';
-    end
-    else
-    begin
-       where := where + ' and b.descripcion like :desc';
-    end;
+    where := where + ' and b.descripcion like :desc';
   end;
 
   if CbEstatus.Checked then
   begin
-    if where = '' then
-    begin
-        where := 'b.estatus_id_estatus = :estatus';
-    end
-    else
-    begin
-        where := where + ' and b.estatus_id_estatus = :estatus';
-    end;
+    where := where + ' and b.estatus_id_estatus = :estatus';
   end;
 
   if CbFactura.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'b.factura like :fact';
-    end
-    else
-    begin
-      where := where + ' and b.factura like :fact';
-    end;
+    where := where + ' and b.factura like :fact';
   end;
 
   if CbLugar.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'b.lugares_id_lugar = :lugar_id';
-    end
-    else
-    begin
-      where := where + ' and b.lugares_id_lugar = :lugar_id';
-    end;
+    where := where + ' and b.lugares_id_lugar = :lugar_id';
   end;
 
   if CbMarca.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'b.marcas_id_marcas = :marca_id';
-    end
-    else
-    begin
-      where := where + ' and b.marcas_id_marcas = :marca_id';
-    end;
+    where := where + ' and b.marcas_id_marcas = :marca_id';
   end;
 
   if CbCat.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'sc.id_categoria = :cat_id';
-    end
-    else
-    begin
-      where := where + ' and sc.id_categoria = :cat_id';
-    end;
+    where := where + ' and sc.id_categoria = :cat_id';
   end;
 
   if CbSubCat.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'sc.id_subcategoria = :sub_id';
-    end
-    else
-    begin
-      where := where + ' and sc.id_subcategoria = :sub_id';
-    end;
+    where := where + ' and sc.id_subcategoria = :sub_id';
   end;
 
   if CbProveedor.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'b.proveedores_id_proveedor = :prov_id';
-    end
-    else
-    begin
-      where := where + ' and b.proveedores_id_proveedor = :prov_id';
-    end;
+    where := where + ' and b.proveedores_id_proveedor = :prov_id';
   end;
 
   if CbObs.Checked then
   begin
-    if where = '' then
-    begin
-      where := 'b.observaciones like :obs';
-    end
-    else
-    begin
-      where := where + ' and b.observaciones like :obs';
-    end;
+    where := where + ' and b.observaciones like :obs';
   end;
 
   // Crear y asignar SQL
+  DmBienes.ZQSearch.Close;
   DmBienes.ZQSearch.SQL.Text:=ReplaceStr(sql, '#where#', where);
   // Agregar parametros
 
@@ -310,7 +247,14 @@ begin
   if CbObs.Checked then
      DmBienes.ZQSearch.Params.ParamByName('obs').AsString:='%'+TxtObs.Text+'%';
 
-
+  // Ejecutar consulta
+  DmBienes.ZQSearch.Open;
+  if DmBienes.ZQSearch.RecordCount = 0 then
+  begin
+    Application.MessageBox('No se encontraron coincidencias con tu busqueda',
+    'Ningun registro', MB_ICONINFORMATION);
+    IsSearch:=false;
+  end;
 end;
 
 end.

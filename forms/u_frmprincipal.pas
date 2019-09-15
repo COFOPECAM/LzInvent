@@ -10,7 +10,7 @@ uses
   u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
   m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
-  LR_Shape, lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien;
+  LR_Shape, lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes;
 
 type
 
@@ -125,6 +125,7 @@ begin
   FrmAddBien.show_baja:=false;
   if FrmAddBien.ShowModal = mrOK then
   begin
+   DgBienes.DataSource:=DSBienes;
    ZQBienes.Close;
    ZQBienes.Open;
   end;
@@ -136,6 +137,7 @@ begin
   if FrmBuscarBien.ShowModal = mrOK then
   begin
    // Mostrar datos en la tabla principal de bienes
+   DgBienes.DataSource:=DmBienes.DSSearch;
   end;
 end;
 
