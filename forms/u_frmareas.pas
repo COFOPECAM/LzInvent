@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, DBCtrls, StdCtrls,
-  DBGrids;
+  DBGrids, m_empleados;
 
 type
 
@@ -19,6 +19,7 @@ type
     DBGrid1: TDBGrid;
     DBNavigator1: TDBNavigator;
     Label1: TLabel;
+    procedure FormShow(Sender: TObject);
   private
 
   public
@@ -31,6 +32,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TFrmAreas }
+
+procedure TFrmAreas.FormShow(Sender: TObject);
+begin
+
+end;
 
 end.
 

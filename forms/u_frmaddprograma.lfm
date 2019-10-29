@@ -1,0 +1,175 @@
+object FrmAddProg: TFrmAddProg
+  Left = 525
+  Height = 215
+  Top = 242
+  Width = 441
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Programa'
+  ClientHeight = 215
+  ClientWidth = 441
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.2.0'
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 161
+    Top = 7
+    Width = 424
+    Caption = 'Datos del programa'
+    ClientHeight = 141
+    ClientWidth = 420
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 23
+      Height = 15
+      Top = 10
+      Width = 55
+      Caption = 'Programa:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 24
+      Height = 15
+      Top = 44
+      Width = 54
+      Caption = 'Campaña:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 8
+      Height = 15
+      Top = 76
+      Width = 70
+      Caption = 'Coordinador:'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 9
+      Height = 15
+      Top = 107
+      Width = 69
+      Caption = 'Consecutivo:'
+      ParentColor = False
+    end
+    object TxtProg: TEdit
+      Left = 88
+      Height = 23
+      Top = 7
+      Width = 320
+      TabOrder = 0
+    end
+    object CbCampana: TDBLookupComboBox
+      Left = 88
+      Height = 23
+      Top = 40
+      Width = 320
+      DataField = 'id'
+      DataSource = DSCamp
+      KeyField = 'id'
+      ListField = 'name'
+      ListFieldIndex = 0
+      ListSource = DSCamp
+      LookupCache = False
+      TabOrder = 1
+    end
+    object CbCoord: TDBLookupComboBox
+      Left = 88
+      Height = 23
+      Top = 72
+      Width = 320
+      AutoComplete = True
+      AutoDropDown = True
+      CharCase = ecUppercase
+      DataField = 'id'
+      DataSource = DSCoord
+      KeyField = 'id'
+      ListField = 'empleado'
+      ListFieldIndex = 0
+      ListSource = DSCoord
+      LookupCache = False
+      TabOrder = 2
+    end
+    object TxtCons: TEdit
+      Left = 88
+      Height = 23
+      Top = 103
+      Width = 80
+      ReadOnly = True
+      TabOrder = 3
+    end
+  end
+  object Bp: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 175
+    Width = 429
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 1
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object ZQCamp: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select gp.id, gp.name from general_programs gp where gp.status = 1 order by gp.name asc'
+    )
+    Params = <>
+    left = 17
+    top = 160
+  end
+  object ZQCoord: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select u2.id, concat(u2.name, '' '', u2.surname) as empleado from user_users u2 where u2.status = 1 and u2.employee = 1 order by u2.name asc'
+    )
+    Params = <>
+    left = 72
+    top = 160
+    object ZQCoordid: TLongintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQCoordempleado: TStringField
+      FieldKind = fkData
+      FieldName = 'empleado'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 804
+    end
+  end
+  object DSCamp: TDataSource
+    DataSet = ZQCamp
+    left = 336
+    top = 126
+  end
+  object DSCoord: TDataSource
+    DataSet = ZQCoord
+    left = 381
+    top = 126
+  end
+  object ZQ: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 136
+    top = 160
+  end
+end

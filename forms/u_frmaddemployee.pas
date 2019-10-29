@@ -15,7 +15,9 @@ type
   TFrmAddEmpleado = class(TForm)
     BP: TButtonPanel;
     CbAreas: TDBLookupComboBox;
+    CbTipo: TComboBox;
     DSAreas: TDataSource;
+    Label5: TLabel;
     TxtHonor: TEdit;
     Label4: TLabel;
     TxtNombres: TEdit;
@@ -77,26 +79,29 @@ begin
   // Verificar si es una edición o un registro nuevo
   if not edit then
   begin
-  dmempleados.ZQAdd.SQL.Text:='INSERT INTO empleados(nombres, apellidos, honorifico, '+
-  'areas_id_area, estatus) VALUES(:name, :surname, :ho, :area_id, 1)';
+  dmempleados.ZQAdd.SQL.Text:='INSERT INTO user_users(name, surname, honorific,'+
+  ' status, employee, apartments_id, user_job_id, user_apps) values(:name, '+
+  ':surname, :honorific, 1, :employee, :apartment, 1, 0)';
   dmempleados.ZQAdd.Params.ParamByName('name').AsString:=TxtNombres.Text;
   dmempleados.ZQAdd.Params.ParamByName('surname').AsString:=TxtApellidos.Text;
-  dmempleados.ZQAdd.Params.ParamByName('ho').AsString:=TxtHonor.Text;
-  dmempleados.ZQAdd.Params.ParamByName('area_id').AsInteger:=CbAreas.KeyValue;
+  dmempleados.ZQAdd.Params.ParamByName('honorific').AsString:=TxtHonor.Text;
+  dmempleados.ZQAdd.Params.ParamByName('employee').AsInteger:=CbTipo.ItemIndex;
+  dmempleados.ZQAdd.Params.ParamByName('apartment').AsInteger:=CbAreas.KeyValue;
   dmempleados.ZQAdd.ExecSQL;
   MessageDlg('Operación exitosa', 'El empleado fue agregado exitosamente',
   mtInformation, [mbOK], 0);
   end
   else
   begin
-    dmempleados.ZQAdd.SQL.Text:='UPDATE empleados SET nombres = :name, '+
-    'apellidos = :surname, honorifico = :hor, areas_id_area = :area_id WHERE'+
-    ' id_empleado = :empl_id';
+    dmempleados.ZQAdd.SQL.Text:='UPDATE user_users SET name = :name, '+
+    'surname = :surname, honorific = :hor, apartments_id = :area_id, employee '+
+    '= :emple_type WHERE id = :empl_id';
     dmempleados.ZQAdd.Params.ParamByName('name').AsString:=TxtNombres.Text;
     dmempleados.ZQAdd.Params.ParamByName('surname').AsString:=TxtApellidos.Text;
     dmempleados.ZQAdd.Params.ParamByName('hor').AsString:=TxtHonor.Text;
     dmempleados.ZQAdd.Params.ParamByName('area_id').AsInteger:=CbAreas.KeyValue;
     dmempleados.ZQAdd.Params.ParamByName('empl_id').AsInteger:=empl_id;
+    dmempleados.ZQAdd.Params.ParamByName('emple_type').AsInteger:=CbTipo.ItemIndex;
     dmempleados.ZQAdd.ExecSQL;
     MessageDlg('Operación exitosa',
     'Los datos del empleado fueron actualizados exitosamente',
@@ -133,16 +138,17 @@ begin
   // Obtener datos del empleado a editar
   if edit then
   begin
-      dmempleados.ZQAdd.SQL.Text:='SELECT nombres, apellidos, areas_id_area, '+
-      'honorifico FROM empleados WHERE id_empleado = :empl_id';
+      dmempleados.ZQAdd.SQL.Text:='SELECT name, surname, apartments_id, '+
+      'honorific, employee FROM user_users WHERE id = :empl_id';
       dmempleados.ZQAdd.Params.ParamByName('empl_id').AsInteger:=empl_id;
       dmempleados.ZQAdd.Open;
       if dmempleados.ZQAdd.RecordCount > 0 then
       begin
-          TxtNombres.Text:=dmempleados.ZQAdd.FieldByName('nombres').Text;
-          TxtApellidos.Text:=dmempleados.ZQAdd.FieldByName('apellidos').Text;
-          TxtHonor.Text:=dmempleados.ZQAdd.FieldByName('honorifico').Text;
-          CbAreas.KeyValue:=StrToInt(dmempleados.ZQAdd.FieldByName('areas_id_area').Text);
+          TxtNombres.Text:=dmempleados.ZQAdd.FieldByName('name').Text;
+          TxtApellidos.Text:=dmempleados.ZQAdd.FieldByName('surname').Text;
+          TxtHonor.Text:=dmempleados.ZQAdd.FieldByName('honorific').Text;
+          CbAreas.KeyValue:=StrToInt(dmempleados.ZQAdd.FieldByName('apartments_id').Text);
+          CbTipo.ItemIndex:=dmempleados.ZQAdd.FieldByName('employee').AsInteger;
           dmempleados.ZQAdd.Close;
       end;
   end;

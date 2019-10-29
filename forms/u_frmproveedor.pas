@@ -77,18 +77,18 @@ begin
 
   if not edit then
   begin
-    ZQProveedor.SQL.Text:='insert into proveedores(celular,de,direccion,email,'+
-    ' empresa, representante, rfc, telefono, estatus) values(:celular, :de, '+
-    ':direccion, :email, :empresa, :representante, :rfc, :telefono, 1)';
+    ZQProveedor.SQL.Text:='insert into inventory_provider(company, rfc, email,'+
+    ' contact, phone, cel, address, products) values(:company, :rfc, :email,'+
+    ' :contact, :phone, :cel, :address, :products)';
 
-    ZQProveedor.Params.ParamByName('celular').AsString:=TxtCelular.Text;
-    ZQProveedor.Params.ParamByName('de').AsString:=TxtDe.Text;
-    ZQProveedor.Params.ParamByName('direccion').AsString:=TxtDir.Text;
+    ZQProveedor.Params.ParamByName('cel').AsString:=TxtCelular.Text;
+    ZQProveedor.Params.ParamByName('products').AsString:=TxtDe.Text;
+    ZQProveedor.Params.ParamByName('address').AsString:=TxtDir.Text;
     ZQProveedor.Params.ParamByName('email').AsString:=TxtEmail.Text;
-    ZQProveedor.Params.ParamByName('empresa').AsString:=TxtEmpresa.Text;
-    ZQProveedor.Params.ParamByName('representante').AsString:=TxtNombre.Text;
+    ZQProveedor.Params.ParamByName('company').AsString:=TxtEmpresa.Text;
+    ZQProveedor.Params.ParamByName('contact').AsString:=TxtNombre.Text;
     ZQProveedor.Params.ParamByName('rfc').AsString:=TxtRFC.Text;
-    ZQProveedor.Params.ParamByName('telefono').AsString:=TxtTelefono.Text;
+    ZQProveedor.Params.ParamByName('phone').AsString:=TxtTelefono.Text;
 
     ZQProveedor.ExecSQL;
     Application.MessageBox('Proveedor agregado exitosamente', 'Confirmación',
@@ -96,9 +96,9 @@ begin
   end
   else
   begin
-    ZQProveedor.SQL.Text:='UPDATE proveedores SET celular = :celular,de = :de,'+
-    ' direccion = :direccion,email = :email, empresa = :empresa, representante'+
-    ' = :representante, rfc = :rfc, telefono = :telefono WHERE id_proveedor ='+
+    ZQProveedor.SQL.Text:='UPDATE inventory_provider SET cel = :celular,products = :de,'+
+    ' address = :direccion,email = :email, company = :empresa, contact'+
+    ' = :representante, rfc = :rfc, phone = :telefono WHERE id_provider ='+
     ' :prov_id';
 
     ZQProveedor.Params.ParamByName('celular').AsString:=TxtCelular.Text;
@@ -127,21 +127,21 @@ begin
   save:=true;
   if edit then
   begin
-    ZQProveedor.SQL.Text:='SELECT celular,de,direccion,email, empresa, '+
-    'representante, rfc, telefono FROM proveedores WHERE id_proveedor = :prov_id';
+    ZQProveedor.SQL.Text:='SELECT cel,products,address,email, company, '+
+    'contact, rfc, phone FROM inventory_provider WHERE id_provider = :prov_id';
     ZQProveedor.Params.ParamByName('prov_id').AsInteger:=prov_id;
     ZQProveedor.Open;
     if ZQProveedor.RecordCount > 0 then
     begin
       TxtIdent.Text:=prov_id.ToString;
-      TxtEmpresa.Text:=ZQProveedor.FieldByName('empresa').AsString;
+      TxtEmpresa.Text:=ZQProveedor.FieldByName('company').AsString;
       TxtRFC.Text:=ZQProveedor.FieldByName('rfc').AsString;
       TxtEmail.Text:=ZQProveedor.FieldByName('email').AsString;
-      TxtNombre.Text:=ZQProveedor.FieldByName('representante').AsString;
-      TxtTelefono.Text:=ZQProveedor.FieldByName('telefono').AsString;
-      TxtCelular.Text:=ZQProveedor.FieldByName('celular').AsString;
-      TxtDe.Text:=ZQProveedor.FieldByName('de').AsString;
-      TxtDir.Lines.Add(ZQProveedor.FieldByName('direccion').AsString);
+      TxtNombre.Text:=ZQProveedor.FieldByName('contact').AsString;
+      TxtTelefono.Text:=ZQProveedor.FieldByName('phone').AsString;
+      TxtCelular.Text:=ZQProveedor.FieldByName('cel').AsString;
+      TxtDe.Text:=ZQProveedor.FieldByName('products').AsString;
+      TxtDir.Lines.Add(ZQProveedor.FieldByName('address').AsString);
     end;
   end;
 end;

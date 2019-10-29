@@ -33,42 +33,48 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="11">
+    <RequiredPackages Count="13">
       <Item1>
-        <PackageName Value="uniqueinstance_package"/>
+        <PackageName Value="rx_sort_zeos"/>
       </Item1>
       <Item2>
-        <PackageName Value="lazreportpdfexport"/>
+        <PackageName Value="laz_sortgrid"/>
       </Item2>
       <Item3>
-        <PackageName Value="lazreport"/>
+        <PackageName Value="uniqueinstance_package"/>
       </Item3>
       <Item4>
-        <PackageName Value="rxdbgrid_export_spreadsheet"/>
+        <PackageName Value="lazreportpdfexport"/>
       </Item4>
       <Item5>
-        <PackageName Value="virtualdbgrid_package"/>
+        <PackageName Value="lazreport"/>
       </Item5>
       <Item6>
-        <PackageName Value="virtualtreeview_package"/>
+        <PackageName Value="rxdbgrid_export_spreadsheet"/>
       </Item6>
       <Item7>
-        <PackageName Value="FCL"/>
+        <PackageName Value="virtualdbgrid_package"/>
       </Item7>
       <Item8>
-        <PackageName Value="zcomponent"/>
+        <PackageName Value="virtualtreeview_package"/>
       </Item8>
       <Item9>
-        <PackageName Value="rxnew"/>
+        <PackageName Value="FCL"/>
       </Item9>
       <Item10>
-        <PackageName Value="SpkToolbarPackage"/>
+        <PackageName Value="zcomponent"/>
       </Item10>
       <Item11>
-        <PackageName Value="LCL"/>
+        <PackageName Value="rxnew"/>
       </Item11>
+      <Item12>
+        <PackageName Value="SpkToolbarPackage"/>
+      </Item12>
+      <Item13>
+        <PackageName Value="LCL"/>
+      </Item13>
     </RequiredPackages>
-    <Units Count="24">
+    <Units Count="28">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -112,6 +118,7 @@
         <Filename Value="modules\m_user.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DMUser"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit6>
       <Unit7>
@@ -167,6 +174,7 @@
         <Filename Value="forms\u_frmestatus.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmEstatus"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit14>
       <Unit15>
@@ -230,6 +238,32 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="forms\u_frmgenclave.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmGenClave"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="forms\u_frmsearchproveedor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="forms\u_frmcampanas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCampanas"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="forms\u_frmaddprograma.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAddProg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit27>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

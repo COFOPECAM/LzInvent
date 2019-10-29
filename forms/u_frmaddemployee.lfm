@@ -1,12 +1,12 @@
 object FrmAddEmpleado: TFrmAddEmpleado
-  Left = 749
-  Height = 231
-  Top = 666
+  Left = 664
+  Height = 254
+  Top = 701
   Width = 312
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'LzInvent - Agregar empleado'
-  ClientHeight = 231
+  ClientHeight = 254
   ClientWidth = 312
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
@@ -14,11 +14,11 @@ object FrmAddEmpleado: TFrmAddEmpleado
   LCLVersion = '2.0.2.0'
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 176
+    Height = 200
     Top = 8
     Width = 296
     Caption = 'Datos del empleado'
-    ClientHeight = 156
+    ClientHeight = 180
     ClientWidth = 292
     TabOrder = 0
     object Label1: TLabel
@@ -66,8 +66,8 @@ object FrmAddEmpleado: TFrmAddEmpleado
       Height = 23
       Top = 87
       Width = 192
-      KeyField = 'id_area'
-      ListField = 'nombre'
+      KeyField = 'id'
+      ListField = 'name'
       ListFieldIndex = 0
       ListSource = DSAreas
       LookupCache = False
@@ -76,7 +76,7 @@ object FrmAddEmpleado: TFrmAddEmpleado
     object Label4: TLabel
       Left = 23
       Height = 15
-      Top = 124
+      Top = 153
       Width = 60
       Caption = 'Honorifico:'
       ParentColor = False
@@ -84,17 +84,37 @@ object FrmAddEmpleado: TFrmAddEmpleado
     object TxtHonor: TEdit
       Left = 88
       Height = 23
-      Top = 121
+      Top = 150
       Width = 104
       CharCase = ecUppercase
       TabOrder = 3
       TextHint = 'ING, LIC ...'
     end
+    object Label5: TLabel
+      Left = 57
+      Height = 15
+      Top = 122
+      Width = 26
+      Caption = 'Tipo:'
+      ParentColor = False
+    end
+    object CbTipo: TComboBox
+      Left = 88
+      Height = 23
+      Top = 118
+      Width = 192
+      ItemHeight = 15
+      Items.Strings = (
+        'OTRO'
+        'EMPLEADO'
+      )
+      TabOrder = 4
+    end
   end
   object BP: TButtonPanel
     Left = 6
     Height = 34
-    Top = 191
+    Top = 214
     Width = 300
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
@@ -111,7 +131,7 @@ object FrmAddEmpleado: TFrmAddEmpleado
   end
   object DSAreas: TDataSource
     DataSet = dmempleados.ZQArea
-    left = 239
-    top = 139
+    left = 16
+    top = 208
   end
 end

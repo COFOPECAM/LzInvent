@@ -12,7 +12,8 @@ uses
   u_frmaddemployee, u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas,
   u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmproveedor, u_frmaddbien,
   lazreportpdfexport, StringsFormat, u_frmconfig, u_frmlogin, u_frmbajabien,
-  u_frmbuscarbien, m_bienes;
+  u_frmbuscarbien, m_bienes, u_frmgenclave, u_frmsearchproveedor, u_frmcampanas,
+  u_frmaddprograma;
 
 {$R *.res}
 
@@ -22,26 +23,11 @@ begin
   Application.Initialize;
   Application.CreateForm(Tdmconn, dmconn);
   Application.CreateForm(TFrmLogin, FrmLogin);
-  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmListaUsuarios, FrmListaUsuarios);
-  Application.CreateForm(TFrmUser, FrmUser);
-  Application.CreateForm(TFrmRolesPermisos, FrmRolesPermisos);
-  Application.CreateForm(TDMUser, DMUser);
   Application.CreateForm(Tdmempleados, dmempleados);
-  Application.CreateForm(TFrmAddEmpleado, FrmAddEmpleado);
-  Application.CreateForm(TFrmAreas, FrmAreas);
-  Application.CreateForm(TFrmCategorias, FrmCategorias);
-  Application.CreateForm(TFrmPlaces, FrmPlaces);
-  Application.CreateForm(TFrmBajas, FrmBajas);
-  Application.CreateForm(TFrmMarca, FrmMarca);
-  Application.CreateForm(TFrmEstatus, FrmEstatus);
-  Application.CreateForm(TFrmProveedores, FrmProveedores);
-  Application.CreateForm(TFrmProveedor, FrmProveedor);
-  Application.CreateForm(TFrmAddBien, FrmAddBien);
-  Application.CreateForm(TFrmConfig, FrmConfig);
-  Application.CreateForm(TFrmBaja, FrmBaja);
-  Application.CreateForm(TFrmBuscarBien, FrmBuscarBien);
-  Application.CreateForm(TDmBienes, DmBienes);
+  Application.CreateForm(TFrmGenClave, FrmGenClave);
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFrmCampanas, FrmCampanas);
+  Application.CreateForm(TFrmAddProg, FrmAddProg);
   Application.Run;
 end.
 

@@ -9,14 +9,15 @@ object dmconn: Tdmconn
   object Conn: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = False
-    ClientCodepage = 'UTF-8'
+    ClientCodepage = 'utf8'
     Properties.Strings = (
-      'codepage=UTF-8'
+      'codepage=utf8'
     )
+    HostName = 'localhost'
     Port = 0
-    Database = 'F:/lazarus/lzinvent/database/lzinvent.db'
-    Protocol = 'sqlite-3'
-    LibraryLocation = 'F:/lazarus/lzinvent/database/sqlite3.dll'
+    Database = 'comite'
+    User = 'root'
+    Protocol = 'mysql'
     left = 16
     top = 8
   end

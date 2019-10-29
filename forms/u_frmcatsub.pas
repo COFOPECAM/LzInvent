@@ -32,14 +32,10 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     ZQCat: TZQuery;
-    ZQCatestatus: TLargeintField;
-    ZQCatid_categoria: TLargeintField;
-    ZQCatnombre: TStringField;
+    ZQCatid: TLongintField;
+    ZQCatname: TStringField;
+    ZQCatstatus: TSmallintField;
     ZQSub: TZQuery;
-    ZQSubestatus: TLargeintField;
-    ZQSubid_categoria: TLargeintField;
-    ZQSubid_subcategoria: TLargeintField;
-    ZQSubnombre: TStringField;
     ZQAddSub: TZQuery;
     procedure CbCategoriasChange(Sender: TObject);
     procedure FormShow(Sender: TObject);

@@ -1,7 +1,7 @@
 object FrmEstatus: TFrmEstatus
-  Left = 622
+  Left = 412
   Height = 240
-  Top = 763
+  Top = 606
   Width = 320
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -15,7 +15,7 @@ object FrmEstatus: TFrmEstatus
     Height = 23
     Top = 9
     Width = 169
-    DataField = 'nombre'
+    DataField = 'name'
     DataSource = DSEstatus
     CharCase = ecUppercase
     MaxLength = 1020
@@ -26,26 +26,28 @@ object FrmEstatus: TFrmEstatus
     Height = 184
     Top = 40
     Width = 256
+    AutoEdit = False
     Color = clWindow
     Columns = <    
       item
         Title.Caption = 'No.'
         Width = 45
-        FieldName = 'id_estatus'
+        FieldName = 'id'
       end    
       item
         Title.Caption = 'Estatus'
         Width = 115
-        FieldName = 'nombre'
+        FieldName = 'name'
       end    
       item
         ButtonStyle = cbsCheckboxColumn
         Title.Caption = 'Estatus'
         Width = 50
-        FieldName = 'estatus'
+        FieldName = 'status'
       end>
     DataSource = DSEstatus
     TabOrder = 1
+    TitleStyle = tsNative
   end
   object DBNav: TDBNavigator
     Left = 280
@@ -74,7 +76,7 @@ object FrmEstatus: TFrmEstatus
     Top = 9
     Width = 50
     Caption = 'Activo'
-    DataField = 'estatus'
+    DataField = 'status'
     DataSource = DSEstatus
     TabOrder = 3
     ValueChecked = '1'
@@ -92,7 +94,7 @@ object FrmEstatus: TFrmEstatus
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_estatus, nombre, estatus from estatus order by nombre asc'
+      'select id, name, status from inventory_status order by name asc'
     )
     Params = <>
     left = 52

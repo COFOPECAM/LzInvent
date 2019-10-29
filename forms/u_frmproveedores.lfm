@@ -1,7 +1,7 @@
 object FrmProveedores: TFrmProveedores
-  Left = 401
+  Left = 348
   Height = 523
-  Top = 462
+  Top = 159
   Width = 703
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -167,7 +167,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'No.'
         Width = 34
-        FieldName = 'No.'
+        FieldName = 'no'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -182,7 +182,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'Empresa'
         Width = 60
-        FieldName = 'Empresa'
+        FieldName = 'company'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -197,7 +197,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'RFC'
         Width = 36
-        FieldName = 'RFC'
+        FieldName = 'rfc'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -212,7 +212,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'Representante'
         Width = 90
-        FieldName = 'Representante'
+        FieldName = 'contact'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -227,7 +227,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'Celular'
         Width = 52
-        FieldName = 'Celular'
+        FieldName = 'cel'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -242,7 +242,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'Teléfono'
         Width = 61
-        FieldName = 'Teléfono'
+        FieldName = 'phone'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -257,7 +257,7 @@ object FrmProveedores: TFrmProveedores
         Title.Orientation = toHorizontal
         Title.Caption = 'Email'
         Width = 44
-        FieldName = 'Email'
+        FieldName = 'email'
         EditButtons = <>
         Filter.DropDownRows = 0
         Filter.EmptyValue = '(Empty)'
@@ -323,10 +323,12 @@ object FrmProveedores: TFrmProveedores
         ShortCut = 16451
         Enabled = True
       end>
+    FooterOptions.Color = clYellow
     FooterOptions.DrawFullLine = False
     SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
     SearchOptions.FromStart = False
-    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickSearch, rdgAllowQuickFilter, rdgAllowFilterForm, rdgAllowSortForm]
+    FooterColor = clYellow
     Align = alClient
     AutoEdit = False
     Color = clWindow
@@ -337,6 +339,7 @@ object FrmProveedores: TFrmProveedores
     DataSource = DSProveedores
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
     TabOrder = 2
+    TitleStyle = tsNative
   end
   object LBRibbon: TImageList
     Height = 48
@@ -1790,21 +1793,7 @@ object FrmProveedores: TFrmProveedores
   object ZQProveedores: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select'
-      'id_proveedor as ''No.'','
-      'empresa as Empresa,'
-      'rfc as RFC,'
-      'representante as Representante,'
-      'celular as Celular,'
-      'telefono as ''Teléfono'','
-      'email as Email'
-      'from'
-      'proveedores'
-      'where'
-      'estatus = 1'
-      'order by'
-      'empresa'
-      'asc'
+      'select id_provider as ''no'', company, rfc, email, contact, phone, cel from inventory_provider order by company asc'
     )
     Params = <>
     left = 138
@@ -1846,6 +1835,16 @@ object FrmProveedores: TFrmProveedores
   object ZQAllData: TZQuery
     Params = <>
     left = 296
+    top = 265
+  end
+  object RxSortZeos1: TRxSortZeos
+    left = 470
+    top = 306
+  end
+  object RxDBGridFooterTools1: TRxDBGridFooterTools
+    RxDBGrid = DgProveedores
+    Caption = 'Fila de totales'
+    left = 578
     top = 265
   end
 end

@@ -17,10 +17,10 @@ object FrmPlaces: TFrmPlaces
     Hint = 'Nombre del lugar a agregar'
     Top = 8
     Width = 185
-    DataField = 'nombre'
+    DataField = 'name'
     DataSource = DSPlace
     CharCase = ecUppercase
-    MaxLength = 0
+    MaxLength = 400
     ParentShowHint = False
     TabOrder = 0
   end
@@ -30,7 +30,7 @@ object FrmPlaces: TFrmPlaces
     Top = 8
     Width = 58
     Caption = 'Activo'
-    DataField = 'estatus'
+    DataField = 'status'
     DataSource = DSPlace
     TabOrder = 1
     ValueChecked = '1'
@@ -47,22 +47,23 @@ object FrmPlaces: TFrmPlaces
       item
         Title.Caption = 'No.'
         Width = 45
-        FieldName = 'id_lugar'
+        FieldName = 'id'
       end    
       item
         Title.Caption = 'Lugar'
         Width = 125
-        FieldName = 'nombre'
+        FieldName = 'name'
       end    
       item
         ButtonStyle = cbsCheckboxColumn
         Title.Caption = 'Estatus'
         Width = 45
-        FieldName = 'estatus'
+        FieldName = 'status'
       end>
     DataSource = DSPlace
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 2
+    TitleStyle = tsNative
   end
   object DBNav: TDBNavigator
     Left = 280
@@ -95,8 +96,9 @@ object FrmPlaces: TFrmPlaces
   end
   object ZQPlace: TZQuery
     Connection = dmconn.Conn
+    Active = True
     SQL.Strings = (
-      'select id_lugar, nombre, estatus from lugares order by nombre asc'
+      'select id, name, status from area_areas order by name asc'
     )
     Params = <>
     left = 79

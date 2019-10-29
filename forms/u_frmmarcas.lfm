@@ -1,7 +1,7 @@
 object FrmMarca: TFrmMarca
-  Left = 285
+  Left = 300
   Height = 306
-  Top = 686
+  Top = 698
   Width = 306
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -44,7 +44,7 @@ object FrmMarca: TFrmMarca
     Height = 23
     Top = 12
     Width = 160
-    DataField = 'nombre'
+    DataField = 'name'
     DataSource = DSMarcas
     CharCase = ecUppercase
     MaxLength = 1020
@@ -56,7 +56,7 @@ object FrmMarca: TFrmMarca
     Top = 12
     Width = 52
     Caption = 'Activo'
-    DataField = 'estatus'
+    DataField = 'status'
     DataSource = DSMarcas
     TabOrder = 2
     ValueChecked = '1'
@@ -72,18 +72,18 @@ object FrmMarca: TFrmMarca
       item
         Title.Caption = 'No.'
         Width = 45
-        FieldName = 'id_marcas'
+        FieldName = 'id_brand'
       end    
       item
         Title.Caption = 'Marca'
         Width = 105
-        FieldName = 'nombre'
+        FieldName = 'name'
       end    
       item
         ButtonStyle = cbsCheckboxColumn
         Title.Caption = 'Estatus'
         Width = 45
-        FieldName = 'estatus'
+        FieldName = 'status'
       end>
     DataSource = DSMarcas
     TabOrder = 3
@@ -97,7 +97,7 @@ object FrmMarca: TFrmMarca
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_marcas, nombre, estatus from marcas order by nombre asc'
+      'select id_brand, name, status from inventory_brand order by name asc'
     )
     Params = <>
     left = 40

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
   DBCtrls, Spin, EditBtn, ButtonPanel, DBGrids, LR_Class, LR_DBSet, m_conn,
-  ZDataset, StringsFormat, variants;
+  ZDataset, StringsFormat, variants, u_frmgenclave;
 
 type
 
@@ -17,6 +17,7 @@ type
     BP: TButtonPanel;
     BtnCambiar: TButton;
     CxbGenerar: TCheckBox;
+    DBLookupComboBox1: TDBLookupComboBox;
     DSHistorial: TDataSource;
     DSMarcas: TDataSource;
     DSEstatus: TDataSource;
@@ -38,6 +39,7 @@ type
     CbProveedor: TDBLookupComboBox;
     CbBaja: TDBLookupComboBox;
     DBResguardo: TfrDBDataSet;
+    Label15: TLabel;
     LzReportResguardo: TfrReport;
     TxtIdent: TEdit;
     TxtModelo: TEdit;
@@ -86,6 +88,7 @@ type
     procedure CbCategoriaEditingDone(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
+    procedure LbCodigoDblClick(Sender: TObject);
     procedure LzReportResguardoGetValue(const ParName: String;
       var ParValue: Variant);
     procedure OKButtonClick(Sender: TObject);
@@ -117,18 +120,18 @@ var
   sf: TStringsFormat;
 begin
   // Cargas listas despligables
-  ZQMarcas.Open;
+  {ZQMarcas.Open;
   ZQEstatus.Open;
   ZQLugar.Open;
   ZQCat.Open;
   ZQProv.Open;
   ZQBaja.Open;
-  ZQEmpl.Open;
+  ZQEmpl.Open;}
 
   if show_baja then
   begin
-    Height:=470;
-    PcBien.Height:=416;
+    Height:=485;
+    PcBien.Height:=432;
     LbBaja.Visible:=true;
     LbFechaBaja.Visible:=true;
     CbBaja.Visible:=true;
@@ -136,8 +139,8 @@ begin
   end
   else
   begin
-    PcBien.Height:=380;
-    Height:=434;
+    PcBien.Height:=400;
+    Height:=449;
   end;
   TsCambios.TabVisible:=edit;
   save:=true;
@@ -177,7 +180,7 @@ begin
   else
   begin
     // Obtener el numero consecutivo
-    ZQBien.Close;
+    {ZQBien.Close;
     ZQBien.SQL.Text:='select consecutivo from bienes order by consecutivo desc limit 0, 1';
     ZQBien.Open;
     if ZQBien.RecordCount > 0 then
@@ -191,10 +194,20 @@ begin
 
     //Reemplazar el formato por el que se encuentra en la configuración
     new_id:=new_id+1;
-    LbCodigo.Caption:=sf.GetCode('LZI######', new_id);;
+    LbCodigo.Caption:=sf.GetCode('LZI######', new_id);}
   end;
 
 
+end;
+
+procedure TFrmAddBien.LbCodigoDblClick(Sender: TObject);
+begin
+  // Mostrar ventana para generar la clave
+  FrmGenClave:=TFrmGenClave.Create(FrmAddBien);
+  if FrmGenClave.ShowModal = mrOK then
+  begin
+    // Mostrar clave generada
+  end;
 end;
 
 procedure TFrmAddBien.LzReportResguardoGetValue(const ParName: String;

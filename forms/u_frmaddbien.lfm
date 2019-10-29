@@ -1,12 +1,12 @@
 object FrmAddBien: TFrmAddBien
-  Left = 438
-  Height = 470
-  Top = 202
+  Left = 547
+  Height = 485
+  Top = 316
   Width = 549
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'LzInvent - Bien mueble'
-  ClientHeight = 470
+  ClientHeight = 485
   ClientWidth = 549
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
@@ -14,7 +14,7 @@ object FrmAddBien: TFrmAddBien
   LCLVersion = '2.0.2.0'
   object PcBien: TPageControl
     Left = 8
-    Height = 416
+    Height = 432
     Top = 8
     Width = 536
     ActivePage = TsBien
@@ -22,7 +22,7 @@ object FrmAddBien: TFrmAddBien
     TabOrder = 0
     object TsBien: TTabSheet
       Caption = 'Datos de bien mueble'
-      ClientHeight = 388
+      ClientHeight = 404
       ClientWidth = 528
       object Label1: TLabel
         Left = 17
@@ -90,18 +90,18 @@ object FrmAddBien: TFrmAddBien
         TabOrder = 2
       end
       object Label5: TLabel
-        Left = 292
+        Left = 47
         Height = 15
-        Top = 128
+        Top = 223
         Width = 36
         Caption = 'Precio:'
         ParentColor = False
       end
       object TxtPrecio: TFloatSpinEdit
-        Left = 332
+        Left = 87
         Height = 23
-        Top = 123
-        Width = 184
+        Top = 218
+        Width = 160
         MaxValue = 500000
         MinValue = 0
         TabOrder = 3
@@ -196,7 +196,7 @@ object FrmAddBien: TFrmAddBien
       object Label10: TLabel
         Left = 28
         Height = 15
-        Top = 225
+        Top = 253
         Width = 54
         Caption = 'Categoria:'
         ParentColor = False
@@ -204,7 +204,7 @@ object FrmAddBien: TFrmAddBien
       object CbCategoria: TDBLookupComboBox
         Left = 87
         Height = 23
-        Top = 220
+        Top = 248
         Width = 160
         AutoComplete = True
         AutoDropDown = True
@@ -222,7 +222,7 @@ object FrmAddBien: TFrmAddBien
       object Label11: TLabel
         Left = 256
         Height = 15
-        Top = 225
+        Top = 260
         Width = 72
         Caption = 'Subcategoria:'
         ParentColor = False
@@ -230,7 +230,7 @@ object FrmAddBien: TFrmAddBien
       object CbSubC: TDBLookupComboBox
         Left = 332
         Height = 23
-        Top = 220
+        Top = 248
         Width = 184
         AutoComplete = True
         AutoDropDown = True
@@ -247,7 +247,7 @@ object FrmAddBien: TFrmAddBien
       object Label12: TLabel
         Left = 25
         Height = 15
-        Top = 254
+        Top = 281
         Width = 57
         Caption = 'Proveedor:'
         ParentColor = False
@@ -255,7 +255,7 @@ object FrmAddBien: TFrmAddBien
       object CbProveedor: TDBLookupComboBox
         Left = 87
         Height = 23
-        Top = 251
+        Top = 278
         Width = 429
         DataField = 'id_proveedor'
         DataSource = DSProv
@@ -269,7 +269,7 @@ object FrmAddBien: TFrmAddBien
       object Label13: TLabel
         Left = 2
         Height = 15
-        Top = 284
+        Top = 309
         Width = 80
         Caption = 'Observaciones:'
         ParentColor = False
@@ -277,7 +277,7 @@ object FrmAddBien: TFrmAddBien
       object TxtObser: TMemo
         Left = 88
         Height = 58
-        Top = 284
+        Top = 309
         Width = 428
         CharCase = ecUppercase
         TabOrder = 11
@@ -309,23 +309,27 @@ object FrmAddBien: TFrmAddBien
       object LbCodigo: TLabel
         Left = 88
         Height = 20
+        Hint = 'Doble clic aqui para generar la clave'
         Top = 10
-        Width = 94
-        Caption = 'LZI00000000'
+        Width = 157
+        Caption = 'CEF-0000-00-00-0000'
         Font.CharSet = ANSI_CHARSET
-        Font.Color = clGreen
+        Font.Color = clBlue
         Font.Height = -15
         Font.Name = 'Segoe UI'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
-        Font.Style = [fsBold]
+        Font.Style = [fsBold, fsUnderline]
         ParentColor = False
         ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        OnDblClick = LbCodigoDblClick
       end
       object LbBaja: TLabel
         Left = 57
         Height = 15
-        Top = 357
+        Top = 380
         Width = 25
         Caption = 'Baja:'
         ParentColor = False
@@ -334,7 +338,7 @@ object FrmAddBien: TFrmAddBien
       object CbBaja: TDBLookupComboBox
         Left = 88
         Height = 23
-        Top = 352
+        Top = 375
         Width = 156
         AutoComplete = True
         AutoDropDown = True
@@ -352,7 +356,7 @@ object FrmAddBien: TFrmAddBien
       object LbFechaBaja: TLabel
         Left = 269
         Height = 15
-        Top = 357
+        Top = 380
         Width = 59
         Caption = 'Fecha baja:'
         ParentColor = False
@@ -361,7 +365,7 @@ object FrmAddBien: TFrmAddBien
       object DeFechaBaja: TDateEdit
         Left = 332
         Height = 23
-        Top = 352
+        Top = 375
         Width = 184
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         DateOrder = doNone
@@ -370,6 +374,23 @@ object FrmAddBien: TFrmAddBien
         MaxLength = 0
         TabOrder = 15
         Visible = False
+      end
+      object Label15: TLabel
+        Left = 287
+        Height = 15
+        Top = 223
+        Width = 41
+        Caption = 'Cuenta:'
+        ParentColor = False
+      end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 332
+        Height = 23
+        Top = 218
+        Width = 184
+        ListFieldIndex = 0
+        LookupCache = False
+        TabOrder = 16
       end
     end
     object TsCambios: TTabSheet
@@ -470,7 +491,7 @@ object FrmAddBien: TFrmAddBien
   object BP: TButtonPanel
     Left = 6
     Height = 34
-    Top = 430
+    Top = 445
     Width = 537
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
@@ -492,7 +513,7 @@ object FrmAddBien: TFrmAddBien
     )
     Params = <>
     left = 16
-    top = 428
+    top = 456
   end
   object ZQEstatus: TZQuery
     Connection = dmconn.Conn
@@ -500,8 +521,8 @@ object FrmAddBien: TFrmAddBien
       'select id_estatus, nombre from estatus where estatus = 1 order by nombre asc'
     )
     Params = <>
-    left = 67
-    top = 417
+    left = 64
+    top = 456
   end
   object ZQLugar: TZQuery
     Connection = dmconn.Conn
@@ -509,8 +530,8 @@ object FrmAddBien: TFrmAddBien
       'select id_lugar, nombre from lugares where estatus = 1 order by nombre asc'
     )
     Params = <>
-    left = 121
-    top = 418
+    left = 112
+    top = 456
   end
   object ZQCat: TZQuery
     Connection = dmconn.Conn
@@ -518,8 +539,8 @@ object FrmAddBien: TFrmAddBien
       'select id_categoria, nombre from categorias where estatus = 1 order by nombre asc'
     )
     Params = <>
-    left = 174
-    top = 420
+    left = 160
+    top = 456
   end
   object ZQSub: TZQuery
     Connection = dmconn.Conn
@@ -532,8 +553,8 @@ object FrmAddBien: TFrmAddBien
         Name = 'id_cat'
         ParamType = ptUnknown
       end>
-    left = 224
-    top = 421
+    left = 200
+    top = 456
     ParamData = <    
       item
         DataType = ftUnknown
@@ -547,8 +568,8 @@ object FrmAddBien: TFrmAddBien
       'select id_proveedor, empresa, representante from proveedores where estatus = 1 order by empresa asc'
     )
     Params = <>
-    left = 276
-    top = 421
+    left = 248
+    top = 456
   end
   object ZQBaja: TZQuery
     Connection = dmconn.Conn
@@ -556,8 +577,8 @@ object FrmAddBien: TFrmAddBien
       'select id_cat_baja, nombre from cat_bajas where estatus = 1 order by nombre asc'
     )
     Params = <>
-    left = 326
-    top = 416
+    left = 288
+    top = 456
   end
   object ZQEmpl: TZQuery
     Connection = dmconn.Conn
@@ -565,8 +586,8 @@ object FrmAddBien: TFrmAddBien
       'select id_empleado, nombres || '' '' || apellidos as empleado from empleados where estatus = 1 order by nombres asc'
     )
     Params = <>
-    left = 368
-    top = 400
+    left = 320
+    top = 456
     object ZQEmplid_empleado: TLargeintField
       FieldKind = fkData
       FieldName = 'id_empleado'
@@ -597,43 +618,43 @@ object FrmAddBien: TFrmAddBien
   end
   object DSMarcas: TDataSource
     DataSet = ZQMarcas
-    left = 20
-    top = 370
+    left = 16
+    top = 440
   end
   object DSEstatus: TDataSource
     DataSet = ZQEstatus
-    left = 69
-    top = 369
+    left = 64
+    top = 440
   end
   object DSLugar: TDataSource
     DataSet = ZQLugar
-    left = 117
-    top = 372
+    left = 112
+    top = 440
   end
   object DSCat: TDataSource
     DataSet = ZQCat
-    left = 175
-    top = 377
+    left = 160
+    top = 440
   end
   object DSSub: TDataSource
     DataSet = ZQSub
-    left = 221
-    top = 375
+    left = 200
+    top = 440
   end
   object DSProv: TDataSource
     DataSet = ZQProv
-    left = 281
-    top = 373
+    left = 248
+    top = 440
   end
   object DSBaja: TDataSource
     DataSet = ZQBaja
-    left = 328
-    top = 370
+    left = 288
+    top = 440
   end
   object DSEmpl: TDataSource
     DataSet = ZQEmpl
-    left = 368
-    top = 352
+    left = 320
+    top = 440
   end
   object LzReportResguardo: TfrReport
     Dataset = DBResguardo

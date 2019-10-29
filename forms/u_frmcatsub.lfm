@@ -1,7 +1,7 @@
 object FrmCategorias: TFrmCategorias
-  Left = 480
+  Left = 299
   Height = 378
-  Top = 326
+  Top = 628
   Width = 331
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -37,7 +37,7 @@ object FrmCategorias: TFrmCategorias
         Height = 23
         Top = 13
         Width = 176
-        DataField = 'nombre'
+        DataField = 'name'
         DataSource = DSCat
         CharCase = ecUppercase
         MaxLength = 0
@@ -49,7 +49,7 @@ object FrmCategorias: TFrmCategorias
         Top = 13
         Width = 58
         Caption = 'Activo'
-        DataField = 'estatus'
+        DataField = 'status'
         DataSource = DSCat
         TabOrder = 1
         ValueChecked = '1'
@@ -66,18 +66,18 @@ object FrmCategorias: TFrmCategorias
           item
             Title.Caption = 'No.'
             Width = 45
-            FieldName = 'id_categoria'
+            FieldName = 'id'
           end        
           item
             Title.Caption = 'Categoria'
             Width = 130
-            FieldName = 'nombre'
+            FieldName = 'name'
           end        
           item
             ButtonStyle = cbsCheckboxColumn
             Title.Caption = 'Estatus'
             Width = 50
-            FieldName = 'estatus'
+            FieldName = 'status'
           end>
         DataSource = DSCat
         Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -123,10 +123,10 @@ object FrmCategorias: TFrmCategorias
         Width = 216
         AutoComplete = True
         AutoDropDown = True
-        DataField = 'id_categoria'
+        DataField = 'inventory_categories_id'
         DataSource = DSAddSub
-        KeyField = 'id_categoria'
-        ListField = 'nombre'
+        KeyField = 'id'
+        ListField = 'name'
         ListFieldIndex = 0
         ListSource = DSCat
         LookupCache = True
@@ -146,7 +146,7 @@ object FrmCategorias: TFrmCategorias
         Height = 23
         Top = 46
         Width = 152
-        DataField = 'nombre'
+        DataField = 'name'
         DataSource = DSAddSub
         CharCase = ecUppercase
         MaxLength = 1020
@@ -158,7 +158,7 @@ object FrmCategorias: TFrmCategorias
         Top = 46
         Width = 58
         Caption = 'Activo'
-        DataField = 'estatus'
+        DataField = 'status'
         DataSource = DSAddSub
         TabOrder = 2
         ValueChecked = '1'
@@ -174,17 +174,17 @@ object FrmCategorias: TFrmCategorias
           item
             Title.Caption = 'No.'
             Width = 45
-            FieldName = 'id_subcategoria'
+            FieldName = 'id'
           end        
           item
             Title.Caption = 'Subcategoria'
             Width = 120
-            FieldName = 'nombre'
+            FieldName = 'name'
           end        
           item
             Title.Caption = 'Estatus'
             Width = 50
-            FieldName = 'estatus'
+            FieldName = 'status'
           end>
         DataSource = DSSub
         TabOrder = 3
@@ -215,54 +215,54 @@ object FrmCategorias: TFrmCategorias
   object ZQCat: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select id_categoria, nombre, estatus from categorias order by nombre asc'
+      'select id,name, status from inventory_categories order by name asc'
     )
     Params = <>
-    LinkedFields = 'id_categoria'
+    LinkedFields = 'id'
     left = 24
     top = 308
-    object ZQCatid_categoria: TLargeintField
+    object ZQCatid: TLongintField
       FieldKind = fkData
-      FieldName = 'id_categoria'
+      FieldName = 'id'
       Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
-    object ZQCatnombre: TStringField
+    object ZQCatname: TStringField
       FieldKind = fkData
-      FieldName = 'nombre'
+      FieldName = 'name'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = True
-      Size = 1020
+      Required = False
+      Size = 400
     end
-    object ZQCatestatus: TLargeintField
+    object ZQCatstatus: TSmallintField
       FieldKind = fkData
-      FieldName = 'estatus'
+      FieldName = 'status'
       Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = True
+      Required = False
     end
   end
   object ZQSub: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
       'select '
-      'id_subcategoria, '
-      'nombre, '
-      'estatus, '
-      'id_categoria '
+      'id,'
+      'name,'
+      'status, '
+      'inventory_categories_id'
       'from '
-      'subcategoria '
+      'inventory_subcategorie'
       'where '
-      'id_categoria = :cat_id '
-      'order by nombre asc'
+      'inventory_categories_id= :cat_id '
+      'order by name asc'
     )
     Params = <    
       item
@@ -278,43 +278,6 @@ object FrmCategorias: TFrmCategorias
         Name = 'cat_id'
         ParamType = ptUnknown
       end>
-    object ZQSubid_subcategoria: TLargeintField
-      FieldKind = fkData
-      FieldName = 'id_subcategoria'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQSubnombre: TStringField
-      FieldKind = fkData
-      FieldName = 'nombre'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 1020
-    end
-    object ZQSubestatus: TLargeintField
-      FieldKind = fkData
-      FieldName = 'estatus'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object ZQSubid_categoria: TLargeintField
-      FieldKind = fkData
-      FieldName = 'id_categoria'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
   end
   object DSCat: TDataSource
     DataSet = ZQCat
@@ -328,15 +291,17 @@ object FrmCategorias: TFrmCategorias
   end
   object ZQAddSub: TZQuery
     Connection = dmconn.Conn
-    Active = True
     SQL.Strings = (
       'select '
-      'id_subcategoria, '
-      'nombre, '
-      'estatus, '
-      'id_categoria '
+      'id, '
+      'name,'
+      'inventory_categories_id,'
+      'status'
       'from '
-      'subcategoria '
+      'inventory_subcategorie'
+      'order by'
+      'name'
+      'asc'
     )
     Params = <>
     left = 144

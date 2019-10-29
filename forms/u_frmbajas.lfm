@@ -1,7 +1,7 @@
 object FrmBajas: TFrmBajas
-  Left = 286
+  Left = 299
   Height = 240
-  Top = 760
+  Top = 702
   Width = 311
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -24,7 +24,7 @@ object FrmBajas: TFrmBajas
     Height = 23
     Top = 10
     Width = 176
-    DataField = 'nombre'
+    DataField = 'name'
     DataSource = DSBajas
     CharCase = ecUppercase
     MaxLength = 0
@@ -36,7 +36,7 @@ object FrmBajas: TFrmBajas
     Top = 10
     Width = 58
     Caption = 'Activo'
-    DataField = 'estatus'
+    DataField = 'status'
     DataSource = DSBajas
     TabOrder = 1
     ValueChecked = '1'
@@ -53,22 +53,23 @@ object FrmBajas: TFrmBajas
       item
         Title.Caption = 'No.'
         Width = 45
-        FieldName = 'id_cat_baja'
+        FieldName = 'id'
       end    
       item
         Title.Caption = 'Baja'
         Width = 115
-        FieldName = 'nombre'
+        FieldName = 'name'
       end    
       item
         ButtonStyle = cbsCheckboxColumn
         Title.Caption = 'Estatus'
         Width = 45
-        FieldName = 'estatus'
+        FieldName = 'status'
       end>
     DataSource = DSBajas
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 2
+    TitleStyle = tsNative
   end
   object DBNav: TDBNavigator
     Left = 266
@@ -98,15 +99,16 @@ object FrmBajas: TFrmBajas
   end
   object ZQBajas: TZQuery
     Connection = dmconn.Conn
+    Active = True
     SQL.Strings = (
       'select'
-      'id_cat_baja,'
-      'nombre,'
-      'estatus'
+      'id,'
+      'name,'
+      'status'
       'from'
-      'cat_bajas'
+      'inventory_down'
       'order by'
-      'nombre'
+      'name'
       'asc'
     )
     Params = <>

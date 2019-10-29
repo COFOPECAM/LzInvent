@@ -6,11 +6,12 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
-  RxDBGridExportSpreadSheet, SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons,
-  u_frmlistarusuarios, m_conn, db, ZDataset, spkt_Appearance, u_frmaddemployee,
-  m_empleados, u_frmareas, LCLType, u_frmcatsub, u_frmplaces, u_frmbajas,
-  u_frmmarcas, u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet,
-  LR_Shape, lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes;
+  RxDBGridFooterTools, RxDBGridExportSpreadSheet, RxSortZeos, SpkToolbar,
+  spkt_Tab, spkt_Pane, spkt_Buttons, u_frmlistarusuarios, m_conn, db, ZDataset,
+  spkt_Appearance, u_frmaddemployee, m_empleados, u_frmareas, LCLType,
+  u_frmcatsub, u_frmplaces, u_frmbajas, u_frmmarcas, u_frmestatus,
+  u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet, LR_Shape, lr_e_pdf,
+  u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes, u_frmcampanas;
 
 type
 
@@ -27,15 +28,27 @@ type
     RbBAgregar: TSpkLargeButton;
     DgBienes: TRxDBGrid;
     DgEmpleados: TRxDBGrid;
+    FGBienes: TRxDBGridFooterTools;
+    FGConsumibles: TRxDBGridFooterTools;
+    RxSortZeos1: TRxSortZeos;
+    BtnCPrograma: TSpkLargeButton;
+    TConsumibles: TRxDBGrid;
     SDFile: TSaveDialog;
     RbBtnConfig: TSpkLargeButton;
+    SpkLargeButton1: TSpkLargeButton;
     SpkLargeButton10: TSpkLargeButton;
     SpkLargeButton11: TSpkLargeButton;
+    SpkLargeButton12: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
+    SpkLargeButton3: TSpkLargeButton;
+    SpkLargeButton4: TSpkLargeButton;
     SpkLargeButton7: TSpkLargeButton;
     SpkLargeButton9: TSpkLargeButton;
     SpkPane10: TSpkPane;
     SpkPane11: TSpkPane;
+    SpkPane12: TSpkPane;
+    SpkPane13: TSpkPane;
+    SpkTab1: TSpkTab;
     ToExcel: TRxDBGridExportSpreadSheet;
     BtnRbCProveedores: TSpkLargeButton;
     BtnEAdd: TSpkLargeButton;
@@ -81,6 +94,7 @@ type
     ZQBienReport: TZQuery;
     ZQResEmpleado: TZQuery;
     procedure BtbCCatClick(Sender: TObject);
+    procedure BtnCProgramaClick(Sender: TObject);
     procedure BtnCtAreasClick(Sender: TObject);
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
@@ -174,13 +188,17 @@ end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
+  // Ajustar tablas al client
+  DgBienes.Align:=alClient;
+  DgEmpleados.Align:=alClient;
+  TConsumibles.Align:=alClient;
   // Abrir conexiones y llenar tablas
-  ZQBienes.Params.ParamByName('limit_show').AsInteger:=50;
-  ZQBienes.Open;
+  {ZQBienes.Params.ParamByName('limit_show').AsInteger:=50;
+  ZQBienes.Open;  }
   // Cargar permisos de la aplicación
 
   // Cargar configuraciones
-  SbMsjs.Panels[0].Text:='Usuario: ' + dmconn.Apellido + ', ' + dmconn.Nombre;
+  // SbMsjs.Panels[0].Text:='Usuario: ' + dmconn.Apellido + ', ' + dmconn.Nombre;
 end;
 
 procedure TFrmPrincipal.LzReportsGetValue(const ParName: String;
@@ -205,10 +223,11 @@ end;
 
 procedure TFrmPrincipal.BtnEAddClick(Sender: TObject);
 begin
+  FrmAddEmpleado:=TFrmAddEmpleado.Create(FrmPrincipal);
   if FrmAddEmpleado.ShowModal = mrOK then
   begin
     dmempleados.ZQGetEmpleados.Close;
-    dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
+    // dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
     dmempleados.ZQGetEmpleados.Open;
   end;
 end;
@@ -329,19 +348,19 @@ end;
 
 procedure TFrmPrincipal.BtnRbCBajasClick(Sender: TObject);
 begin
-  FrmBajas:=TFrmBajas.Create(nil);
+  FrmBajas:=TFrmBajas.Create(FrmPrincipal);
   FrmBajas.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnRbCLugaresClick(Sender: TObject);
 begin
-  FrmPlaces:=TFrmPlaces.Create(nil);
+  FrmPlaces:=TFrmPlaces.Create(FrmPrincipal);
   FrmPlaces.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnRbCMarcasClick(Sender: TObject);
 begin
-  FrmMarca:=TFrmMarca.Create(nil);
+  FrmMarca:=TFrmMarca.Create(FrmPrincipal);
   FrmMarca.ShowModal;
 end;
 
@@ -375,17 +394,26 @@ end;
 
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);
 begin
+  FrmAreas := TFrmAreas.Create(FrmPrincipal);
   FrmAreas.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtbCCatClick(Sender: TObject);
 begin
   // Categorias
+  FrmCategorias:=TFrmCategorias.Create(FrmPrincipal);
   FrmCategorias.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnCProgramaClick(Sender: TObject);
+begin
+  FrmCampanas:=TFrmCampanas.Create(FrmPrincipal);
+  FrmCampanas.ShowModal;
 end;
 
 procedure TFrmPrincipal.RbCfListarClick(Sender: TObject);
 begin
+  FrmListaUsuarios := TFrmListaUsuarios.Create(FrmPrincipal);
   FrmListaUsuarios.ShowModal;
 end;
 
@@ -394,12 +422,13 @@ var
   empl_id:integer;
 begin
   empl_id:=StrToInt(DgEmpleados.DataSource.DataSet.Fields[0].Value);
+  FrmAddEmpleado:=TFrmAddEmpleado.Create(FrmPrincipal);
   FrmAddEmpleado.empl_id:=empl_id;
   FrmAddEmpleado.edit:=true;
   if FrmAddEmpleado.ShowModal = mrOK then
   begin
     dmempleados.ZQGetEmpleados.Close;
-    dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
+    // dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
     dmempleados.ZQGetEmpleados.Open;
   end;
 end;
@@ -432,20 +461,16 @@ begin
   if StMenu.TabIndex = 0 then
   begin
     DgBienes.BringToFront;
-    DgBienes.Align:=alClient;
-
-    DgEmpleados.Align:=alNone;
-    DgEmpleados.SendToBack;
   end;
   if StMenu.TabIndex = 1 then
   begin
-    DgEmpleados.Align:=alClient;
+   TConsumibles.BringToFront;
+  end;
+  if StMenu.TabIndex = 2 then
+  begin
     DgEmpleados.BringToFront;
-
-    DgBienes.SendToBack;
-    DgBienes.Align:=alNone;
     dmempleados.ZQGetEmpleados.Close;
-    dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
+    // dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
     dmempleados.ZQGetEmpleados.Open;
   end;
 end;

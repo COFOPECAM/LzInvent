@@ -2,29 +2,18 @@ object dmempleados: Tdmempleados
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 239
-  HorizontalOffset = 412
-  VerticalOffset = 753
+  HorizontalOffset = 297
+  VerticalOffset = 703
   Width = 361
   PPI = 96
   object ZQGetEmpleados: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select e.id_empleado as ''No.'', e.nombres as ''Nombre(s)'', e.apellidos as ''Apellidos'', a.nombre as ''Area'' from empleados e inner join areas a on a.id_area = e.areas_id_area where e.estatus = :estatus'
+      'select u2.id as no, u2.name, u2.surname, a2.name as depto from user_users u2 left join area_apartments a2 on a2.id = u2.apartments_id where u2.status = 1 order by u2.name asc'
     )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'estatus'
-        ParamType = ptUnknown
-      end>
+    Params = <>
     left = 36
     top = 23
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'estatus'
-        ParamType = ptUnknown
-      end>
   end
   object DSEmpleados: TDataSource
     DataSet = ZQGetEmpleados
@@ -40,10 +29,38 @@ object dmempleados: Tdmempleados
   object ZQArea: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'SELECT id_area, nombre, estatus FROM areas ORDER BY nombre ASC'
+      'SELECT id, name, status FROM area_apartments ORDER BY name ASC'
     )
     Params = <>
     left = 39
     top = 89
+    object ZQAreaid: TLongintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQAreaname: TStringField
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 400
+    end
+    object ZQAreastatus: TSmallintField
+      FieldKind = fkData
+      FieldName = 'status'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
 end

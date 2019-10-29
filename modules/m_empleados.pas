@@ -13,6 +13,9 @@ type
 
   Tdmempleados = class(TDataModule)
     DSEmpleados: TDataSource;
+    ZQAreaid: TLongintField;
+    ZQAreaname: TStringField;
+    ZQAreastatus: TSmallintField;
     ZQGetEmpleados: TZQuery;
     ZQAdd: TZQuery;
     ZQArea: TZQuery;
@@ -34,7 +37,7 @@ implementation
 
 procedure Tdmempleados.DataModuleCreate(Sender: TObject);
 begin
-  ZQGetEmpleados.Open;
+  // ZQGetEmpleados.Open;
   ZQArea.Open;
 end;
 

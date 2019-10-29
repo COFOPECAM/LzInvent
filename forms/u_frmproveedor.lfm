@@ -1,7 +1,7 @@
 object FrmProveedor: TFrmProveedor
-  Left = 579
+  Left = 648
   Height = 326
-  Top = 505
+  Top = 669
   Width = 483
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -145,6 +145,7 @@ object FrmProveedor: TFrmProveedor
       Height = 23
       Top = 221
       Width = 366
+      CharCase = ecUppercase
       TabOrder = 7
       TextHint = 'Electrodomesticos, Mesas, Sillas ...'
     end

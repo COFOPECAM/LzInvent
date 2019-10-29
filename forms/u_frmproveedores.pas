@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, Menus,
   SpkToolbar, spkt_Tab, spkt_Pane, spkt_Buttons, m_conn, db, ZDataset, rxdbgrid,
-  RxDBGridExportSpreadSheet, spkt_Appearance, u_frmproveedor, LCLType;
+  RxDBGridFooterTools, RxDBGridExportSpreadSheet, RxSortZeos, spkt_Appearance,
+  u_frmproveedor, LCLType, u_frmsearchproveedor;
 
 type
 
@@ -25,6 +26,8 @@ type
     MICompleta: TMenuItem;
     MIVista: TMenuItem;
     PMExportXLS: TPopupMenu;
+    RxDBGridFooterTools1: TRxDBGridFooterTools;
+    RxSortZeos1: TRxSortZeos;
     ToExcel: TRxDBGridExportSpreadSheet;
     SDFile: TSaveDialog;
     SpkPane1: TSpkPane;

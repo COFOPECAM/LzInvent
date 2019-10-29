@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, StdCtrls, DBCtrls,
-  DBGrids, ZDataset;
+  DBGrids, SortGrid, ZDataset;
 
 type
 

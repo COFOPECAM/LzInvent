@@ -1,7 +1,7 @@
 object FrmConfig: TFrmConfig
-  Left = 310
+  Left = 386
   Height = 472
-  Top = 510
+  Top = 411
   Width = 489
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -128,10 +128,10 @@ object FrmConfig: TFrmConfig
         Width = 177
         ItemHeight = 15
         Items.Strings = (
-          'black'
-          'blue'
-          'light'
-          'silver'
+          'BLACK'
+          'BLUE'
+          'LIGHT'
+          'SILVER'
         )
         TabOrder = 1
       end
