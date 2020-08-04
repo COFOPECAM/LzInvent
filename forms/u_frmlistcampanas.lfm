@@ -1,0 +1,197 @@
+object FrmListCam: TFrmListCam
+  Left = 440
+  Height = 319
+  Top = 339
+  Width = 520
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Lista de campañas'
+  ClientHeight = 319
+  ClientWidth = 520
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.6.0'
+  object TCamp: TDBGrid
+    Left = 8
+    Height = 304
+    Top = 8
+    Width = 272
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No.'
+        Width = 34
+        FieldName = 'id'
+      end    
+      item
+        Title.Caption = 'Nombre'
+        Width = 211
+        FieldName = 'name'
+      end    
+      item
+        Title.Caption = 'common_name'
+        Width = 0
+        Visible = False
+        FieldName = 'common_name'
+      end    
+      item
+        Title.Caption = 'view_in'
+        Width = 0
+        Visible = False
+        FieldName = 'view_in'
+      end    
+      item
+        Title.Caption = 'Estatus'
+        Width = 52
+        FieldName = 'status'
+      end>
+    DataSource = DSCamp
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+    TabOrder = 0
+    TitleStyle = tsNative
+  end
+  object DBEdit1: TDBEdit
+    Left = 288
+    Height = 23
+    Top = 72
+    Width = 224
+    DataField = 'name'
+    DataSource = DSCamp
+    CharCase = ecUppercase
+    MaxLength = 180
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 289
+    Height = 15
+    Top = 53
+    Width = 47
+    Caption = 'Nombre:'
+    ParentColor = False
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 290
+    Height = 25
+    Top = 8
+    Width = 222
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 222
+    DataSource = DSCamp
+    Options = []
+    TabOrder = 2
+    VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel]
+  end
+  object Label2: TLabel
+    Left = 289
+    Height = 15
+    Top = 112
+    Width = 40
+    Caption = 'Estatus:'
+    ParentColor = False
+  end
+  object CbEstatus: TDBCheckBox
+    Left = 368
+    Height = 23
+    Top = 108
+    Width = 90
+    Caption = 'Inactivo'
+    DataField = 'status'
+    DataSource = DSCamp
+    OnChange = CbEstatusChange
+    TabOrder = 3
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
+  object BitBtn1: TBitBtn
+    Left = 400
+    Height = 30
+    Top = 280
+    Width = 112
+    Caption = 'Cerrar'
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000005A61735A
+      61736369846369845A6173000000000000000000000000000000000000000000
+      0000000000006369844251BD1834DE0824CE081CB54251B563698C6B696B5A61
+      730000000000000000000000000000000000006369841028EF102CF7102CF710
+      2CF7102CF7102CF70824CE4A55AD636984636984000000000000000000000000
+      102CF7102CF7102CF72138F70824D60824D60824D6102CF7102CF70824D64A59
+      A56B696B000000000000000000000000102CF7102CF7102CF700000000000000
+      00000000002138F7102CF7102CF70820C65A6173636984000000000000102CF7
+      102CF70824D60000000000000000000000002138F7102CF7102CF7102CF71028
+      EF5261A55A61730000000000002138F7102CF70824D600000000000000000021
+      38F7102CF72138F70000000824D6102CF74251BD636984000000000000102CF7
+      102CF70824D60000000000002138F7102CF72138F70000000000000824D6102C
+      F75261BD636984000000000000102CF7102CF70824D60000002138F7102CF721
+      38F70000000000000000000824D6102CF75261BD000000000000000000102CF7
+      102CF7102CF72138F7102CF72138F7000000000000000000000000102CF7102C
+      F7636984000000000000000000000000102CF7102CF7102CF7102CF700000000
+      00000000000000002138F7102CF7102CF7000000000000000000000000000000
+      102CF7102CF7102CF70824D60824D60820C60824D6102CF7102CF7102CF70000
+      00000000000000000000000000000000000000102CF7102CF7102CF7102CF710
+      2CF7102CF7102CF7102CF7000000000000000000000000000000000000000000
+      000000000000000000102CF7102CF7102CF7102CF70000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    ModalResult = 11
+    TabOrder = 4
+  end
+  object DBEdit2: TDBEdit
+    Left = 368
+    Height = 23
+    Top = 144
+    Width = 80
+    DataField = 'common_name'
+    DataSource = DSCamp
+    ReadOnly = True
+    CharCase = ecNormal
+    MaxLength = 180
+    TabOrder = 5
+  end
+  object DBEdit3: TDBEdit
+    Left = 288
+    Height = 23
+    Top = 240
+    Width = 80
+    DataField = 'view_in'
+    DataSource = DSCamp
+    CharCase = ecNormal
+    MaxLength = 200
+    TabOrder = 6
+    Visible = False
+  end
+  object Label3: TLabel
+    Left = 288
+    Height = 15
+    Top = 149
+    Width = 69
+    Caption = 'Consecutivo:'
+    ParentColor = False
+  end
+  object ZQCamp: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id, name, common_name, view_in, status from general_programs order by name asc'
+    )
+    Params = <>
+    left = 40
+    top = 112
+  end
+  object DSCamp: TDataSource
+    DataSet = ZQCamp
+    OnDataChange = DSCampDataChange
+    left = 40
+    top = 56
+  end
+end

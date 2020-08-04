@@ -114,12 +114,12 @@ object FrmAddProg: TFrmAddProg
     CloseButton.DefaultCaption = True
     CancelButton.Name = 'CancelButton'
     CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel]
   end
   object ZQCamp: TZQuery
     Connection = dmconn.Conn
-    Active = True
     SQL.Strings = (
       'select gp.id, gp.name from general_programs gp where gp.status = 1 order by gp.name asc'
     )
@@ -129,7 +129,6 @@ object FrmAddProg: TFrmAddProg
   end
   object ZQCoord: TZQuery
     Connection = dmconn.Conn
-    Active = True
     SQL.Strings = (
       'select u2.id, concat(u2.name, '' '', u2.surname) as empleado from user_users u2 where u2.status = 1 and u2.employee = 1 order by u2.name asc'
     )

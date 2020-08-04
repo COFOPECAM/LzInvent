@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ButtonPanel,
-  StdCtrls, ExtCtrls, ZDataset, m_conn, LCLType, FileUtil;
+  StdCtrls, ExtCtrls, ZDataset, m_conn, LCLType, FileUtil, Printers, OSPrinters;
 
 type
 
@@ -18,6 +18,8 @@ type
     Bp: TButtonPanel;
     CbShowFecha: TCheckBox;
     CbTheme: TComboBox;
+    CbImpresoras: TComboBox;
+    Label7: TLabel;
     ODImg: TOpenDialog;
     TxtFormato: TEdit;
     TxtEntrega: TEdit;
@@ -38,6 +40,7 @@ type
     ZQConfig: TZQuery;
     procedure BtnLoadImgClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
   private
@@ -68,6 +71,7 @@ begin
   CbTheme.ItemIndex:=StrToInt(dmconn.Theme);
   TxtEntrega.Text:=dmconn.Entrega;
   TxtAutoriza.Text:=dmconn.Autoriza;
+  CbImpresoras.ItemIndex:=dmconn.IPrinter;
   if dmconn.MostrarFechaResg = '1' then
      showdate:=true;
   CbShowFecha.Checked:=showdate;
@@ -94,6 +98,23 @@ end;
 procedure TFrmConfig.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   CanClose:=save;
+end;
+
+procedure TFrmConfig.FormCreate(Sender: TObject);
+begin
+  try
+    with Printer do
+    begin
+      if Printers.Count=0 then
+      begin
+        ShowMessage('no printers are installed');
+        exit;
+      end;
+      CbImpresoras.Items.Assign(Printers);
+      CbImpresoras.ItemIndex:=PrinterIndex;
+    end;
+  except
+  end;
 end;
 
 procedure TFrmConfig.BtnLoadImgClick(Sender: TObject);

@@ -37,7 +37,7 @@ implementation
 
 procedure Tdmempleados.DataModuleCreate(Sender: TObject);
 begin
-  // ZQGetEmpleados.Open;
+  ZQGetEmpleados.Open;
   ZQArea.Open;
 end;
 

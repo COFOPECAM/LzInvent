@@ -8,40 +8,45 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, rxdbgrid,
   RxDBGridFooterTools, RxDBGridExportSpreadSheet, RxSortZeos, SpkToolbar,
   spkt_Tab, spkt_Pane, spkt_Buttons, u_frmlistarusuarios, m_conn, db, ZDataset,
-  spkt_Appearance, u_frmaddemployee, m_empleados, u_frmareas, LCLType,
-  u_frmcatsub, u_frmplaces, u_frmbajas, u_frmmarcas, u_frmestatus,
-  u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet, LR_Shape, lr_e_pdf,
-  u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes, u_frmcampanas;
+  spkt_Appearance, u_frmaddemployee, m_empleados, u_frmareas, LCLType, ExtCtrls,
+  StdCtrls, u_frmcatsub, u_frmplaces, u_frmbajas, u_frmmarcas, u_frmestatus,
+  u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet, LR_Shape, PrintersDlgs,
+  lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes,
+  u_frmcampanas, process, u_frmsearchproveedor, u_frmconsumibles, u_frmentrega,
+  u_frmreports;
 
 type
 
   { TFrmPrincipal }
 
   TFrmPrincipal = class(TForm)
+    DSEntregas: TDataSource;
+    DgBienes: TRxDBGrid;
     DSBienes: TDataSource;
     DBReport: TfrDBDataSet;
     DbResEmpleado: TfrDBDataSet;
     frShapeObject1: TfrShapeObject;
+    PrintDialog1: TPrintDialog;
     RpToPDF: TfrTNPDFExport;
     LzReports: TfrReport;
     ILRb: TImageList;
     RbBAgregar: TSpkLargeButton;
-    DgBienes: TRxDBGrid;
     DgEmpleados: TRxDBGrid;
     FGBienes: TRxDBGridFooterTools;
     FGConsumibles: TRxDBGridFooterTools;
     RxSortZeos1: TRxSortZeos;
     BtnCPrograma: TSpkLargeButton;
+    BtnConsumibles: TSpkLargeButton;
+    SpkLargeButton1: TSpkLargeButton;
     TConsumibles: TRxDBGrid;
     SDFile: TSaveDialog;
     RbBtnConfig: TSpkLargeButton;
-    SpkLargeButton1: TSpkLargeButton;
+    BtnGenEtiqueta: TSpkLargeButton;
     SpkLargeButton10: TSpkLargeButton;
     SpkLargeButton11: TSpkLargeButton;
     SpkLargeButton12: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
-    SpkLargeButton3: TSpkLargeButton;
-    SpkLargeButton4: TSpkLargeButton;
+    BtnEConsumible: TSpkLargeButton;
     SpkLargeButton7: TSpkLargeButton;
     SpkLargeButton9: TSpkLargeButton;
     SpkPane10: TSpkPane;
@@ -65,12 +70,12 @@ type
     BtnRbCBajas: TSpkLargeButton;
     BtnRbCMarcas: TSpkLargeButton;
     BtnRbCEstatus: TSpkLargeButton;
-    SpkLargeButton23: TSpkLargeButton;
+    BtnReportes: TSpkLargeButton;
     RbCfListar: TSpkLargeButton;
     SpkLargeButton25: TSpkLargeButton;
     RbBtnBBuscar: TSpkLargeButton;
     RBtnBBaja: TSpkLargeButton;
-    SpkLargeButton5: TSpkLargeButton;
+    BtnResguardoIndividual: TSpkLargeButton;
     SpkLargeButton6: TSpkLargeButton;
     BtnRbBResguardo: TSpkLargeButton;
     SpkLargeButton8: TSpkLargeButton;
@@ -94,10 +99,12 @@ type
     ZQBienReport: TZQuery;
     ZQResEmpleado: TZQuery;
     procedure BtbCCatClick(Sender: TObject);
+    procedure BtnConsumiblesClick(Sender: TObject);
     procedure BtnCProgramaClick(Sender: TObject);
     procedure BtnCtAreasClick(Sender: TObject);
     procedure BtnEAddClick(Sender: TObject);
     procedure BtnEBajaClick(Sender: TObject);
+    procedure BtnEConsumibleClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
     procedure BtnRbBEditarClick(Sender: TObject);
     procedure BtnRbBResguardoClick(Sender: TObject);
@@ -107,6 +114,9 @@ type
     procedure BtnRbCMarcasClick(Sender: TObject);
     procedure BtnRbCProveedoresClick(Sender: TObject);
     procedure BtnRbEResguardoClick(Sender: TObject);
+    procedure BtnReportesClick(Sender: TObject);
+    procedure BtnResguardoIndividualClick(Sender: TObject);
+    procedure DgBienesDblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LzReportsGetValue(const ParName: String; var ParValue: Variant);
@@ -117,6 +127,7 @@ type
     procedure BtmEEditarClick(Sender: TObject);
     procedure BtnRbCEstatusClick(Sender: TObject);
     procedure RBtnBBajaClick(Sender: TObject);
+    procedure BtnGenEtiquetaClick(Sender: TObject);
     procedure StMenuTabChanged(Sender: TObject);
   private
 
@@ -126,6 +137,7 @@ type
 
 var
   FrmPrincipal: TFrmPrincipal;
+  PrintEtiqueta: TProcess;
 
 implementation
 
@@ -193,12 +205,12 @@ begin
   DgEmpleados.Align:=alClient;
   TConsumibles.Align:=alClient;
   // Abrir conexiones y llenar tablas
-  {ZQBienes.Params.ParamByName('limit_show').AsInteger:=50;
-  ZQBienes.Open;  }
+  ZQBienes.Params.ParamByName('limit_show').AsInteger:=50;
+  ZQBienes.Open;
   // Cargar permisos de la aplicación
 
   // Cargar configuraciones
-  // SbMsjs.Panels[0].Text:='Usuario: ' + dmconn.Apellido + ', ' + dmconn.Nombre;
+   SbMsjs.Panels[0].Text:='Usuario: ' + dmconn.Apellido + ', ' + dmconn.Nombre;
 end;
 
 procedure TFrmPrincipal.LzReportsGetValue(const ParName: String;
@@ -206,11 +218,11 @@ procedure TFrmPrincipal.LzReportsGetValue(const ParName: String;
 begin
   if ParName = 'autoriza' then
      ParValue:=dmconn.Autoriza;
-  dmconn.ZQFirmasReport.Close;
+{  dmconn.ZQFirmasReport.Close;
   dmconn.ZQFirmasReport.Params.ParamByName('bien_id').AsInteger:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
-  dmconn.ZQFirmasReport.Open;
+  dmconn.ZQFirmasReport.Open;}
   if ParName = 'recibe' then
-     ParValue:=dmconn.ZQFirmasReport.FieldByName('empleado').AsString;
+     // ParValue:=dmconn.ZQFirmasReport.FieldByName('empleado').AsString;
   if ParName = 'entrega' then
      ParValue:=dmconn.Entrega;
   if ParName = 'fechaif' then
@@ -255,6 +267,16 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.BtnEConsumibleClick(Sender: TObject);
+begin
+  // Entregar material
+  FrmEntrega:=TFrmEntrega.Create(FrmPrincipal);
+  if FrmEntrega.ShowModal = mrOK then
+  begin
+    // Actualizar datos de las entregas
+  end;
+end;
+
 procedure TFrmPrincipal.BtnEToExcelClick(Sender: TObject);
 begin
   SDFile.Filter:='Excel|*.xlsx';
@@ -293,29 +315,42 @@ begin
    FrmAddBien:=TFrmAddBien.Create(nil);
    FrmAddBien.edit:=true;
    FrmAddBien.bien_id:=bien_id;
-   if FrmAddBien.ShowModal = mrOK then
-   begin
-    ZQBienes.Close;
-    ZQBienes.Open;
-   end;
+   FrmAddBien.Programa:=DgBienes.DataSource.DataSet.Fields[17].AsString;
+   FrmAddBien.ShowModal;
+   //if FrmAddBien.ShowModal = mrOK then
+   //begin
+   // ZQBienes.Close;
+   // ZQBienes.Open;
+   //end;
+   ZQBienes.Close;
+   ZQBienes.Open;
   end;
 end;
 
 procedure TFrmPrincipal.BtnRbBResguardoClick(Sender: TObject);
 var
   bien_id:integer;
+  empleado: string;
 begin
-  bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
-  if bien_id <> 0 then
+  empleado:=DgBienes.DataSource.DataSet.Fields[13].AsString;
+  if empleado.IsEmpty then
   begin
-   // ToDo: Verificar si el bien ya fue asignado a un empleado, en caso contrario
-   // Mostrar mensaje de que el bien se encuentra en almancen
-   ZQBienReport.Close;
-   // Buscar bien por id
-   ZQBienReport.Params.ParamByName('bien_id').AsInteger:=bien_id;
-   ZQBienReport.Open;
-   LzReports.LoadFromFile('../../reports/rpResguardoBien.lrf');
-   LzReports.ShowReport;
+   Application.MessageBox('El bien no se encuentra asignado a ningun empleado',
+   'Falta asignación', MB_ICONINFORMATION);
+   exit;
+  end;
+
+  if DgBienes.DataSource.DataSet.RecordCount > 0 then
+  begin
+    bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+    // ToDo: Verificar si el bien ya fue asignado a un empleado, en caso contrario
+    // Mostrar mensaje de que el bien se encuentra en almancen
+    ZQBienReport.Close;
+    // Buscar bien por id
+    ZQBienReport.Params.ParamByName('bien_id').AsInteger:=bien_id;
+    ZQBienReport.Open;
+    LzReports.LoadFromFile('../../reports/rpResguardoBien.lrf');
+    LzReports.ShowReport;
   end;
 end;
 
@@ -377,7 +412,7 @@ begin
   // Obtener un resguardo general de bienes del empleado
   emp_id:=StrToInt(DgEmpleados.DataSource.DataSet.Fields[0].Value);
   ZQResEmpleado.Close;
-  ZQResEmpleado.Params.ParamByName('empl_id').AsInteger:=emp_id;
+  ZQResEmpleado.Params.ParamByName('empl').AsInteger:=emp_id;
   ZQResEmpleado.Open;
   if ZQResEmpleado.RecordCount > 0 then
   begin
@@ -389,7 +424,46 @@ begin
     Application.MessageBox('No se obtuvieron bienes asignado al empleado',
     'Sin datos', MB_ICONINFORMATION);
   end;
+end;
 
+procedure TFrmPrincipal.BtnReportesClick(Sender: TObject);
+begin
+  // Ver lista de reportes
+  FrmReports:=TFrmReports.Create(FrmPrincipal);
+  FrmReports.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnResguardoIndividualClick(Sender: TObject);
+begin
+  FrmResguardo:=TFrmResguardo.Create(FrmPrincipal);
+  FrmResguardo.bien_id:=DgBienes.DataSource.DataSet.Fields[0].AsInteger;
+  if FrmResguardo.ShowModal = mrOK then
+  begin
+   ZQBienes.Refresh;
+  end;
+end;
+
+procedure TFrmPrincipal.DgBienesDblClick(Sender: TObject);
+var
+  bien_id: integer;
+begin
+  // Editar los datos del bien
+  bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+  if bien_id <> 0 then
+  begin
+   FrmAddBien:=TFrmAddBien.Create(nil);
+   FrmAddBien.edit:=true;
+   FrmAddBien.bien_id:=bien_id;
+   FrmAddBien.Programa:=DgBienes.DataSource.DataSet.Fields[17].AsString;
+   FrmAddBien.ShowModal;
+   //if FrmAddBien.ShowModal = mrOK then
+   //begin
+   // ZQBienes.Close;
+   // ZQBienes.Open;
+   //end;
+   ZQBienes.Close;
+   ZQBienes.Open;
+  end;
 end;
 
 procedure TFrmPrincipal.BtnCtAreasClick(Sender: TObject);
@@ -403,6 +477,12 @@ begin
   // Categorias
   FrmCategorias:=TFrmCategorias.Create(FrmPrincipal);
   FrmCategorias.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnConsumiblesClick(Sender: TObject);
+begin
+  FrmConsumibles:=TFrmConsumibles.Create(FrmPrincipal);
+  FrmConsumibles.ShowModal;
 end;
 
 procedure TFrmPrincipal.BtnCProgramaClick(Sender: TObject);
@@ -440,20 +520,45 @@ begin
 end;
 
 procedure TFrmPrincipal.RBtnBBajaClick(Sender: TObject);
-var
-  bien_id: integer;
 begin
   // Dar de baja el bien
-  bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
   // Preguntar si se dara de baja
-  FrmBaja:=TFrmBaja.Create(FrmPrincipal);
-  FrmBaja.Bien_id:=bien_id;
-  if FrmBaja.ShowModal = mrOK then
+  FrmAddBien:=TFrmAddBien.Create(FrmPrincipal);
+  FrmAddBien.bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
+  FrmAddBien.show_baja:=true;
+  if FrmAddBien.ShowModal = mrOK then
   begin
    // Recargar tabla para eliminar registro de la vista
    ZQBienes.Close;
    ZQBienes.Open;
   end;
+end;
+
+procedure TFrmPrincipal.BtnGenEtiquetaClick(Sender: TObject);
+var
+  PipeString: TStringList;
+begin
+  {Obtener los datos para generar el codigo de barras}
+  PrintEtiqueta:=TProcess.Create(nil);
+  PipeString:=TStringList.Create;
+
+  PrintEtiqueta.Executable:='libs/ZebraPrinter.exe';
+  // Parametros
+  PrintEtiqueta.Parameters.Add('--codigo ' + DgBienes.DataSource.DataSet.Fields[6].AsString);
+  PrintEtiqueta.Parameters.Add('--lugar ' + DgBienes.DataSource.DataSet.Fields[10].AsString);
+  PrintEtiqueta.Parameters.Add('--clave ' + DgBienes.DataSource.DataSet.Fields[5].AsString);
+  PrintEtiqueta.Parameters.Add('--fecha ' + DgBienes.DataSource.DataSet.Fields[8].AsString);
+  PrintEtiqueta.Parameters.Add('--printer ' + dmconn.CPrinter);
+  // Opciones para ejecutar el proceso
+  PrintEtiqueta.Options:= PrintEtiqueta.Options + [poWaitOnExit, poUsePipes];
+  PrintEtiqueta.Execute;
+
+  // Obtener el resultado del proceso de impresión
+  PipeString.LoadFromStream(PrintEtiqueta.Output);
+
+  ShowMessage(PipeString.Text);
+  PipeString.Free;
+  PrintEtiqueta.Free;
 end;
 
 procedure TFrmPrincipal.StMenuTabChanged(Sender: TObject);
@@ -469,9 +574,9 @@ begin
   if StMenu.TabIndex = 2 then
   begin
     DgEmpleados.BringToFront;
-    dmempleados.ZQGetEmpleados.Close;
+    // dmempleados.ZQGetEmpleados.Close;
     // dmempleados.ZQGetEmpleados.Params.ParamByName('estatus').AsInteger:=1;
-    dmempleados.ZQGetEmpleados.Open;
+    // dmempleados.ZQGetEmpleados.Open;
   end;
 end;
 

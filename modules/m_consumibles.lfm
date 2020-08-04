@@ -1,0 +1,66 @@
+object DmConsumibles: TDmConsumibles
+  OldCreateOrder = False
+  Height = 152
+  HorizontalOffset = 292
+  VerticalOffset = 856
+  Width = 257
+  PPI = 96
+  object ZQConsu: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select idl.id, idl.date_delivery, concat(u2.name, '' '', u2.surname) as employee from inventory_deliveries idl inner join inventory_consumable_has_inventory_deliveries icid on icid.inventory_deliveries_id = idl.id inner join user_users u2 on u2.id = idl.user_users_id order by idl.date_delivery desc'
+    )
+    Params = <>
+    left = 21
+    top = 16
+  end
+  object ZQCat: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select id, name, status from inventory_consumable order by name asc'
+    )
+    Params = <>
+    left = 208
+    top = 16
+  end
+  object ZQStock: TZQuery
+    Connection = dmconn.Conn
+    Active = True
+    SQL.Strings = (
+      'select ic.id, ic.name, ist.counts as total from inventory_stock ist inner join inventory_consumable ic on ic.id = ist.inventory_consumable_id order by ic.name asc'
+    )
+    Params = <>
+    left = 119
+    top = 76
+    object ZQStockid: TLongintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQStockname: TStringField
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 150
+    end
+    object ZQStocktotal: TLongintField
+      FieldKind = fkData
+      FieldName = 'total'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+end

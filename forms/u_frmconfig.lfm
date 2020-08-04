@@ -9,9 +9,10 @@ object FrmConfig: TFrmConfig
   ClientHeight = 472
   ClientWidth = 489
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.2.0'
+  LCLVersion = '2.0.6.0'
   object PageControl1: TPageControl
     Left = 0
     Height = 426
@@ -173,6 +174,22 @@ object FrmConfig: TFrmConfig
         Caption = 'Mostrar fecha en resguardos'
         TabOrder = 4
       end
+      object Label7: TLabel
+        Left = 15
+        Height = 15
+        Top = 184
+        Width = 123
+        Caption = 'Impresora de etiquetas:'
+        ParentColor = False
+      end
+      object CbImpresoras: TComboBox
+        Left = 167
+        Height = 23
+        Top = 180
+        Width = 177
+        ItemHeight = 15
+        TabOrder = 5
+      end
     end
   end
   object Bp: TButtonPanel
@@ -195,14 +212,14 @@ object FrmConfig: TFrmConfig
   object ZQConfig: TZQuery
     Connection = dmconn.Conn
     Params = <>
-    left = 34
-    top = 256
+    left = 376
+    top = 384
   end
   object ODImg: TOpenDialog
     Title = 'Imagen para asignar'
     DefaultExt = '.jpg'
     Filter = 'JPEG|*.jpg|PNG|*.png'
-    left = 436
-    top = 216
+    left = 432
+    top = 384
   end
 end

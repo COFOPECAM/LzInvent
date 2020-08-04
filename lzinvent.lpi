@@ -13,12 +13,15 @@
       <UseXPManifest Value="True"/>
       <XPManifest>
         <DpiAware Value="True"/>
+        <TextName Value="COFOPECAM.FuentesAlexis.Inventario"/>
+        <TextDesc Value="Sistema de inventario del Comité"/>
       </XPManifest>
       <Icon Value="0"/>
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
+      <BuildNr Value="2"/>
       <Language Value="080A"/>
       <StringTable CompanyName="Alexis" ProductName="LzInvent"/>
     </VersionInfo>
@@ -33,48 +36,54 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="13">
+    <RequiredPackages Count="15">
       <Item1>
-        <PackageName Value="rx_sort_zeos"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item1>
       <Item2>
-        <PackageName Value="laz_sortgrid"/>
+        <PackageName Value="Printer4Lazarus"/>
       </Item2>
       <Item3>
-        <PackageName Value="uniqueinstance_package"/>
+        <PackageName Value="rx_sort_zeos"/>
       </Item3>
       <Item4>
-        <PackageName Value="lazreportpdfexport"/>
+        <PackageName Value="laz_sortgrid"/>
       </Item4>
       <Item5>
-        <PackageName Value="lazreport"/>
+        <PackageName Value="uniqueinstance_package"/>
       </Item5>
       <Item6>
-        <PackageName Value="rxdbgrid_export_spreadsheet"/>
+        <PackageName Value="lazreportpdfexport"/>
       </Item6>
       <Item7>
-        <PackageName Value="virtualdbgrid_package"/>
+        <PackageName Value="lazreport"/>
       </Item7>
       <Item8>
-        <PackageName Value="virtualtreeview_package"/>
+        <PackageName Value="rxdbgrid_export_spreadsheet"/>
       </Item8>
       <Item9>
-        <PackageName Value="FCL"/>
+        <PackageName Value="virtualdbgrid_package"/>
       </Item9>
       <Item10>
-        <PackageName Value="zcomponent"/>
+        <PackageName Value="virtualtreeview_package"/>
       </Item10>
       <Item11>
-        <PackageName Value="rxnew"/>
+        <PackageName Value="FCL"/>
       </Item11>
       <Item12>
-        <PackageName Value="SpkToolbarPackage"/>
+        <PackageName Value="zcomponent"/>
       </Item12>
       <Item13>
-        <PackageName Value="LCL"/>
+        <PackageName Value="rxnew"/>
       </Item13>
+      <Item14>
+        <PackageName Value="SpkToolbarPackage"/>
+      </Item14>
+      <Item15>
+        <PackageName Value="LCL"/>
+      </Item15>
     </RequiredPackages>
-    <Units Count="28">
+    <Units Count="36">
       <Unit0>
         <Filename Value="lzinvent.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -242,12 +251,14 @@
         <Filename Value="forms\u_frmgenclave.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmGenClave"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit24>
       <Unit25>
         <Filename Value="forms\u_frmsearchproveedor.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
+        <ComponentName Value="FrmResguardo"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit25>
       <Unit26>
@@ -264,6 +275,62 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit27>
+      <Unit28>
+        <Filename Value="forms\u_frmlistcampanas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListCam"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="forms\u_frmconsumibles.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmConsumibles"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="modules\m_consumibles.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DmConsumibles"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="forms\u_frmaddconsumible.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAddConsu"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="forms\u_frmaddconsumiblecat.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAddMaterialCat"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="forms\u_frmaddbuy.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAddBuy"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="forms\u_frmentrega.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmEntrega"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="forms\u_frmreports.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmReports"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit35>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

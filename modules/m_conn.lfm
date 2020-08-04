@@ -2,17 +2,19 @@ object dmconn: Tdmconn
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 146
-  HorizontalOffset = 914
-  VerticalOffset = 842
+  HorizontalOffset = 291
+  VerticalOffset = 863
   Width = 209
   PPI = 96
   object Conn: TZConnection
     ControlsCodePage = cCP_UTF8
-    AutoEncodeStrings = False
+    AutoEncodeStrings = True
     ClientCodepage = 'utf8'
     Properties.Strings = (
       'codepage=utf8'
+      'AutoEncodeStrings=ON'
     )
+    Connected = True
     HostName = 'localhost'
     Port = 0
     Database = 'comite'

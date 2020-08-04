@@ -2,14 +2,14 @@ object dmempleados: Tdmempleados
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 239
-  HorizontalOffset = 297
-  VerticalOffset = 703
+  HorizontalOffset = 290
+  VerticalOffset = 768
   Width = 361
   PPI = 96
   object ZQGetEmpleados: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select u2.id as no, u2.name, u2.surname, a2.name as depto from user_users u2 left join area_apartments a2 on a2.id = u2.apartments_id where u2.status = 1 order by u2.name asc'
+      'select u2.id as no, u2.name, u2.surname, a2.name as depto, concat(u2.name, '' '', u2.surname) as name_full from user_users u2 left join area_apartments a2 on a2.id = u2.apartments_id where u2.status = 1 order by u2.name asc'
     )
     Params = <>
     left = 36

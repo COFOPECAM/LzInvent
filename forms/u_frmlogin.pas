@@ -70,6 +70,7 @@ begin
   begin
     FrmPrincipal:=TFrmPrincipal.Create(FrmLogin);
     FrmPrincipal.ShowModal;
+    Close;
   end
   else
   begin

@@ -1,15 +1,15 @@
 object DmBienes: TDmBienes
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 436
-  VerticalOffset = 707
+  HorizontalOffset = 292
+  VerticalOffset = 696
   Width = 487
   PPI = 96
   object ZQEstatus: TZQuery
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_estatus as id, nombre from estatus where estatus = 1 order by nombre asc'
+      'select id, name, status from inventory_status order by name asc'
     )
     Params = <>
     left = 16
@@ -19,7 +19,7 @@ object DmBienes: TDmBienes
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_lugar as id, nombre from lugares where estatus = 1 order by nombre asc'
+      'select id, name, status from area_areas where status = 1 order by name asc'
     )
     Params = <>
     left = 81
@@ -29,7 +29,7 @@ object DmBienes: TDmBienes
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_marcas as id, nombre from marcas where estatus = 1 order by nombre asc'
+      'select id_brand, name from inventory_brand where status = 1 order by name asc'
     )
     Params = <>
     left = 144
@@ -39,7 +39,7 @@ object DmBienes: TDmBienes
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_categoria as id, nombre from categorias where estatus = 1 order by nombre asc'
+      'select id, name from inventory_categories where status = 1 order by name asc'
     )
     Params = <>
     left = 200
@@ -48,12 +48,12 @@ object DmBienes: TDmBienes
   object ZQSub: TZQuery
     Connection = dmconn.Conn
     SQL.Strings = (
-      'select id_subcategoria as id, nombre from subcategoria where id_categoria = :cat_id and estatus = 1 order by nombre asc'
+      'select id, name from inventory_subcategorie where status = 1 and inventory_categories_id = :id_cat order by name asc'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'cat_id'
+        Name = 'id_cat'
         ParamType = ptUnknown
       end>
     left = 248
@@ -61,7 +61,7 @@ object DmBienes: TDmBienes
     ParamData = <    
       item
         DataType = ftUnknown
-        Name = 'cat_id'
+        Name = 'id_cat'
         ParamType = ptUnknown
       end>
   end
@@ -69,7 +69,7 @@ object DmBienes: TDmBienes
     Connection = dmconn.Conn
     Active = True
     SQL.Strings = (
-      'select id_proveedor as id, empresa from proveedores where estatus = 1 order by empresa asc'
+      'select id_provider, company from inventory_provider order by company asc'
     )
     Params = <>
     left = 307
@@ -115,5 +115,19 @@ object DmBienes: TDmBienes
     DataSet = ZQSearch
     left = 440
     top = 69
+  end
+  object ZQProgs: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select gpd.id, gpd.name, gpd.code from general_program_disease gpd where gpd.status = 1 order by gpd.name asc'
+    )
+    Params = <>
+    left = 24
+    top = 204
+  end
+  object DSProgs: TDataSource
+    DataSet = ZQProgs
+    left = 24
+    top = 267
   end
 end

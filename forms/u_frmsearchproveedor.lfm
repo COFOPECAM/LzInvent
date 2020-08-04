@@ -1,8 +1,165 @@
-object Form1: TForm1
-  Left = 298
-  Height = 240
-  Top = 701
-  Width = 320
-  Caption = 'Form1'
-  LCLVersion = '2.0.2.0'
+object FrmResguardo: TFrmResguardo
+  Left = 666
+  Height = 173
+  Top = 696
+  Width = 467
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Resguardo'
+  ClientHeight = 173
+  ClientWidth = 467
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.6.0'
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 121
+    Top = 8
+    Width = 449
+    Caption = 'Datos del resguardante'
+    ClientHeight = 101
+    ClientWidth = 445
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 12
+      Height = 15
+      Top = 12
+      Width = 56
+      Caption = 'Empleado:'
+      ParentColor = False
+    end
+    object CbEmpleados: TDBLookupComboBox
+      Left = 80
+      Height = 23
+      Top = 8
+      Width = 348
+      AutoComplete = True
+      AutoDropDown = True
+      CharCase = ecUppercase
+      DataField = 'no'
+      DataSource = DSEmpleado
+      KeyField = 'no'
+      ListField = 'name_full'
+      ListFieldIndex = 0
+      ListSource = DSEmpleado
+      LookupCache = False
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Left = 13
+      Height = 15
+      Top = 44
+      Width = 55
+      Caption = 'Programa:'
+      ParentColor = False
+    end
+    object CbPrograma: TDBLookupComboBox
+      Left = 80
+      Height = 23
+      Top = 40
+      Width = 348
+      AutoComplete = True
+      AutoDropDown = True
+      CharCase = ecUppercase
+      DataField = 'id'
+      DataSource = DmBienes.DSProgs
+      KeyField = 'id'
+      ListField = 'name'
+      ListFieldIndex = 0
+      ListSource = DmBienes.DSProgs
+      LookupCache = False
+      TabOrder = 1
+    end
+    object CxbGenerar: TCheckBox
+      Left = 311
+      Height = 19
+      Top = 73
+      Width = 117
+      Caption = 'Generar resguardo'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+    end
+    object CbAlmacen: TCheckBox
+      Left = 80
+      Height = 19
+      Top = 73
+      Width = 74
+      Caption = 'Almancen'
+      OnChange = CbAlmacenChange
+      TabOrder = 3
+    end
+  end
+  object Bp: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 133
+    Width = 455
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 1
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object ZQEmpleado: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select u2.id as no, u2.name, u2.surname, a2.name as depto, concat(u2.name, '' '', u2.surname) as name_full from user_users u2 left join area_apartments a2 on a2.id = u2.apartments_id where u2.status = 1 order by u2.name asc'
+    )
+    Params = <>
+    left = 24
+    top = 120
+  end
+  object DSEmpleado: TDataSource
+    DataSet = ZQEmpleado
+    left = 96
+    top = 120
+  end
+  object ZQBien: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 152
+    top = 120
+  end
+  object ZQResguardoBien: TZQuery
+    Connection = dmconn.Conn
+    SQL.Strings = (
+      'select ift.id, ift.description, ib.name as marcar, ift.model, ift.no_serie, ift.scode, ift.code, ift.bill, ift.acquisition, ist.name as estatus, aa.name as lugar, ift.price, ia.name as cuenta,trim(concat(ifnull(u2.honorific, ''''), '' '', u2.name, '' '', u2.surname)) as signned_to, isc.name as subcategoria, ic.name as categoria, ip.company, ift.observations, trim(concat(ifnull(u2.honorific, ''''), '' '', u2.name, '' '', u2.surname)) as coordinador, gpd.name as recurso, gpd2.name as programa, ia.name as tipo_recurso, aa2.name as destino from inventory_furniture ift inner join inventory_brand ib on ib.id_brand = ift.inventory_brand_id_brand inner join inventory_status ist on ist.id = ift.inventory_status_id inner join area_apartments aa on aa.id = ift.area_apartments_id left join inventory_accounts ia on ia.id = ift.inventory_accounts_id left join inventory_subcategorie isc on isc.id = ift.inventory_subcategorie_id inner join inventory_categories ic on ic.id = ift.inventory_categories_id inner join inventory_provider ip on ip.id_provider = ift.inventory_provider_id_provider left join user_users u2 on u2.id = ift.signned_to inner join general_program_disease gpd on gpd.id = ift.general_program_disease_id left join user_users uu on uu.id = gpd.user_users_id inner join inventory_history_changes ihc on ihc.inventory_furniture_id = ift.id inner join general_program_disease gpd2 on gpd2.id = ihc.general_program_disease_id inner join area_apartments aa2 on aa2.id = ift.area_apartments_id where ift.id = :bien_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+    left = 224
+    top = 120
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'bien_id'
+        ParamType = ptUnknown
+      end>
+  end
+  object LzReportResguardo: TfrReport
+    Dataset = DBResguardo
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    left = 48
+    top = 16
+  end
+  object DBResguardo: TfrDBDataSet
+    DataSet = ZQResguardoBien
+    left = 184
+    top = 16
+  end
 end

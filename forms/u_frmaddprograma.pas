@@ -30,6 +30,7 @@ type
     ZQCoordempleado: TStringField;
     ZQCoordid: TLongintField;
     ZQ: TZQuery;
+    procedure CancelButtonClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
@@ -71,18 +72,51 @@ begin
   else
   begin
     // Editar el programa
+    ZQ.Close;
+    ZQ.SQL.Text:='UPDATE general_program_disease SET name=:name, user_users_id'+
+    '=:coord WHERE id = :id';
+    ZQ.Params.ParamByName('name').AsString:=TxtProg.Text;
+    ZQ.Params.ParamByName('coord').AsInteger:=CbCoord.KeyValue;
+    ZQ.Params.ParamByName('id').AsInteger:=ProgId;
+    ZQ.ExecSQL;
+    save:=true;
   end;
 end;
 
 procedure TFrmAddProg.FormShow(Sender: TObject);
 begin
+  // Obtener los datos del listado
+  ZQCamp.Open;
+  ZQCoord.Open;
+  if EditMode then
+  begin
+  ZQ.Close;
+  ZQ.SQL.Text:='select gpd.name, gpd.general_programs_id as prog, gpd.user_'+
+  'users_id as coord, gpd.code from general_program_disease gpd where gpd.id '+
+  '= :prog_id';
+  ZQ.Params.ParamByName('prog_id').AsInteger:=ProgId;
+  ZQ.Open;
+  TxtProg.Text:=ZQ.FieldByName('name').AsString;
+  CbCampana.KeyValue:=ZQ.FieldByName('prog').AsInteger;
+  CbCoord.KeyValue:=ZQ.FieldByName('coord').AsInteger;
+  TxtCons.Text:=ZQ.FieldByName('code').AsString;
+  CbCampana.Enabled:=false;
+  end
+  else
+  begin
   NextCode:=GetNextCode();
   TxtCons.Text:=NextCode.ToString;
+  end;
 end;
 
 procedure TFrmAddProg.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   CanClose:=Save;
+end;
+
+procedure TFrmAddProg.CancelButtonClick(Sender: TObject);
+begin
+  Save:=true;
 end;
 
 function TFrmAddProg.GetNextCode(): integer;

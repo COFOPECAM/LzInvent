@@ -1,0 +1,219 @@
+object FrmEntrega: TFrmEntrega
+  Left = 686
+  Height = 442
+  Top = 567
+  Width = 448
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Entrega'
+  ClientHeight = 442
+  ClientWidth = 448
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.6.0'
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 121
+    Top = 8
+    Width = 433
+    Caption = 'Datos'
+    ClientHeight = 101
+    ClientWidth = 429
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 14
+      Height = 15
+      Top = 10
+      Width = 56
+      Caption = 'Empleado:'
+      ParentColor = False
+    end
+    object CbEmpleado: TDBLookupComboBox
+      Left = 88
+      Height = 23
+      Top = 7
+      Width = 328
+      DataField = 'no'
+      DataSource = DSEmpleado
+      KeyField = 'no'
+      ListField = 'name_full'
+      ListFieldIndex = 0
+      ListSource = DSEmpleado
+      LookupCache = False
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Left = 14
+      Height = 15
+      Top = 40
+      Width = 67
+      Caption = 'Consumible:'
+      ParentColor = False
+    end
+    object CbConsumible: TDBLookupComboBox
+      Left = 88
+      Height = 23
+      Top = 37
+      Width = 328
+      DataField = 'id'
+      DataSource = DSConsu
+      KeyField = 'id'
+      ListField = 'name'
+      ListFieldIndex = 0
+      ListSource = DSConsu
+      LookupCache = False
+      OnSelect = CbConsumibleSelect
+      TabOrder = 1
+    end
+    object Label3: TLabel
+      Left = 14
+      Height = 15
+      Top = 71
+      Width = 28
+      Caption = 'Total:'
+      ParentColor = False
+    end
+    object TxtEntregar: TEdit
+      Left = 88
+      Height = 23
+      Top = 67
+      Width = 80
+      OnEditingDone = TxtEntregarEditingDone
+      TabOrder = 2
+    end
+    object BtnAgregar: TBitBtn
+      Left = 312
+      Height = 23
+      Top = 67
+      Width = 104
+      Caption = 'Agregar'
+      OnClick = BtnAgregarClick
+      TabOrder = 3
+    end
+    object TxtExistencia: TLabel
+      Left = 176
+      Height = 1
+      Top = 71
+      Width = 1
+      ParentColor = False
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Height = 257
+    Top = 136
+    Width = 433
+    Caption = 'Materiales'
+    ClientHeight = 237
+    ClientWidth = 429
+    TabOrder = 1
+    object SGMateriales: TStringGrid
+      Left = 0
+      Height = 200
+      Top = 0
+      Width = 429
+      Align = alTop
+      ColCount = 3
+      Columns = <      
+        item
+          Title.Caption = 'id_con'
+          Visible = False
+        end      
+        item
+          Title.Caption = 'Material'
+          Width = 300
+        end      
+        item
+          Title.Caption = 'Total'
+          Width = 70
+        end>
+      FixedCols = 0
+      RowCount = 1
+      TabOrder = 0
+      TitleStyle = tsNative
+    end
+    object BtnDel: TBitBtn
+      Left = 391
+      Height = 26
+      Top = 205
+      Width = 35
+      Images = ILimgs
+      ImageIndex = 0
+      TabOrder = 1
+    end
+  end
+  object Bp: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 402
+    Width = 436
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
+    TabOrder = 2
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object DSEmpleado: TDataSource
+    DataSet = dmempleados.ZQGetEmpleados
+    left = 39
+    top = 211
+  end
+  object DSConsu: TDataSource
+    DataSet = DmConsumibles.ZQStock
+    left = 129
+    top = 211
+  end
+  object ILimgs: TImageList
+    left = 25
+    top = 371
+    Bitmap = {
+      4C69010000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000002745311A1F2421A41F2421A41F2421A41F24
+      21A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F24
+      21A41F2421A41F2421A42745311A2C3E32291A1A1AFF1A1A1AFF1A1A1AFF1A1A
+      1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A
+      1AFF1A1A1AFF1A1A1AFF2C3E32292C3E32291A1A1AFF1A1A1AFF1A1A1AFF1A1A
+      1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A
+      1AFF1A1A1AFF1A1A1AFF2C3E32292745311A1F2421A41F2421A41F2421A41F24
+      21A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F24
+      21A41F2421A41F2421A42745311A000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000
+    }
+  end
+  object ZQ: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 248
+    top = 235
+  end
+end

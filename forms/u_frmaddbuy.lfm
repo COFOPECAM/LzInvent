@@ -1,0 +1,238 @@
+object FrmAddBuy: TFrmAddBuy
+  Left = 294
+  Height = 484
+  Top = 229
+  Width = 454
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Agregar compra'
+  ClientHeight = 484
+  ClientWidth = 454
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.6.0'
+  object Label1: TLabel
+    Left = 8
+    Height = 15
+    Top = 14
+    Width = 78
+    Caption = 'Fecha compra:'
+    ParentColor = False
+  end
+  object DtCompra: TDateTimePicker
+    Left = 102
+    Height = 23
+    Top = 10
+    Width = 83
+    CenturyFrom = 1941
+    MaxDate = 2958465
+    MinDate = -53780
+    TabOrder = 0
+    TrailingSeparator = False
+    TextForNullDate = 'NULL'
+    LeadingZeros = True
+    Kind = dtkDate
+    TimeFormat = tf24
+    TimeDisplay = tdHMS
+    DateMode = dmComboBox
+    Date = 44036
+    Time = 0.344068692131259
+    UseDefaultSeparators = True
+    HideDateTimeParts = []
+    MonthNames = 'Long'
+  end
+  object Label2: TLabel
+    Left = 358
+    Height = 15
+    Top = 14
+    Width = 19
+    Caption = 'No.'
+    ParentColor = False
+  end
+  object TxtNextRow: TEdit
+    Left = 382
+    Height = 23
+    Top = 10
+    Width = 64
+    Enabled = False
+    TabOrder = 1
+  end
+  object Label3: TLabel
+    Left = 8
+    Height = 15
+    Top = 48
+    Width = 46
+    Caption = 'Material:'
+    ParentColor = False
+  end
+  object CbMaterial: TDBLookupComboBox
+    Left = 70
+    Height = 23
+    Top = 44
+    Width = 344
+    DataField = 'id'
+    DataSource = DSMaterial
+    KeyField = 'id'
+    ListField = 'name'
+    ListFieldIndex = 0
+    ListSource = DSMaterial
+    LookupCache = False
+    TabOrder = 2
+  end
+  object Label4: TLabel
+    Left = 8
+    Height = 15
+    Top = 79
+    Width = 51
+    Caption = 'Cantidad:'
+    ParentColor = False
+  end
+  object TxtTotal: TEdit
+    Left = 70
+    Height = 23
+    Top = 75
+    Width = 128
+    NumbersOnly = True
+    TabOrder = 3
+  end
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 297
+    Top = 112
+    Width = 438
+    Caption = 'Lista de materiales'
+    ClientHeight = 277
+    ClientWidth = 434
+    TabOrder = 4
+    object SGMateriales: TStringGrid
+      Left = 0
+      Height = 277
+      Top = 0
+      Width = 434
+      Align = alClient
+      AutoEdit = False
+      ColCount = 3
+      ColumnClickSorts = True
+      Columns = <      
+        item
+          Title.Caption = 'Id'
+          Visible = False
+        end      
+        item
+          Title.Caption = 'Material'
+          Width = 329
+        end      
+        item
+          Title.Caption = 'Total'
+          Width = 64
+        end>
+      FixedCols = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect, goSmoothScroll]
+      ParentShowHint = False
+      RowCount = 1
+      TabOrder = 0
+      TitleStyle = tsNative
+      ColWidths = (
+        0
+        329
+        64
+      )
+    end
+  end
+  object Bp: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 444
+    Width = 442
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 5
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object BtnAdd: TButton
+    Left = 371
+    Height = 25
+    Top = 73
+    Width = 75
+    Caption = 'Agregar'
+    OnClick = BtnAddClick
+    TabOrder = 6
+  end
+  object BtnDel: TBitBtn
+    Left = 9
+    Height = 24
+    Hint = 'Eliminar el registro de la tabla'
+    Top = 412
+    Width = 50
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000002745311A1F24
+      21A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F24
+      21A41F2421A41F2421A41F2421A41F2421A41F2421A42745311A2C3E32291A1A
+      1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A
+      1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF2C3E32292C3E32291A1A
+      1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A
+      1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF1A1A1AFF2C3E32292745311A1F24
+      21A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F2421A41F24
+      21A41F2421A41F2421A41F2421A41F2421A41F2421A42745311A000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    OnClick = BtnDelClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+  end
+  object BtnAddConsu: TBitBtn
+    Left = 422
+    Height = 23
+    Top = 44
+    Width = 24
+    Caption = '...'
+    OnClick = BtnAddConsuClick
+    TabOrder = 8
+  end
+  object DSMaterial: TDataSource
+    DataSet = DmConsumibles.ZQCat
+    left = 143
+    top = 192
+  end
+  object ZQ: TZQuery
+    Connection = dmconn.Conn
+    Params = <>
+    left = 340
+    top = 321
+  end
+end

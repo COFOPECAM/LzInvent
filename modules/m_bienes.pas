@@ -12,6 +12,7 @@ type
   { TDmBienes }
 
   TDmBienes = class(TDataModule)
+    DSProgs: TDataSource;
     DSSearch: TDataSource;
     DSEstatus: TDataSource;
     DSLugar: TDataSource;
@@ -26,6 +27,7 @@ type
     ZQSub: TZQuery;
     ZQProv: TZQuery;
     ZQSearch: TZQuery;
+    ZQProgs: TZQuery;
   private
 
   public

@@ -29,6 +29,8 @@ type
     MostrarFechaResg: string;
     ImgEmpresa: string;
     Theme: string;
+    CPrinter: string;
+    IPrinter: integer;
     // Datos del usuario
     Nombre: string;
     Apellido: string;
@@ -85,6 +87,8 @@ begin
     Conn.Connect;
     // GetRoles.Open;
     Theme:=INI.ReadString('config', 'theme_app', '');
+    CPrinter:=INI.ReadString('config', 'cprinter', '');
+    IPrinter:=StrToInt(INI.ReadString('config', 'iprinter', ''));
 
     // Obtener configuración de base de datos
     ZQs.SQL.Text:='SELECT id, skey, svalue FROM general_config WHERE '+

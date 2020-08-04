@@ -1,17 +1,18 @@
 object FrmBuscarBien: TFrmBuscarBien
-  Left = 406
+  Left = 750
   Height = 391
-  Top = 563
+  Top = 617
   Width = 387
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'LzInvent | Buscar bien'
   ClientHeight = 391
   ClientWidth = 387
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.2.0'
+  LCLVersion = '2.0.6.0'
   object GroupBox1: TGroupBox
     Left = 8
     Height = 337
@@ -116,7 +117,7 @@ object FrmBuscarBien: TFrmBuscarBien
       DataSource = DmBienes.DSEstatus
       Enabled = False
       KeyField = 'id'
-      ListField = 'nombre'
+      ListField = 'name'
       ListFieldIndex = 0
       ListSource = DmBienes.DSEstatus
       LookupCache = False
@@ -157,7 +158,7 @@ object FrmBuscarBien: TFrmBuscarBien
       DataSource = DmBienes.DSLugar
       Enabled = False
       KeyField = 'id'
-      ListField = 'nombre'
+      ListField = 'name'
       ListFieldIndex = 0
       ListSource = DmBienes.DSLugar
       LookupCache = False
@@ -177,11 +178,11 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 174
       Width = 240
-      DataField = 'id'
+      DataField = 'id_brand'
       DataSource = DmBienes.DSMarca
       Enabled = False
-      KeyField = 'id'
-      ListField = 'nombre'
+      KeyField = 'id_brand'
+      ListField = 'name'
       ListFieldIndex = 0
       ListSource = DmBienes.DSMarca
       LookupCache = False
@@ -214,7 +215,7 @@ object FrmBuscarBien: TFrmBuscarBien
       DataSource = DmBienes.DSCat
       Enabled = False
       KeyField = 'id'
-      ListField = 'nombre'
+      ListField = 'name'
       ListFieldIndex = 0
       ListSource = DmBienes.DSCat
       LookupCache = False
@@ -238,7 +239,7 @@ object FrmBuscarBien: TFrmBuscarBien
       DataSource = DmBienes.DSSub
       Enabled = False
       KeyField = 'id'
-      ListField = 'nombre'
+      ListField = 'name'
       ListFieldIndex = 0
       ListSource = DmBienes.DSSub
       LookupCache = False
@@ -258,11 +259,11 @@ object FrmBuscarBien: TFrmBuscarBien
       Height = 23
       Top = 259
       Width = 240
-      DataField = 'id'
+      DataField = 'id_provider'
       DataSource = DmBienes.DSProv
       Enabled = False
-      KeyField = 'id'
-      ListField = 'empresa'
+      KeyField = 'id_provider'
+      ListField = 'company'
       ListFieldIndex = 0
       ListSource = DmBienes.DSProv
       LookupCache = False
@@ -291,6 +292,7 @@ object FrmBuscarBien: TFrmBuscarBien
     CloseButton.DefaultCaption = True
     CancelButton.Name = 'CancelButton'
     CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel]
   end

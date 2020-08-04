@@ -39,6 +39,7 @@ type
     TxtObs: TEdit;
     GroupBox1: TGroupBox;
     Label1: TLabel;
+    procedure CancelButtonClick(Sender: TObject);
     procedure CbAdqChange(Sender: TObject);
     procedure CbCatChange(Sender: TObject);
     procedure CbCodigoChange(Sender: TObject);
@@ -50,6 +51,7 @@ type
     procedure CbObsChange(Sender: TObject);
     procedure CbProveedorChange(Sender: TObject);
     procedure CbSubCatChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
@@ -73,6 +75,11 @@ procedure TFrmBuscarBien.CbAdqChange(Sender: TObject);
 begin
   DeInicio.Enabled:=CbAdq.Checked;
   DeFin.Enabled:=CbAdq.Checked;
+end;
+
+procedure TFrmBuscarBien.CancelButtonClick(Sender: TObject);
+begin
+  IsSearch:=True;
 end;
 
 procedure TFrmBuscarBien.CbCatChange(Sender: TObject);
@@ -129,6 +136,12 @@ begin
   CbxSubCat.Enabled:=CbSubCat.Checked;
 end;
 
+procedure TFrmBuscarBien.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  IsSearch:=True;
+end;
+
 procedure TFrmBuscarBien.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   CanClose:=IsSearch;
@@ -144,75 +157,76 @@ var
   sql, where: string;
 begin
   // Crear SQL para la busqueda
-  sql:='select b.id_biene as ''id'', b.descripcion as ''Descripcion'', m.nombre'+
-  ' as ''Marca'', b.modelo as ''Modelo'', b.no_serie as ''No. serie'', b.precio'+
-  ' as ''Monto'', b.factura as ''No. Factura'', b.adquisicion as ''Fecha de '+
-  'compra'', b.codigo as ''Codigo'', sc.nombre as ''Subcategoria'', c.nombre '+
-  'as ''Categoria'', l.nombre as ''Lugar'', p.empresa as ''Proveedor'', est.'+
-  'nombre as ''Estatus'', cb.nombre as ''Motivo baja'', b.baja as ''Fecha baja'''+
-  ' from bienes b inner join marcas m on m.id_marcas = b.marcas_id_marcas inner'+
-  ' join subcategoria sc on sc.id_subcategoria = b.subcategoria_id_subcategoria'+
-  ' inner join categorias c on c.id_categoria = sc.id_categoria inner join '+
-  'lugares l on l.id_lugar = b.lugares_id_lugar inner join estatus est on est.'+
-  'id_estatus = b.estatus_id_estatus inner join proveedores p on p.id_proveedor'+
-  ' = b.proveedores_id_proveedor left join cat_bajas cb on cb.id_cat_baja = '+
-  'b.cat_bajas_id_cat_baja where b.cat_bajas_id_cat_baja is null #where# order'+
-  ' by b.adquisicion desc';
+  sql:='select ift.id, ift.description, ib.name as marcar, ift.model, ift.no_'+
+  'serie, ift.scode, ift.code, ift.bill, ift.acquisition, ist.name as estatus,'+
+  ' aa.name as lugar, ift.price, ia.name as cuenta, trim(concat(ifnull(u2.hono'+
+  'rific, ''''), '' '', u2.name, '' '', u2.surname)) as signned_to, isc.name as subc'+
+  'ategoria, ic.name as categoria, ip.company, gpd.name as programa, ift.obser'+
+  'vations from inventory_furniture ift inner join inventory_brand ib on ib.i'+
+  'd_brand = ift.inventory_brand_id_brand inner join inventory_status ist on '+
+  'ist.id = ift.inventory_status_id inner join area_apartments aa on aa.id = '+
+  'ift.area_apartments_id left join inventory_accounts ia on ia.id = ift.inven'+
+  'tory_accounts_id left join inventory_subcategorie isc on isc.id = ift.inven'+
+  'tory_subcategorie_id inner join inventory_categories ic on ic.id = ift.inve'+
+  'ntory_categories_id inner join inventory_provider ip on ip.id_provider = i'+
+  'ft.inventory_provider_id_provider left join user_users u2 on u2.id = ift.si'+
+  'gnned_to inner join general_program_disease gpd on gpd.id = ift.general_pr'+
+  'ogram_disease_id where ift.status = 1 #where# order by ift.acquisition desc';
 
   // Crear sentencia where
   if CbAdq.Checked then
   begin
-    where:=' and b.adquisicion >= :finicio and b.adquisicion <= :ffin';
+    where:=' and ift.acquisition >= :finicio and ift.acquisition <= :ffin';
   end;
 
   if CbCodigo.Checked then
   begin
-    where:=where + ' and b.codigo like :codigo';
+    where:=where + ' and ift.code like :codigo';
   end;
 
   if CbDesc.Checked then
   begin
-    where := where + ' and b.descripcion like :desc';
+    where := where + ' and ift.description like :desc';
   end;
 
   if CbEstatus.Checked then
   begin
-    where := where + ' and b.estatus_id_estatus = :estatus';
+    where := where + ' and ist.id = :estatus';
   end;
 
   if CbFactura.Checked then
   begin
-    where := where + ' and b.factura like :fact';
+    where := where + ' and ift.bill like :fact';
   end;
 
   if CbLugar.Checked then
   begin
-    where := where + ' and b.lugares_id_lugar = :lugar_id';
+    where := where + ' and aa.id = :lugar_id';
   end;
 
   if CbMarca.Checked then
   begin
-    where := where + ' and b.marcas_id_marcas = :marca_id';
+    where := where + ' and ib.i = :marca_id';
   end;
 
   if CbCat.Checked then
   begin
-    where := where + ' and sc.id_categoria = :cat_id';
+    where := where + ' and ic.id = :cat_id';
   end;
 
   if CbSubCat.Checked then
   begin
-    where := where + ' and sc.id_subcategoria = :sub_id';
+    where := where + ' and isc.id = :sub_id';
   end;
 
   if CbProveedor.Checked then
   begin
-    where := where + ' and b.proveedores_id_proveedor = :prov_id';
+    where := where + ' and ip.id_provider = :prov_id';
   end;
 
   if CbObs.Checked then
   begin
-    where := where + ' and b.observaciones like :obs';
+    where := where + ' and ift.observations like :obs';
   end;
 
   // Crear y asignar SQL

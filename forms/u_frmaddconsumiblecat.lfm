@@ -1,0 +1,94 @@
+object FrmAddMaterialCat: TFrmAddMaterialCat
+  Left = 796
+  Height = 389
+  Top = 461
+  Width = 344
+  Caption = 'Catalogo materiales'
+  ClientHeight = 389
+  ClientWidth = 344
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.6.0'
+  object DBEdit1: TDBEdit
+    Left = 72
+    Height = 23
+    Top = 19
+    Width = 264
+    DataField = 'name'
+    DataSource = DSCat
+    CharCase = ecUppercase
+    MaxLength = 150
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 20
+    Height = 15
+    Top = 24
+    Width = 46
+    Caption = 'Material:'
+    ParentColor = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Height = 264
+    Top = 72
+    Width = 328
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'id'
+        Width = 0
+        Visible = False
+        FieldName = 'id'
+      end    
+      item
+        Title.Caption = 'Material'
+        Width = 240
+        FieldName = 'name'
+      end    
+      item
+        ButtonStyle = cbsCheckboxColumn
+        Title.Caption = 'Estatus'
+        Width = 52
+        FieldName = 'status'
+      end>
+    DataSource = DSCat
+    TabOrder = 1
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Height = 33
+    Top = 344
+    Width = 328
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 33
+    ClientWidth = 328
+    DataSource = DSCat
+    Options = []
+    TabOrder = 2
+    VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 280
+    Height = 23
+    Top = 44
+    Width = 56
+    Caption = 'Estatus'
+    DataField = 'status'
+    DataSource = DSCat
+    TabOrder = 3
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
+  object DSCat: TDataSource
+    DataSet = DmConsumibles.ZQCat
+    left = 142
+    top = 156
+  end
+end
