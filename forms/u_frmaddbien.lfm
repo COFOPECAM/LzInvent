@@ -1,7 +1,7 @@
 object FrmAddBien: TFrmAddBien
-  Left = 582
+  Left = 586
   Height = 485
-  Top = 521
+  Top = 525
   Width = 549
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle

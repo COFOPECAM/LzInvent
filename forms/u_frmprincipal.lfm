@@ -557,19 +557,21 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Otros'
         Items = (
           'SpkLargeButton10'
-          'SpkLargeButton9'
-          'SpkLargeButton11'
+          'BtnHelp'
+          'BtnAbout'
         )
         object SpkLargeButton10: TSpkLargeButton
           Caption = 'Actualizaciones'
           LargeImageIndex = 11
         end
-        object SpkLargeButton9: TSpkLargeButton
+        object BtnHelp: TSpkLargeButton
           Caption = 'Ayuda'
+          OnClick = BtnHelpClick
           LargeImageIndex = 31
         end
-        object SpkLargeButton11: TSpkLargeButton
+        object BtnAbout: TSpkLargeButton
           Caption = 'Acerca de'
+          OnClick = BtnAboutClick
           LargeImageIndex = 30
         end
       end
@@ -12290,7 +12292,7 @@ object FrmPrincipal: TFrmPrincipal
   end
   object DbResEmpleado: TfrDBDataSet
     DataSet = ZQResEmpleado
-    left = 704
+    left = 800
     top = 472
   end
   object frShapeObject1: TfrShapeObject
@@ -12320,5 +12322,25 @@ object FrmPrincipal: TFrmPrincipal
     DataSet = DmConsumibles.ZQConsu
     left = 719
     top = 186
+  end
+  object Poweredby: TPoweredby
+    About.Description.Strings = (
+      'Component that shows a Powered By graphic.'#13#10'Use method ShowPoweredByForm in your form.create()'#13#10'to use the component'
+    )
+    About.Title = 'About PoweredBy component'
+    About.Height = 280
+    About.Width = 400
+    About.Font.Color = clNavy
+    About.Font.Height = -13
+    About.Font.Name = 'Arial'
+    About.BackGroundColor = clWindow
+    About.Version = '1.0.4.0'
+    About.Authorname = 'Gordon Bamber'
+    About.Organisation = 'Public Domain'
+    About.AuthorEmail = 'minesadorada@charcodelvalle.com'
+    About.ComponentName = 'PoweredBy component'
+    About.LicenseType = abModifiedGPL
+    left = 504
+    top = 472
   end
 end

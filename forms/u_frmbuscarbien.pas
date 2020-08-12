@@ -25,6 +25,8 @@ type
     CbMarca: TCheckBox;
     CbObs: TCheckBox;
     CbCat: TCheckBox;
+    CbPrograma: TCheckBox;
+    CbxPrograma: TDBLookupComboBox;
     DeInicio: TDateEdit;
     DeFin: TDateEdit;
     CbxEstatus: TDBLookupComboBox;
@@ -49,6 +51,7 @@ type
     procedure CbLugarChange(Sender: TObject);
     procedure CbMarcaChange(Sender: TObject);
     procedure CbObsChange(Sender: TObject);
+    procedure CbProgramaChange(Sender: TObject);
     procedure CbProveedorChange(Sender: TObject);
     procedure CbSubCatChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -126,6 +129,11 @@ begin
   TxtObs.Text:='';
 end;
 
+procedure TFrmBuscarBien.CbProgramaChange(Sender: TObject);
+begin
+  CbxPrograma.Enabled:=CbPrograma.Checked;
+end;
+
 procedure TFrmBuscarBien.CbProveedorChange(Sender: TObject);
 begin
   CbxProveedor.Enabled:=CbProveedor.Checked;
@@ -150,6 +158,7 @@ end;
 procedure TFrmBuscarBien.FormShow(Sender: TObject);
 begin
   IsSearch:=true;
+  DmBienes.ZQProgs.Open;
 end;
 
 procedure TFrmBuscarBien.OKButtonClick(Sender: TObject);
@@ -229,6 +238,11 @@ begin
     where := where + ' and ift.observations like :obs';
   end;
 
+  if CbPrograma.Checked then
+  begin
+    where := where + ' and ift.general_program_disease_id = :program_id'
+  end;
+
   // Crear y asignar SQL
   DmBienes.ZQSearch.Close;
   DmBienes.ZQSearch.SQL.Text:=ReplaceStr(sql, '#where#', where);
@@ -260,6 +274,8 @@ begin
      DmBienes.ZQSearch.Params.ParamByName('prov_id').AsInteger:=CbxProveedor.KeyValue;
   if CbObs.Checked then
      DmBienes.ZQSearch.Params.ParamByName('obs').AsString:='%'+TxtObs.Text+'%';
+  if CbPrograma.Checked then
+     DmBienes.ZQSearch.Params.ParamByName('program_id').AsInteger:=CbxPrograma.KeyValue;
 
   // Ejecutar consulta
   DmBienes.ZQSearch.Open;

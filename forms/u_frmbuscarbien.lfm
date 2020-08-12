@@ -1,12 +1,12 @@
 object FrmBuscarBien: TFrmBuscarBien
-  Left = 750
-  Height = 391
-  Top = 617
+  Left = 292
+  Height = 421
+  Top = 587
   Width = 387
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'LzInvent | Buscar bien'
-  ClientHeight = 391
+  ClientHeight = 421
   ClientWidth = 387
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
@@ -15,11 +15,11 @@ object FrmBuscarBien: TFrmBuscarBien
   LCLVersion = '2.0.6.0'
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 337
+    Height = 368
     Top = 8
     Width = 369
     Caption = 'Opciones de busqueda'
-    ClientHeight = 317
+    ClientHeight = 348
     ClientWidth = 365
     TabOrder = 0
     object CbAdq: TCheckBox
@@ -277,11 +277,38 @@ object FrmBuscarBien: TFrmBuscarBien
       Enabled = False
       TabOrder = 22
     end
+    object CbPrograma: TCheckBox
+      Left = 13
+      Height = 19
+      Top = 319
+      Width = 75
+      Caption = 'Programa:'
+      OnChange = CbProgramaChange
+      TabOrder = 23
+    end
+    object CbxPrograma: TDBLookupComboBox
+      Left = 116
+      Height = 23
+      Top = 316
+      Width = 240
+      AutoComplete = True
+      AutoDropDown = True
+      CharCase = ecUppercase
+      DataField = 'id'
+      DataSource = DmBienes.DSProgs
+      Enabled = False
+      KeyField = 'id'
+      ListField = 'name'
+      ListFieldIndex = 0
+      ListSource = DmBienes.DSProgs
+      LookupCache = False
+      TabOrder = 24
+    end
   end
   object Bp: TButtonPanel
     Left = 6
     Height = 34
-    Top = 351
+    Top = 381
     Width = 375
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True

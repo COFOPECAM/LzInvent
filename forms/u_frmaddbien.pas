@@ -166,35 +166,39 @@ begin
     // Asignar datos a los campos
     TxtIdent.Text:=bien_id.ToString;
     TxtDescrip.Text:=ZQBien.FieldByName('description').AsString;
-    TxtDescrip.Enabled:=edit;
     CbMarca.KeyValue:=ZQBien.FieldByName('inventory_brand_id_brand').AsInteger;
-    CbMarca.Enabled:=edit;
     TxtModelo.Text:=ZQBien.FieldByName('model').AsString;
-    TxtModelo.Enabled:=edit;
     TxtNoSerie.Text:=ZQBien.FieldByName('no_serie').AsString;
-    TxtNoSerie.Enabled:=edit;
     TxtPrecio.Value:=ZQBien.FieldByName('price').AsFloat;
-    TxtPrecio.Enabled:=edit;
     CbCuenta.KeyValue:=ZQBien.FieldByName('inventory_accounts_id').AsInteger;
-    CbCuenta.Enabled:=edit;
     TxtFactura.Text:=ZQBien.FieldByName('bill').AsString;
-    TxtFactura.Enabled:=edit;
     DtAdquisicion.Date:=ZQBien.FieldByName('acquisition').AsDateTime;
-    DtAdquisicion.Enabled:=edit;
     CbEstado.KeyValue:=ZQBien.FieldByName('inventory_status_id').AsInteger;
-    CbEstado.Enabled:=edit;
     CbLugar.KeyValue:=ZQBien.FieldByName('area_apartments_id').AsInteger;
-    CbLugar.Enabled:=edit;
     CbCategoria.KeyValue:=ZQBien.FieldByName('inventory_categories_id').AsInteger;
     CbProveedor.KeyValue:=ZQBien.FieldByName('inventory_provider_id_provider').AsInteger;
-    CbPrograma.Enabled:=edit;
     TxtObser.Text:=ZQBien.FieldByName('observations').AsString;
-    TxtObser.Enabled:=edit;
     LbCodigo.Caption:=ZQBien.FieldByName('scode').AsString;
     TxtNameProg.Text:=Programa;
     CbSubC.KeyValue:=ZQBien.FieldByName('inventory_subcategorie_id').AsInteger;
     ZQHistorial.Params.ParamByName('bien_id').AsInteger:=bien_id;
     ZQHistorial.Open;
+
+    // No editar
+    if not show_baja then begin
+      TxtDescrip.Enabled:=edit;
+      CbMarca.Enabled:=edit;
+      TxtModelo.Enabled:=edit;
+      TxtNoSerie.Enabled:=edit;
+      TxtPrecio.Enabled:=edit;
+      CbCuenta.Enabled:=edit;
+      TxtFactura.Enabled:=edit;
+      DtAdquisicion.Enabled:=edit;
+      CbEstado.Enabled:=edit;
+      CbLugar.Enabled:=edit;
+      CbPrograma.Enabled:=edit;
+      TxtObser.Enabled:=edit;
+    end;
   end;
 end;
 
@@ -322,6 +326,27 @@ procedure TFrmAddBien.OKButtonClick(Sender: TObject);
 var
   sf: TStringsFormat;
 begin
+  // Dar de baja el bien
+  if show_baja then
+  begin
+    if MessageDlg('Confirmación', '¿Realmente desea dar de baja el bien?',
+    mtConfirmation, [mbYes, mbNo],0) = mrNo
+    then
+    begin
+      save:=false;
+      Exit;
+    end;
+    ZQBien.SQL.Text:='update inventory_furniture set inventory_down_id = '+
+    ':baja, date_low = :date_dow, low_user = :user_baja, status = 0 where id = :id';
+    ZQBien.Params.ParamByName('baja').AsInteger:=CbBaja.KeyValue;
+    ZQBien.Params.ParamByName('date_dow').AsDate:=DeFechaBaja.Date;
+    ZQBien.Params.ParamByName('user_baja').AsInteger:=dmconn.UserId;
+    ZQBien.Params.ParamByName('id').AsInteger:=bien_id;
+    ZQBien.ExecSQL;
+    save:=True;
+    Exit;
+  end;
+
   if not edit then
   begin
     ZQBien.SQL.Text:='INSERT INTO inventory_furniture(description, inventory_'+
@@ -351,7 +376,7 @@ begin
     ZQBien.Params.ParamByName('id_provider').AsInteger:=CbProveedor.KeyValue;
     ZQBien.Params.ParamByName('program_id').AsInteger:=prog_id;
     ZQBien.Params.ParamByName('obs').AsString:=TxtObser.Lines.Text;
-    ZQBien.Params.ParamByName('user_capture').AsInteger:=1; // Obtener el id del usuario
+    ZQBien.Params.ParamByName('user_capture').AsInteger:=dmconn.UserId; // Obtener el id del usuario
     ZQBien.Params.ParamByName('code').AsString:=codigo;
     ZQBien.Params.ParamByName('scode').AsString:=LbCodigo.Caption;
     try
@@ -372,25 +397,23 @@ begin
       save:=false;
       Exit;
     end;
-    ZQBien.SQL.Text:='UPDATE bienes SET adquisicion=:adq,'+
-    'descripcion=:descr,estatus_id_estatus=:est,'+
-    'factura=:fact,lugares_id_lugar=:lugar_id,marcas_id_marcas=:marca_id,'+
-    'modelo=:modelo,no_serie=:no_serie,observaciones=:obs,precio=:precio,'+
-    'proveedores_id_proveedor=:prov_id,subcategoria_id_subcategoria=:sub_id'+
-    ' WHERE id_biene = :bien_id';
+    ZQBien.SQL.Text:='update inventory_furniture set description = :descrip, '+
+    'inventory_brand_id_brand = :brand, model = :model, no_serie = :serie, '+
+    'bill = :bill, acquisition = :adq, inventory_status_id = :status_id, area_'+
+    'apartments_id = :area, price = :price, inventory_accounts_id = :account, '+
+    'observations = :obs where id = :id';
+    ZQBien.Params.ParamByName('descrip').AsString:=TxtDescrip.Text;
+    ZQBien.Params.ParamByName('brand').AsInteger:=CbMarca.KeyValue;
+    ZQBien.Params.ParamByName('model').AsString:=TxtModelo.Text;
+    ZQBien.Params.ParamByName('serie').AsString:=TxtNoSerie.Text;
+    ZQBien.Params.ParamByName('bill').AsString:=TxtFactura.Text;
     ZQBien.Params.ParamByName('adq').AsDate:=DtAdquisicion.Date;
-    ZQBien.Params.ParamByName('descr').AsString:=TxtDescrip.Text;
-    ZQBien.Params.ParamByName('est').AsInteger:=CbEstado.KeyValue;
-    ZQBien.Params.ParamByName('fact').AsString:=TxtFactura.Text;
-    ZQBien.Params.ParamByName('lugar_id').AsInteger:=CbLugar.KeyValue;
-    ZQBien.Params.ParamByName('marca_id').AsInteger:=CbMarca.KeyValue;
-    ZQBien.Params.ParamByName('modelo').AsString:=TxtModelo.Text;
-    ZQBien.Params.ParamByName('no_serie').AsString:=TxtNoSerie.Text;
+    ZQBien.Params.ParamByName('status_id').AsInteger:=CbEstado.KeyValue;
+    ZQBien.Params.ParamByName('area').AsInteger:=CbLugar.KeyValue;
+    ZQBien.Params.ParamByName('price').AsFloat:=TxtPrecio.Value;
+    ZQBien.Params.ParamByName('account').AsInteger:=CbCuenta.KeyValue;
     ZQBien.Params.ParamByName('obs').AsString:=TxtObser.Lines.Text;
-    ZQBien.Params.ParamByName('precio').AsFloat:=TxtPrecio.Value;
-    ZQBien.Params.ParamByName('prov_id').AsInteger:=CbProveedor.KeyValue;
-    ZQBien.Params.ParamByName('sub_id').AsInteger:=CbSubC.KeyValue;
-    ZQBien.Params.ParamByName('bien_id').AsInteger:=bien_id;
+    ZQBien.Params.ParamByName('id').AsInteger:=bien_id;
     ZQBien.ExecSQL;
     save:=true;
   end;

@@ -122,7 +122,7 @@ end;
 
 procedure TFrmEntrega.TxtEntregarEditingDone(Sender: TObject);
 begin
-  ShowMessage('asdasdi');
+
 end;
 
 procedure TFrmEntrega.CbConsumibleChange(Sender: TObject);

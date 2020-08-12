@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, printer4lazarus, datetimectrls, zcomponent, rxnew,
-  virtualdbgrid_package, u_frmprincipal, m_conn, u_frmlistarusuarios,
+  virtualdbgrid_package, poweredby, u_frmprincipal, m_conn, u_frmlistarusuarios,
   u_frmadduser, u_frmrolespermisos, m_user, m_empleados, u_frmaddemployee,
   u_frmareas, u_frmcatsub, u_frmplaces, u_frmbajas, u_frmmarcas, u_frmestatus,
   u_frmproveedores, u_frmproveedor, u_frmaddbien, lazreportpdfexport,

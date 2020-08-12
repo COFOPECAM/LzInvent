@@ -1,5 +1,5 @@
 object FrmEntrega: TFrmEntrega
-  Left = 686
+  Left = 292
   Height = 442
   Top = 567
   Width = 448

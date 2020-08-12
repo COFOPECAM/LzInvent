@@ -9,9 +9,9 @@ uses
   RxDBGridFooterTools, RxDBGridExportSpreadSheet, RxSortZeos, SpkToolbar,
   spkt_Tab, spkt_Pane, spkt_Buttons, u_frmlistarusuarios, m_conn, db, ZDataset,
   spkt_Appearance, u_frmaddemployee, m_empleados, u_frmareas, LCLType, ExtCtrls,
-  StdCtrls, u_frmcatsub, u_frmplaces, u_frmbajas, u_frmmarcas, u_frmestatus,
-  u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet, LR_Shape, PrintersDlgs,
-  lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes,
+  StdCtrls, uPoweredby, u_frmcatsub, u_frmplaces, u_frmbajas, u_frmmarcas,
+  u_frmestatus, u_frmproveedores, u_frmaddbien, LR_Class, LR_DBSet, LR_Shape,
+  PrintersDlgs, lr_e_pdf, u_frmconfig, u_frmbajabien, u_frmbuscarbien, m_bienes,
   u_frmcampanas, process, u_frmsearchproveedor, u_frmconsumibles, u_frmentrega,
   u_frmreports;
 
@@ -26,6 +26,7 @@ type
     DBReport: TfrDBDataSet;
     DbResEmpleado: TfrDBDataSet;
     frShapeObject1: TfrShapeObject;
+    Poweredby: TPoweredby;
     PrintDialog1: TPrintDialog;
     RpToPDF: TfrTNPDFExport;
     LzReports: TfrReport;
@@ -43,12 +44,12 @@ type
     RbBtnConfig: TSpkLargeButton;
     BtnGenEtiqueta: TSpkLargeButton;
     SpkLargeButton10: TSpkLargeButton;
-    SpkLargeButton11: TSpkLargeButton;
+    BtnAbout: TSpkLargeButton;
     SpkLargeButton12: TSpkLargeButton;
     SpkLargeButton2: TSpkLargeButton;
     BtnEConsumible: TSpkLargeButton;
     SpkLargeButton7: TSpkLargeButton;
-    SpkLargeButton9: TSpkLargeButton;
+    BtnHelp: TSpkLargeButton;
     SpkPane10: TSpkPane;
     SpkPane11: TSpkPane;
     SpkPane12: TSpkPane;
@@ -99,6 +100,7 @@ type
     ZQBienReport: TZQuery;
     ZQResEmpleado: TZQuery;
     procedure BtbCCatClick(Sender: TObject);
+    procedure BtnAboutClick(Sender: TObject);
     procedure BtnConsumiblesClick(Sender: TObject);
     procedure BtnCProgramaClick(Sender: TObject);
     procedure BtnCtAreasClick(Sender: TObject);
@@ -106,6 +108,7 @@ type
     procedure BtnEBajaClick(Sender: TObject);
     procedure BtnEConsumibleClick(Sender: TObject);
     procedure BtnEToExcelClick(Sender: TObject);
+    procedure BtnHelpClick(Sender: TObject);
     procedure BtnRbBEditarClick(Sender: TObject);
     procedure BtnRbBResguardoClick(Sender: TObject);
     procedure BtnRbBToExcelClick(Sender: TObject);
@@ -231,6 +234,18 @@ begin
      ParValue:=dmconn.DirEmpresa;
   if ParName = 'empresa' then
      ParValue:=dmconn.Empresa;
+
+  // Datos de la etiqueta
+  if ParName = 'lugar' then
+     ParValue:=DgBienes.DataSource.DataSet.Fields[10].AsString;
+  if ParName = 'clave' then
+     ParValue:=DgBienes.DataSource.DataSet.Fields[5].AsString;
+  if ParName = 'fecha' then
+     ParValue:=DgBienes.DataSource.DataSet.Fields[8].AsDateTime;
+  if ParName = 'codigo' then
+     ParValue:=DgBienes.DataSource.DataSet.Fields[6].AsString;
+  if ParName = 'programa' then
+     ParValue:=DgBienes.DataSource.DataSet.Fields[17].AsString;
 end;
 
 procedure TFrmPrincipal.BtnEAddClick(Sender: TObject);
@@ -304,6 +319,21 @@ begin
     end
 end;
 
+procedure TFrmPrincipal.BtnHelpClick(Sender: TObject);
+var
+  Pros: TProcess;
+begin
+  // Abrir pdf con la ayuda del programa
+  try
+    Pros:=TProcess.Create(nil);
+    Pros.Executable:='docs/help.pdf';
+    Pros.Execute;
+  except
+    Application.MessageBox('No fue encontrado el manual de usuario',
+    'Archivo no encontrado', MB_ICONEXCLAMATION);
+  end;
+end;
+
 procedure TFrmPrincipal.BtnRbBEditarClick(Sender: TObject);
 var
   bien_id:integer;
@@ -317,13 +347,7 @@ begin
    FrmAddBien.bien_id:=bien_id;
    FrmAddBien.Programa:=DgBienes.DataSource.DataSet.Fields[17].AsString;
    FrmAddBien.ShowModal;
-   //if FrmAddBien.ShowModal = mrOK then
-   //begin
-   // ZQBienes.Close;
-   // ZQBienes.Open;
-   //end;
-   ZQBienes.Close;
-   ZQBienes.Open;
+   ZQBienes.Refresh;
   end;
 end;
 
@@ -456,13 +480,7 @@ begin
    FrmAddBien.bien_id:=bien_id;
    FrmAddBien.Programa:=DgBienes.DataSource.DataSet.Fields[17].AsString;
    FrmAddBien.ShowModal;
-   //if FrmAddBien.ShowModal = mrOK then
-   //begin
-   // ZQBienes.Close;
-   // ZQBienes.Open;
-   //end;
-   ZQBienes.Close;
-   ZQBienes.Open;
+   ZQBienes.Refresh;
   end;
 end;
 
@@ -477,6 +495,11 @@ begin
   // Categorias
   FrmCategorias:=TFrmCategorias.Create(FrmPrincipal);
   FrmCategorias.ShowModal;
+end;
+
+procedure TFrmPrincipal.BtnAboutClick(Sender: TObject);
+begin
+  Poweredby.ShowPoweredByForm;
 end;
 
 procedure TFrmPrincipal.BtnConsumiblesClick(Sender: TObject);
@@ -526,39 +549,20 @@ begin
   FrmAddBien:=TFrmAddBien.Create(FrmPrincipal);
   FrmAddBien.bien_id:=StrToInt(DgBienes.DataSource.DataSet.Fields[0].Value);
   FrmAddBien.show_baja:=true;
+  FrmAddBien.edit:=True;
   if FrmAddBien.ShowModal = mrOK then
   begin
    // Recargar tabla para eliminar registro de la vista
-   ZQBienes.Close;
-   ZQBienes.Open;
+   ZQBienes.Refresh;
   end;
 end;
 
 procedure TFrmPrincipal.BtnGenEtiquetaClick(Sender: TObject);
-var
-  PipeString: TStringList;
 begin
   {Obtener los datos para generar el codigo de barras}
-  PrintEtiqueta:=TProcess.Create(nil);
-  PipeString:=TStringList.Create;
-
-  PrintEtiqueta.Executable:='libs/ZebraPrinter.exe';
-  // Parametros
-  PrintEtiqueta.Parameters.Add('--codigo ' + DgBienes.DataSource.DataSet.Fields[6].AsString);
-  PrintEtiqueta.Parameters.Add('--lugar ' + DgBienes.DataSource.DataSet.Fields[10].AsString);
-  PrintEtiqueta.Parameters.Add('--clave ' + DgBienes.DataSource.DataSet.Fields[5].AsString);
-  PrintEtiqueta.Parameters.Add('--fecha ' + DgBienes.DataSource.DataSet.Fields[8].AsString);
-  PrintEtiqueta.Parameters.Add('--printer ' + dmconn.CPrinter);
-  // Opciones para ejecutar el proceso
-  PrintEtiqueta.Options:= PrintEtiqueta.Options + [poWaitOnExit, poUsePipes];
-  PrintEtiqueta.Execute;
-
-  // Obtener el resultado del proceso de impresión
-  PipeString.LoadFromStream(PrintEtiqueta.Output);
-
-  ShowMessage(PipeString.Text);
-  PipeString.Free;
-  PrintEtiqueta.Free;
+  LzReports.LoadFromFile('../../reports/rpEtiqueta.lrf');
+  LzReports.Title:='Etiqueta';
+  LzReports.ShowReport;
 end;
 
 procedure TFrmPrincipal.StMenuTabChanged(Sender: TObject);
